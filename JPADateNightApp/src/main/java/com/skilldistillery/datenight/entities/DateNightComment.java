@@ -1,0 +1,108 @@
+package com.skilldistillery.datenight.entities;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+@Entity
+public class DateNightComment {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	private String comment;
+	
+	@Column(name="comment_date")
+	@CreationTimestamp
+	private LocalDateTime commentDate; 
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	@MapsId(value="userId")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="datenight_id")
+	@MapsId(value="dateNightId")
+	private DateNight dateNightId;
+
+	public DateNightComment() {
+		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public LocalDateTime getCommentDate() {
+		return commentDate;
+	}
+
+	public void setCommentDate(LocalDateTime commentDate) {
+		this.commentDate = commentDate;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public DateNight getDateNightId() {
+		return dateNightId;
+	}
+
+	public void setDateNightId(DateNight dateNightId) {
+		this.dateNightId = dateNightId;
+	}
+
+	@Override
+	public String toString() {
+		return "DateNightComment [id=" + id + ", comment=" + comment + ", commentDate=" + commentDate + ", user=" + user
+				+ ", dateNightId=" + dateNightId + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DateNightComment other = (DateNightComment) obj;
+		return id == other.id;
+	}
+	
+	
+}
