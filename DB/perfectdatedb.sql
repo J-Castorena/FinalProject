@@ -231,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `datenight_discussion_board` (
   `comment_date` DATETIME NULL,
   `user_id` INT NOT NULL,
   `date_night_id` INT NOT NULL,
-  `datenight_discussion_board_id` INT NOT NULL,
+  `datenight_discussion_board_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_datenight_comment_user1_idx` (`user_id` ASC),
   INDEX `fk_datenight_comment_date_night1_idx` (`date_night_id` ASC),
@@ -265,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `blog_comment` (
   `blog_comment_date` DATETIME NULL,
   `user_id` INT NOT NULL,
   `blog_id` INT NOT NULL,
-  `blog_comment_id` INT NOT NULL,
+  `blog_comment_id` INT NULL,
   `image_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_blog_comment_user1_idx` (`user_id` ASC),
@@ -425,9 +425,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `perfectdatedb`;
-INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (1, 'Is this place still rad?', NULL, 4, 1, 1);
-INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (2, 'who much does it cost per person to skydive? ', NULL, 6, 2, 2);
-INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (3, 'I was told sometimes birds crash in the windows while you\'re dinning', NULL, 5, 3, 3);
+INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (1, 'Is this place still rad?', NULL, 4, 1, NULL);
+INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (2, 'who much does it cost per person to skydive? ', NULL, 6, 2, NULL);
+INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (3, 'I was told sometimes birds crash in the windows while you\'re dinning', NULL, 5, 3, NULL);
 
 COMMIT;
 
@@ -437,13 +437,13 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `perfectdatedb`;
-INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (1, 'try Massage Oasis near hwy 29. One of my favorite places. ', NULL, 4, 1, 1, NULL);
-INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (2, 'I always to golden massage in buford rd. They give you wine with your couples massage. ', NULL, 6, 1, 1, NULL);
-INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (3, 'I thought oasis was dirty', NULL, 5, 1, 2, NULL);
-INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (4, 'If you value your life stay away from west Atlanta', NULL, 6, 2, 1, NULL);
-INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (5, 'Just avoid Atlanta at all costs. Its dirty anyways', NULL, 4, 2, 1, NULL);
-INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (6, 'I think Atlanta is a nice city if you know where to go. ', NULL, 5, 2, 1, NULL);
-INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (7, 'what are you talking about? Its so crowed and unsafe', NULL, 4, 2, 2, NULL);
+INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (1, 'try Massage Oasis near hwy 29. One of my favorite places. ', NULL, 4, 1, NULL, NULL);
+INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (2, 'I always to golden massage in buford rd. They give you wine with your couples massage. ', NULL, 6, 1, NULL, NULL);
+INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (3, 'I thought oasis was dirty', NULL, 5, 1, 1, NULL);
+INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (4, 'If you value your life stay away from west Atlanta', NULL, 6, 2, NULL, NULL);
+INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (5, 'Just avoid Atlanta at all costs. Its dirty anyways', NULL, 4, 2, NULL, NULL);
+INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (6, 'I think Atlanta is a nice city if you know where to go. ', NULL, 5, 2, NULL, NULL);
+INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (7, 'what are you talking about? Its so crowed and unsafe', NULL, 4, 2, 1, NULL);
 INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (8, '1. New Belgium, 2. BlueMoon, 3. Great Divide Brewing', NULL, 3, 3, 1, NULL);
 
 COMMIT;
