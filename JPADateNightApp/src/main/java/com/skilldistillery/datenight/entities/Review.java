@@ -1,6 +1,7 @@
 package com.skilldistillery.datenight.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -10,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -31,13 +32,14 @@ public class Review {
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
-	@MapsId(value="userId")
 	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name="date_night_id")
-	@MapsId(value="dateNightId")
 	private DateNight dateNight;
+	
+	@OneToMany(mappedBy="review")
+	private List<AdditionalImage> images;
 
 	
 	//CONSTRUCTOR

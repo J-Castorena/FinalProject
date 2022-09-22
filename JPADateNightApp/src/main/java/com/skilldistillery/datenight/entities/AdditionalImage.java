@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
 @Entity
-public class AdditionalImages {
+public class AdditionalImage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,11 +25,10 @@ public class AdditionalImages {
 	
 	@ManyToOne
 	@JoinColumn(name="review_id")
-	@MapsId(value="reviewId")
 	private Review review;
 
 	//CONSTRUCTOR
-	public AdditionalImages() {
+	public AdditionalImage() {
 		super();
 	}
 
@@ -79,7 +78,7 @@ public class AdditionalImages {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AdditionalImages other = (AdditionalImages) obj;
+		AdditionalImage other = (AdditionalImage) obj;
 		return id == other.id;
 	}
 
