@@ -14,11 +14,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class BlogCommentTest {
+class DateNightDiscussionBoardTest {
+
 	private static EntityManagerFactory emf;
-	private static EntityManager em;
-	private BlogComment blogComment;
-	
+	private EntityManager em;
+	private DateNightDiscussionBoard discussion;
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("JPADateNightApp");
@@ -32,39 +33,50 @@ class BlogCommentTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		blogComment = em.find(BlogComment.class, 1);
+		discussion = em.find(DateNightDiscussionBoard.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		blogComment = null;
-	}
-	@Test
-	void test_BlogComment_entity_mappings() {
-		assertNotNull(blogComment.getId());
-		assertEquals("try Massage Oasis near hwy 29. One of my favorite places. ", blogComment.getMessage());
+		discussion = null;
 	}
 	
 	@Test
-	void test_BlogComment_User_MTO_mapping() {
-		assertNotNull(blogComment.getUser());
-		assertEquals("Liam", blogComment.getUser().getFirstName());
+	void test_DateNightDiscussionBoard_entity_mapping() {
+		assertNotNull(discussion);
+		assertEquals("Is this place still rad?", discussion.getMessage());
+		
 	}
-	
 	@Test
-	void test_BlogComment_Blog_MTO_mapping() {
-		assertNotNull(blogComment.getBlog());
-		assertEquals("Good massage place", blogComment.getBlog().getTitle());
+	void test_DateNightDiscussionBoard_User_MTO_mapping() {
+		assertNotNull(discussion.getUser());
+		assertEquals("Liam", discussion.getUser().getFirstName());
 	}
 
 	@Test
-	void test_BlogComment_BlogCommentList_OTM_mapping() {
-		assertNotNull(blogComment.getBlogComments());
-		assertTrue(blogComment.getBlogComments().size() > 0);
-		
+	void test_DateNightDiscussionBoard_dateNightId_MTO_mapping() {
+		assertNotNull(discussion.getDateNightId());
+		assertEquals("Yonah Mountain Vineyards", discussion.getDateNightId().getName());
+	}
+	@Test
+	void test_DateNightDiscussionBoard_DateNightDiscussionBoard_MTO_mapping() {
+		assertNotNull(discussion.getDiscussions());
+		assertTrue(discussion.getDiscussions().size() > 0);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
