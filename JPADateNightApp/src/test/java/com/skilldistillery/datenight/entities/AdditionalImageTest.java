@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 class AdditionalImageTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private AdditionalImages additionalImage;
+	private AdditionalImage additionalImage;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {

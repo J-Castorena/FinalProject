@@ -1,6 +1,7 @@
 package com.skilldistillery.datenight.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,8 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -40,13 +44,21 @@ public class DateNight {
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
-	@MapsId(value="userId")
 	private User user;
 	
-	
+	@OneToOne
 	@JoinColumn(name="address_id")
-	@MapsId(value="addressId")
 	private Address address;
+
+	@ManyToMany
+	@JoinTable(name="date_night_has_category", joinColumns = @JoinColumn(name="date_night_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+	private List<Category> categories;
+	
+	@OneToMany(mappedBy="dateNightId")
+	private List<DateNightDiscussionBoard> discussions;
+	
+	@OneToMany(mappedBy="dateNight")
+	private List<Review> reviews;
 
 	//CONSTRUCTOR
 	public DateNight() {
@@ -110,6 +122,48 @@ public class DateNight {
 		this.active = active;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+	
+
+	public List<DateNightDiscussionBoard> getDiscussions() {
+		return discussions;
+	}
+
+	public void setDiscussions(List<DateNightDiscussionBoard> discussions) {
+		this.discussions = discussions;
+	}
+	
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
 	@Override
 	public String toString() {
 		return "DateNight [id=" + id + ", name=" + name + ", imageUrl=" + imageUrl + ", description=" + description
@@ -118,7 +172,8 @@ public class DateNight {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(active, address, categories, createdDate, description, discussions, id, imageUrl,
+				lastUpdatedDate, name, reviews, user);
 	}
 
 	@Override
@@ -129,8 +184,15 @@ public class DateNight {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		DateNightTest other = (DateNightTest) obj;
-		return id == other.id;
+		DateNight other = (DateNight) obj;
+		return Objects.equals(active, other.active) && Objects.equals(address, other.address)
+				&& Objects.equals(categories, other.categories) && Objects.equals(createdDate, other.createdDate)
+				&& Objects.equals(description, other.description) && Objects.equals(discussions, other.discussions)
+				&& id == other.id && Objects.equals(imageUrl, other.imageUrl)
+				&& Objects.equals(lastUpdatedDate, other.lastUpdatedDate) && Objects.equals(name, other.name)
+				&& Objects.equals(reviews, other.reviews) && Objects.equals(user, other.user);
 	}
+
+	
 	
 }

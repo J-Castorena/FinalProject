@@ -1,6 +1,7 @@
 package com.skilldistillery.datenight.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -10,9 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class BlogComment {
@@ -22,7 +25,7 @@ public class BlogComment {
 	private int id;	
 	
 	@Column(name="blog_comment")
-	private String blogComment;
+	private String message;  
 	
 	@Column(name="blog_comment_date")
 	@CreationTimestamp
@@ -33,17 +36,22 @@ public class BlogComment {
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
-	@MapsId(value="userId")
 	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name="blog_id")
-	@MapsId(value="blogId")
 	private Blog blog;
 	
+	
+	@ManyToOne
 	@JoinColumn(name="blog_comment_id")
-	@MapsId(value="blogCommentId")
-	private BlogComment blogCommentId;
+	private BlogComment parentBlogComment;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="parentBlogComment")
+	private List<BlogComment> blogComments;
+	
+	
 	
 	//CONSTRUCTOR
 	public BlogComment() {
@@ -51,6 +59,8 @@ public class BlogComment {
 	}
 
 	//METHODS
+
+
 	public int getId() {
 		return id;
 	}
@@ -59,12 +69,12 @@ public class BlogComment {
 		this.id = id;
 	}
 
-	public String getBlogComment() {
-		return blogComment;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setBlogComment(String blogComment) {
-		this.blogComment = blogComment;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	public LocalDateTime getBlogCommentDate() {
@@ -91,10 +101,28 @@ public class BlogComment {
 		this.user = user;
 	}
 
-	@Override
-	public String toString() {
-		return "BlogComment [id=" + id + ", blogComment=" + blogComment + ", blogCommentDate=" + blogCommentDate
-				+ ", imageUrl=" + imageUrl + ", user=" + user + "]";
+	public Blog getBlog() {
+		return blog;
+	}
+
+	public void setBlog(Blog blog) {
+		this.blog = blog;
+	}
+
+	public BlogComment getParentBlogComment() {
+		return parentBlogComment;
+	}
+
+	public void setParentBlogComment(BlogComment parentBlogComment) {
+		this.parentBlogComment = parentBlogComment;
+	}
+
+	public List<BlogComment> getBlogComments() {
+		return blogComments;
+	}
+
+	public void setBlogComments(List<BlogComment> blogComments) {
+		this.blogComments = blogComments;
 	}
 
 	@Override
@@ -112,6 +140,12 @@ public class BlogComment {
 			return false;
 		BlogComment other = (BlogComment) obj;
 		return id == other.id;
+	}
+
+	@Override
+	public String toString() {
+		return "BlogComment [id=" + id + ", message=" + message + ", blogCommentDate=" + blogCommentDate + ", imageUrl="
+				+ imageUrl + ", user=" + user + ", blog=" + blog + ", parentBlogComment=" + parentBlogComment + "]";
 	}
 	
 }
