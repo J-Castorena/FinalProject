@@ -35,7 +35,7 @@ public class DateNightComment {
 	@ManyToOne
 	@JoinColumn(name="datenight_id")
 	@MapsId(value="dateNightId")
-	private DateNight dateNightId;
+	private DateNightTest dateNightId;
 
 	public DateNightComment() {
 		super();
@@ -73,11 +73,11 @@ public class DateNightComment {
 		this.user = user;
 	}
 
-	public DateNight getDateNightId() {
+	public DateNightTest getDateNightId() {
 		return dateNightId;
 	}
 
-	public void setDateNightId(DateNight dateNightId) {
+	public void setDateNightId(DateNightTest dateNightId) {
 		this.dateNightId = dateNightId;
 	}
 

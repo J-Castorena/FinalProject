@@ -37,7 +37,7 @@ public class Review {
 	@ManyToOne
 	@JoinColumn(name="date_night_id")
 	@MapsId(value="dateNightId")
-	private DateNight dateNight;
+	private DateNightTest dateNight;
 
 	
 	//CONSTRUCTOR
@@ -87,11 +87,11 @@ public class Review {
 		this.user = user;
 	}
 
-	public DateNight getDateNight() {
+	public DateNightTest getDateNight() {
 		return dateNight;
 	}
 
-	public void setDateNight(DateNight dateNight) {
+	public void setDateNight(DateNightTest dateNight) {
 		this.dateNight = dateNight;
 	}
 

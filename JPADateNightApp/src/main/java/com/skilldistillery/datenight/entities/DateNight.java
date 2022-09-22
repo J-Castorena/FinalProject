@@ -129,7 +129,7 @@ public class DateNight {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		DateNight other = (DateNight) obj;
+		DateNightTest other = (DateNightTest) obj;
 		return id == other.id;
 	}
 	

@@ -31,7 +31,6 @@ class AdditionalImageTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		additionalImage = em.find(AdditionalImage.class, 1);
 	}
 
 	@AfterEach
@@ -43,7 +42,7 @@ class AdditionalImageTest {
 	@Test
 	void test() {
 		assertNotNull(additionalImage);
-		assertEquals("admin", additionalImage.getAdditionalImageid());
+		assertEquals("admin", additionalImage.getId());
 	}
 
 }

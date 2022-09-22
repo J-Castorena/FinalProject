@@ -11,7 +11,6 @@
 		<class>com.skilldistillery.datenight.entities.Blog</class>
 		<class>com.skilldistillery.datenight.entities.BlogComment</class>
 		<class>com.skilldistillery.datenight.entities.Category</class>
-		<class>com.skilldistillery.datenight.entities.DateNight</class>
 		<class>com.skilldistillery.datenight.entities.DateNightComment</class>
 		<class>com.skilldistillery.datenight.entities.Review</class>
 		
