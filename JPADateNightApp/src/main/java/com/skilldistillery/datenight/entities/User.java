@@ -1,6 +1,7 @@
 package com.skilldistillery.datenight.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -38,8 +42,27 @@ public class User {
 	private Boolean enabled;
 	
 	@Column(name = "date_of_birth")
-//	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private LocalDate dob;
+	
+	@OneToOne
+	@JoinColumn(name="address_id")
+	private Address address;
+	
+	@OneToMany(mappedBy="user")
+	private List<Blog> blogs;
+	
+	@OneToMany(mappedBy="user")
+	private List<Review> reviews;
+	
+	@OneToMany(mappedBy="parentBlogComment")
+	private List<BlogComment> blogComments;
+	
+	@OneToMany(mappedBy="user")
+	private List<DateNight> dateNights;
+	
+	
+	
+	
 	
 	
 	//CONSTRUCTOR
@@ -136,6 +159,59 @@ public class User {
 		this.dob = dob;
 	}
 	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public List<Blog> getBlogs() {
+		return blogs;
+	}
+
+	public void setBlogs(List<Blog> blogs) {
+		this.blogs = blogs;
+	}
+
+	
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+	public List<BlogComment> getBlogComments() {
+		return blogComments;
+	}
+
+	public void setBlogComments(List<BlogComment> blogComments) {
+		this.blogComments = blogComments;
+	}
+
+	@OneToMany(mappedBy="user")
+	private List<DateNightDiscussionBoard> discussions;
+	
+	
+	public List<DateNightDiscussionBoard> getDiscussions() {
+		return discussions;
+	}
+
+	public void setDiscussions(List<DateNightDiscussionBoard> discussions) {
+		this.discussions = discussions;
+	}
+
+	public List<DateNight> getDateNights() {
+		return dateNights;
+	}
+
+	public void setDateNights(List<DateNight> dateNights) {
+		this.dateNights = dateNights;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

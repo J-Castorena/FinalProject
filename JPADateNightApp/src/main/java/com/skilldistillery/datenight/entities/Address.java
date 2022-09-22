@@ -22,11 +22,14 @@ public class Address {
 	
 	private String state;
 	
-	@Column(name="zip_code")
-	private String zipCode;
-
+	private String zip;
+	
 	@OneToOne(mappedBy="address")
-    private User user;
+	private DateNight dateNight;
+	
+	@OneToOne(mappedBy="address")
+	private User user;
+
 
 	//CONSTRUCTOR
 	public Address() {
@@ -34,6 +37,7 @@ public class Address {
 	}
 	
 	//METHODS
+
 	public int getId() {
 		return id;
 	}
@@ -66,12 +70,21 @@ public class Address {
 		this.state = state;
 	}
 
-	public String getZipCode() {
-		return zipCode;
+	public String getZip() {
+		return zip;
 	}
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+
+	public DateNight getDateNight() {
+		return dateNight;
+	}
+
+	public void setDateNight(DateNight dateNight) {
+		this.dateNight = dateNight;
 	}
 
 	public User getUser() {
@@ -101,9 +114,14 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zipCode="
-				+ zipCode + ", user=" + user + "]";
+		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip
+				+ ", dateNight=" + dateNight + ", user=" + user + "]";
 	}
+
+	
+	
+
+
 	
 	
 }
