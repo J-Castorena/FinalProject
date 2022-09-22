@@ -6,6 +6,14 @@
     </provider>
 
 		<class>com.skilldistillery.datenight.entities.User</class>
+		<class>com.skilldistillery.datenight.entities.AdditionalImage</class>
+		<class>com.skilldistillery.datenight.entities.Address</class>
+		<class>com.skilldistillery.datenight.entities.Blog</class>
+		<class>com.skilldistillery.datenight.entities.BlogComment</class>
+		<class>com.skilldistillery.datenight.entities.Category</class>
+		<class>com.skilldistillery.datenight.entities.DateNight</class>
+		<class>com.skilldistillery.datenight.entities.DateNightDiscussionBoard</class>
+		<class>com.skilldistillery.datenight.entities.Review</class>
 		
 	
 		<properties>

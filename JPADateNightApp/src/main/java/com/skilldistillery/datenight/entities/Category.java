@@ -18,7 +18,7 @@ public class Category {
 	
 	private String name;
 	
-	@ManyToMany(mappedBy="catagories")
+	@ManyToMany(mappedBy="categories")
 	private List<DateNight> dateNights;
 	
 	

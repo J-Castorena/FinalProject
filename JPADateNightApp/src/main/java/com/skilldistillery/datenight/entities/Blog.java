@@ -43,7 +43,7 @@ public class Blog {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="blog")
-	private List<Blog> blogComments;
+	private List<BlogComment> blogComments;
 
 	public Blog() {
 		super();
@@ -105,11 +105,11 @@ public class Blog {
 		this.user = user;
 	}
 
-	public List<Blog> getBlogComments() {
+	public List<BlogComment> getBlogComments() {
 		return blogComments;
 	}
 
-	public void setBlogComments(List<Blog> blogComments) {
+	public void setBlogComments(List<BlogComment> blogComments) {
 		this.blogComments = blogComments;
 	}
 

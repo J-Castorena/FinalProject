@@ -172,7 +172,8 @@ public class DateNight {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(active, address, categories, createdDate, description, discussions, id, imageUrl,
+				lastUpdatedDate, name, reviews, user);
 	}
 
 	@Override
@@ -184,7 +185,14 @@ public class DateNight {
 		if (getClass() != obj.getClass())
 			return false;
 		DateNight other = (DateNight) obj;
-		return id == other.id;
+		return Objects.equals(active, other.active) && Objects.equals(address, other.address)
+				&& Objects.equals(categories, other.categories) && Objects.equals(createdDate, other.createdDate)
+				&& Objects.equals(description, other.description) && Objects.equals(discussions, other.discussions)
+				&& id == other.id && Objects.equals(imageUrl, other.imageUrl)
+				&& Objects.equals(lastUpdatedDate, other.lastUpdatedDate) && Objects.equals(name, other.name)
+				&& Objects.equals(reviews, other.reviews) && Objects.equals(user, other.user);
 	}
+
+	
 	
 }
