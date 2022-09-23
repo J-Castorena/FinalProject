@@ -317,12 +317,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `perfectdatedb`;
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (1, 'Steph', 'Karlsen', 'steph@mail.com', 'admin1', 'admin', NULL, NULL, 'admin', 1, NULL, NULL);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (2, 'Jordy', 'Castorena', 'jordy@mail.com', 'admin2', 'admin', NULL, NULL, 'admin', 1, NULL, NULL);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (3, 'Diego', 'Escutia', 'diego@mail.com', 'admin3', 'admin', NULL, NULL, 'admin', 1, NULL, NULL);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (4, 'Liam', 'Smith', 'laim@mail.com', 'liam', 'user', NULL, NULL, 'user', 1, NULL, 1);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (5, 'Noah', 'Brown', 'noah@mail.com', 'noah', 'user', NULL, NULL, 'user', 1, NULL, 2);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (6, 'Olivia', 'Garcia', 'olivia@mail.com', 'olivia', 'user', NULL, NULL, 'user', 1, NULL, 3);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (1, 'Steph', 'Karlsen', 'steph@mail.com', 'admin1', 'YWRtaW4=', NULL, NULL, 'admin', 1, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (2, 'Jordy', 'Castorena', 'jordy@mail.com', 'admin2', 'YWRtaW4=', NULL, NULL, 'admin', 1, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (3, 'Diego', 'Escutia', 'diego@mail.com', 'admin3', 'YWRtaW4=', NULL, NULL, 'admin', 1, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (4, 'Liam', 'Smith', 'laim@mail.com', 'liam', 'dXNlcg==', NULL, NULL, 'user', 1, NULL, 1);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (5, 'Noah', 'Brown', 'noah@mail.com', 'noah', 'dXNlcg==', NULL, NULL, 'user', 1, NULL, 2);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (6, 'Olivia', 'Garcia', 'olivia@mail.com', 'olivia', 'dXNlcg==', NULL, NULL, 'user', 1, NULL, 3);
 
 COMMIT;
 
@@ -425,9 +425,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `perfectdatedb`;
-INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (1, 'Is this place still rad?', NULL, 4, 1, NULL);
-INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (2, 'who much does it cost per person to skydive? ', NULL, 6, 2, NULL);
-INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (3, 'I was told sometimes birds crash in the windows while you\'re dinning', NULL, 5, 3, NULL);
+INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (1, 'Is this place still rad?', NULL, 4, 1, 1);
+INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (2, 'who much does it cost per person to skydive? ', NULL, 6, 2, 2);
+INSERT INTO `datenight_discussion_board` (`id`, `comment`, `comment_date`, `user_id`, `date_night_id`, `datenight_discussion_board_id`) VALUES (3, 'I was told sometimes birds crash in the windows while you\'re dinning', NULL, 5, 3, 3);
 
 COMMIT;
 
