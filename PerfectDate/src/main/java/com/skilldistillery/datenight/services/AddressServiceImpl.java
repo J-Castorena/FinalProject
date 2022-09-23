@@ -59,8 +59,8 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public Address updateUserAddress(Address address, int addressId, int userId) {
-		address.setId(addressId);
+	public Address updateAddress(Address address, int addressId) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
