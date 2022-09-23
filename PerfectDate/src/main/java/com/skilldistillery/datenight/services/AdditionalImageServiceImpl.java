@@ -2,37 +2,58 @@ package com.skilldistillery.datenight.services;
 
 import java.util.List;
 
-public class AdditionalImageServiceImpl implements AdditionalImage {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.skilldistillery.datenight.entities.AdditionalImage;
+import com.skilldistillery.datenight.repositories.AdditionalImageRepository;
+
+@Service
+public class AdditionalImageServiceImpl implements AdditionalImageService {
+
+	@Autowired
+	private AdditionalImageRepository additionalImgRepo;
 
 	@Override
 	public List<AdditionalImage> index() {
-		// TODO Auto-generated method stub
-		return null;
+		return additionalImgRepo.findAll();
 	}
 
 	@Override
 	public AdditionalImage additionalImageById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return additionalImgRepo.findAdditionalImageById(id);
 	}
 
 	@Override
 	public AdditionalImage createAdditionalImage(AdditionalImage additionalImage) {
-		// TODO Auto-generated method stub
-		return null;
+		return additionalImgRepo.saveAndFlush(additionalImage);
 	}
 
 	@Override
 	public AdditionalImage updateAdditionalImage(AdditionalImage additionalImage) {
-		// TODO Auto-generated method stub
-		return null;
+		AdditionalImage additionalImgToUpdate = additionalImgRepo.findAdditionalImageById(additionalImage.getId());
+		if(additionalImgToUpdate != null) {
+			additionalImgToUpdate.setImageUrl(additionalImage.getImageUrl());
+			additionalImgToUpdate.setCaption(additionalImage.getCaption());
+			additionalImgToUpdate.setReview(additionalImage.getReview());
+			additionalImgRepo.saveAndFlush(additionalImgToUpdate);
+			return(additionalImgToUpdate);
+		}
+		return additionalImgToUpdate;
 	}
 
 	@Override
 	public boolean deleteAdditionalImage(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean additionalImgDeleted = false;
+		if(additionalImgRepo.existsById(id)) {
+			additionalImgRepo.deleteById(id);
+			additionalImgDeleted = true;
+		}
+		return additionalImgDeleted;
 	}
 
+	
+	
+	
 	
 }

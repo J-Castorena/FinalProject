@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Review {
 
@@ -30,14 +32,17 @@ public class Review {
 	@CreationTimestamp
 	private LocalDateTime reviewDate;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="date_night_id")
 	private DateNight dateNight;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="review")
 	private List<AdditionalImage> images;
 
