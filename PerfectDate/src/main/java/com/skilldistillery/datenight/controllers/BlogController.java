@@ -2,6 +2,7 @@ package com.skilldistillery.datenight.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class BlogController {
 		return blogServ.listAllBlogs();
 	}
 
-	@GetMapping("user/{id}/blogs")
+	@GetMapping("users/{id}/blogs")
 	public List<Blog> listBlogByUser(@PathVariable int id, HttpServletResponse resp) {
 		List<Blog> blogs = blogServ.listBlogByUserId(id);
 		if (blogs == null) {
@@ -41,17 +42,27 @@ public class BlogController {
 		return blogs;
 	}
 
-	@PostMapping("blogs")
-	public Blog createBlog(@RequestBody Blog blog, HttpServletResponse resp) {
-		Blog created = null;
-		try {
-			created = blogServ.createBlog(blog);
+	@PostMapping("users/{id}/blogs")
+	public Blog addBlogByUserId(
+			@PathVariable int id,
+			@RequestBody Blog blog, 
+			HttpServletResponse resp,
+			HttpServletRequest req) {
+		blog = blogServ.createBlog(id, blog);
+	
+	try {
+		if (blog == null) {
+			resp.setStatus(404);
+		}else {
 			resp.setStatus(201);
-		} catch (Exception e) {
-			e.printStackTrace();
-			resp.setStatus(400);
+			StringBuffer url = req.getRequestURL();
+			resp.setHeader("Location", url.toString());
 		}
-		return created;
+	} catch (Exception e) {
+		e.printStackTrace();
+		resp.setStatus(404);
+	}
+		return blog;
 	}
 
 	@PutMapping("blogs/{id}")
