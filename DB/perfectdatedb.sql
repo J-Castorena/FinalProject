@@ -317,7 +317,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `perfectdatedb`;
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (1, 'Steph', 'Karlsen', 'steph@mail.com', 'admin1', 'YWRtaW4zOmFkbWlu', NULL, NULL, 'admin', 1, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (1, 'Steph', 'Karlsen', 'steph@mail.com', 'admin1', '$2a$10$hesaarzZt.BcMRyrML4cMeB96hmWwAS3t4R7KcFrwHL0K1CyLI.T6', NULL, NULL, 'admin', 1, NULL, NULL);
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (2, 'Jordy', 'Castorena', 'jordy@mail.com', 'admin2', '$2a$10$hesaarzZt.BcMRyrML4cMeB96hmWwAS3t4R7KcFrwHL0K1CyLI.T6', NULL, NULL, 'admin', 1, NULL, NULL);
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (3, 'Diego', 'Escutia', 'diego@mail.com', 'admin3', '$2a$10$hesaarzZt.BcMRyrML4cMeB96hmWwAS3t4R7KcFrwHL0K1CyLI.T6', NULL, NULL, 'admin', 1, NULL, NULL);
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (4, 'Liam', 'Smith', 'laim@mail.com', 'liam', '$2a$10$hesaarzZt.BcMRyrML4cMeB96hmWwAS3t4R7KcFrwHL0K1CyLI.T6', NULL, NULL, 'user', 1, NULL, 1);
