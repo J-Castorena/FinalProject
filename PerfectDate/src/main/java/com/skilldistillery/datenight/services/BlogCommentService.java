@@ -9,4 +9,11 @@ public interface BlogCommentService {
 
 	List<BlogComment> listAllComments();
 
+	List<BlogComment> listCommentsByBlogId(int id);
+
+	BlogComment createBlogComment(int id, BlogComment comment);
+	
+	BlogComment updateBlogComment(int id, BlogComment comment);
+	
+	boolean deleteBlogComment(int id);
 }
