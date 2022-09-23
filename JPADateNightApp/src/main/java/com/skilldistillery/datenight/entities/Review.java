@@ -96,6 +96,17 @@ public class Review {
 	public void setDateNight(DateNight dateNight) {
 		this.dateNight = dateNight;
 	}
+	
+
+	public List<AdditionalImage> getImages() {
+		return images;
+	}
+
+
+	public void setImages(List<AdditionalImage> images) {
+		this.images = images;
+	}
+
 
 	@Override
 	public int hashCode() {

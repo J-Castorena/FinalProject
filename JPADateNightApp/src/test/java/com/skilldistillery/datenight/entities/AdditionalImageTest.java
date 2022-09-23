@@ -13,9 +13,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 class AdditionalImageTest {
+	
 	private static EntityManagerFactory emf;
-	private EntityManager em;
+	private static EntityManager em;
 	private AdditionalImage additionalImage;
 	
 	@BeforeAll
@@ -31,6 +33,7 @@ class AdditionalImageTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
+		additionalImage = em.find(AdditionalImage.class, 1);
 	}
 
 	@AfterEach
@@ -40,9 +43,14 @@ class AdditionalImageTest {
 	}
 
 	@Test
-	void test() {
+	void test_AdditionalImage_entity_mapping() {
 		assertNotNull(additionalImage);
-		assertEquals("admin", additionalImage.getId());
+		assertEquals("winery", additionalImage.getCaption());
 	}
 
+	@Test
+	void test_AdditionalImage_Review_ManyToOne_mapping() {
+		assertNotNull(additionalImage.getReview());
+		assertEquals(2, additionalImage.getReview().getId());
+	}
 }

@@ -12,12 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name="datenight_discussion_board")
 public class DateNightDiscussionBoard {
 
 	@Id
@@ -36,11 +38,11 @@ public class DateNightDiscussionBoard {
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name = "datenight_id")
+	@JoinColumn(name = "date_night_id")
 	private DateNight dateNightId;
 
 	@ManyToOne
-	@JoinColumn(name = "date_night_discussion_board_id")
+	@JoinColumn(name = "datenight_discussion_board_id")
 	private DateNightDiscussionBoard parentDiscussion;
 
 	@JsonIgnore
