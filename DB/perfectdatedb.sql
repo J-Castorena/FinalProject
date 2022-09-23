@@ -317,12 +317,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `perfectdatedb`;
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (1, 'Steph', 'Karlsen', 'steph@mail.com', 'admin1', 'YWRtaW4=', NULL, NULL, 'admin', 1, NULL, NULL);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (2, 'Jordy', 'Castorena', 'jordy@mail.com', 'admin2', 'YWRtaW4=', NULL, NULL, 'admin', 1, NULL, NULL);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (3, 'Diego', 'Escutia', 'diego@mail.com', 'admin3', 'YWRtaW4=', NULL, NULL, 'admin', 1, NULL, NULL);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (4, 'Liam', 'Smith', 'laim@mail.com', 'liam', 'dXNlcg==', NULL, NULL, 'user', 1, NULL, 1);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (5, 'Noah', 'Brown', 'noah@mail.com', 'noah', 'dXNlcg==', NULL, NULL, 'user', 1, NULL, 2);
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (6, 'Olivia', 'Garcia', 'olivia@mail.com', 'olivia', 'dXNlcg==', NULL, NULL, 'user', 1, NULL, 3);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (1, 'Steph', 'Karlsen', 'steph@mail.com', 'admin1', '$2a$10$hesaarzZt.BcMRyrML4cMeB96hmWwAS3t4R7KcFrwHL0K1CyLI.T6', NULL, NULL, 'admin', 1, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (2, 'Jordy', 'Castorena', 'jordy@mail.com', 'admin2', '$2a$10$hesaarzZt.BcMRyrML4cMeB96hmWwAS3t4R7KcFrwHL0K1CyLI.T6', NULL, NULL, 'admin', 1, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (3, 'Diego', 'Escutia', 'diego@mail.com', 'admin3', '$2a$10$hesaarzZt.BcMRyrML4cMeB96hmWwAS3t4R7KcFrwHL0K1CyLI.T6', NULL, NULL, 'admin', 1, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (4, 'Liam', 'Smith', 'laim@mail.com', 'liam', '$2a$10$hesaarzZt.BcMRyrML4cMeB96hmWwAS3t4R7KcFrwHL0K1CyLI.T6', NULL, NULL, 'user', 1, NULL, 1);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (5, 'Noah', 'Brown', 'noah@mail.com', 'noah', '$2a$10$hesaarzZt.BcMRyrML4cMeB96hmWwAS3t4R7KcFrwHL0K1CyLI.T6', NULL, NULL, 'user', 1, NULL, 2);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `password`, `image_url`, `biography`, `role`, `enabled`, `date_of_birth`, `address_id`) VALUES (6, 'Olivia', 'Garcia', 'olivia@mail.com', 'olivia', '$2a$10$hesaarzZt.BcMRyrML4cMeB96hmWwAS3t4R7KcFrwHL0K1CyLI.T6', NULL, NULL, 'user', 1, NULL, 3);
 
 COMMIT;
 

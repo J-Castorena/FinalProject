@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User {
 	
@@ -44,23 +46,30 @@ public class User {
 	@Column(name = "date_of_birth")
 	private LocalDate dob;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Blog> blogs;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Review> reviews;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="parentBlogComment")
 	private List<BlogComment> blogComments;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<DateNight> dateNights;
 	
-	
+	@JsonIgnore
+	@OneToMany(mappedBy="user")
+	private List<DateNightDiscussionBoard> discussions;
 	
 	
 	
@@ -192,8 +201,7 @@ public class User {
 		this.blogComments = blogComments;
 	}
 
-	@OneToMany(mappedBy="user")
-	private List<DateNightDiscussionBoard> discussions;
+	
 	
 	
 	public List<DateNightDiscussionBoard> getDiscussions() {
