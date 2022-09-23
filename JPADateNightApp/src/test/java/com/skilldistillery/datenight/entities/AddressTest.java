@@ -46,18 +46,7 @@ class AddressTest {
 		assertEquals("Atlanta", address.getCity());
 	}
 	
-	@Test
-	void test_Address_DateNight_OneToOne_mapping() {
-		assertNotNull(address.getDateNight());
-		assertEquals("Sun Dial Restaurant", address.getDateNight().getName() );
-		
-	}
 
-	@Test
-	void test_Address_User_OneToOne_mapping() {
-		assertNotNull(address.getUser());
-		assertEquals("Liam", address.getUser().getFirstName());
-	}
 }
 
 

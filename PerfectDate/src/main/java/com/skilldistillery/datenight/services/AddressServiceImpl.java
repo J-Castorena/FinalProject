@@ -46,8 +46,9 @@ public class AddressServiceImpl implements AddressService {
 		Optional<User> userOp = userRepo.findById(userId);
 		if(userOp.isPresent()) {
 		User user = userOp.get();	
-		address.setUser(user);
 		addyRepo.saveAndFlush(address);
+		user.setAddress(address);
+		userRepo.saveAndFlush(user);
 		return address;
 		}
 		return null;
