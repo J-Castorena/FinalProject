@@ -34,7 +34,9 @@ public class BlogController {
 	}
 
 	@GetMapping("users/{id}/blogs")
-	public List<Blog> listBlogByUser(@PathVariable int id, HttpServletResponse resp) {
+	public List<Blog> listBlogByUser(
+			@PathVariable int id, 
+			HttpServletResponse resp) {
 		List<Blog> blogs = blogServ.listBlogByUserId(id);
 		if (blogs == null) {
 			resp.setStatus(404);
