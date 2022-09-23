@@ -32,7 +32,7 @@ public class ReviewController {
 		return reviewService.index();
 	}
 	
-	@GetMapping("review/{id}")
+	@GetMapping("reviews/{id}")
 	public Review reviewById(@PathVariable Integer id) {
 		return reviewService.reviewById(id);
 	}
