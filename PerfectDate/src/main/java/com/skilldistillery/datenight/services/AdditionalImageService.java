@@ -2,7 +2,9 @@ package com.skilldistillery.datenight.services;
 
 import java.util.List;
 
-public interface AdditionalImage {
+import com.skilldistillery.datenight.entities.AdditionalImage;
+
+public interface AdditionalImageService {
 
 	List<AdditionalImage> index();
 
