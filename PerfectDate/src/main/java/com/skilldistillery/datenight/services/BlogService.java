@@ -10,7 +10,7 @@ public interface BlogService {
 
 	List<Blog> listBlogByUserId(int id);
 
-	Blog createBlog(Blog blog);
+	Blog createBlog(int id, Blog blog);
 
 	Blog updateBlog(Blog blog, int id);
 
