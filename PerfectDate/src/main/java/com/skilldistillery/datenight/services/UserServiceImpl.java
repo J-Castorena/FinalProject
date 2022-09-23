@@ -56,7 +56,8 @@ public class UserServiceImpl implements UserService {
 			users.setImageUrl(user.getImageUrl());
 			users.setBiography(user.getBiography());
 			users.setDob(user.getDob());
-			
+			userRepo.saveAndFlush(users);
+			return(users);
 		}
 		return users;
 	}
