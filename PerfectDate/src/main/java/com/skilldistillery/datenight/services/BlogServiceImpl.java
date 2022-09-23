@@ -7,13 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.datenight.entities.Blog;
+import com.skilldistillery.datenight.entities.User;
 import com.skilldistillery.datenight.repositories.BlogRepository;
+import com.skilldistillery.datenight.repositories.UserRepository;
 
 @Service
 public class BlogServiceImpl implements BlogService {
 
 	@Autowired
 	private BlogRepository blogRepo;
+	
+	@Autowired 
+	private UserRepository userRepo;
 
 	@Override
 	public List<Blog> listAllBlogs() {
@@ -26,11 +31,15 @@ public class BlogServiceImpl implements BlogService {
 	}
 
 	@Override
-	public Blog createBlog(Blog blog) {
-		if (blog.getUser() == null) {
-			blog.setUser(null);
+	public Blog createBlog(int id, Blog blog) {
+		Optional<User> userOp = userRepo.findById(id);
+		if (userOp.isPresent()) {
+			User user = userOp.get();
+			blog.setUser(user);
+			blogRepo.saveAndFlush(blog);
+			return blog;
 		}
-		return blogRepo.saveAndFlush(blog);
+		return null;
 	}
 
 	@Override
@@ -39,7 +48,6 @@ public class BlogServiceImpl implements BlogService {
 		if (existing == null) {
 			return null;
 		}
-		existing.setUser(blog.getUser());
 		existing.setTitle(blog.getTitle());
 		existing.setImageUrl(blog.getImageUrl());
 		existing.setActive(blog.getActive());
