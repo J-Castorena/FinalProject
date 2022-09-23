@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.datenight.entities.User;
 import com.skilldistillery.datenight.repositories.UserRepository;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -45,7 +47,7 @@ public class UserServiceImpl implements UserService {
 		if(op.isPresent()) {
 			users = op.get();
 			users.setEnabled(user.getEnabled());
-		//	users.setRole(user.getRole());
+			users.setRole(user.getRole());
 			users.setFirstName(user.getFirstName());
 			users.setLastName(user.getLastName());
 			users.setEmail(user.getEmail());
@@ -53,7 +55,6 @@ public class UserServiceImpl implements UserService {
 			users.setPassword(user.getPassword());
 			users.setImageUrl(user.getImageUrl());
 			users.setBiography(user.getBiography());
-		//	users.setRole(user.getRole());
 			users.setDob(user.getDob());
 			
 		}
