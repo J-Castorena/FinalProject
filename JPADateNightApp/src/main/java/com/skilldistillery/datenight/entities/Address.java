@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Address {
 
@@ -23,12 +25,6 @@ public class Address {
 	private String state;
 	
 	private String zip;
-	
-	@OneToOne(mappedBy="address")
-	private DateNight dateNight;
-	
-	@OneToOne(mappedBy="address")
-	private User user;
 
 
 	//CONSTRUCTOR
@@ -79,22 +75,6 @@ public class Address {
 	}
 
 
-	public DateNight getDateNight() {
-		return dateNight;
-	}
-
-	public void setDateNight(DateNight dateNight) {
-		this.dateNight = dateNight;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -114,8 +94,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip
-				+ ", dateNight=" + dateNight + ", user=" + user + "]";
+		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip + "]";
 	}
 
 	
