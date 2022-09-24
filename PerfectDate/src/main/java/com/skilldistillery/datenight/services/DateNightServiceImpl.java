@@ -1,6 +1,7 @@
 package com.skilldistillery.datenight.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,16 +40,11 @@ public class DateNightServiceImpl implements DateNightService {
 	}
 
 	@Override
-	public DateNight updateDateNight(String username, DateNight dateNight) {
-		DateNight dateNightToUpdate = dateNightRepo.findDateNightById(dateNight.getId());
-		if (dateNightToUpdate != null && dateNightToUpdate.getUser().getUsername().equals(username)) {
-			dateNightToUpdate.setName(dateNight.getName());
-			dateNightToUpdate.setImageUrl(dateNight.getImageUrl());
-			dateNightToUpdate.setDescription(dateNight.getDescription());
-			dateNightToUpdate.setCreatedDate(dateNight.getCreatedDate());
-			dateNightToUpdate.setLastUpdatedDate(dateNight.getLastUpdatedDate());
-			dateNightRepo.saveAndFlush(dateNightToUpdate);
-			return (dateNightToUpdate);
+	public DateNight updateDateNight(DateNight dateNight, int id, String username) {
+		User loggedInUser = userRepo.findByUsername(username);
+		Optional<DateNight> updatedDateNight = dateNightRepo.findById(id);
+		if (updatedDateNight.isPresent() && (loggedInUser.getRole().equals("admin"))) {
+			return dateNightRepo.saveAndFlush(dateNight);
 
 		}
 		return null;

@@ -12,7 +12,7 @@ public interface DateNightService {
 
 	DateNight createDateNight(String username, DateNight dateNight);
 
-	DateNight updateDateNight(String username, DateNight dateNight);
+	DateNight updateDateNight(DateNight dateNight, int id, String username);
 
 	boolean deleteDateNight(String username, Integer id);
 }
