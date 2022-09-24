@@ -8,18 +8,22 @@ import com.skilldistillery.datenight.entities.User;
 
 public interface AddressService {
 
-	 List<Address> index();
-	
-	 Address findAddressByUserId(int userId, int addyId);
-	
-	 Address findAddressByDateNightId(int dateNightId);
-	
-	 Address createUserAddress(Address address, int userId);
-	 
-	 Address createDateNightAddress(Address address, int dateId);
-	 
-	 Address updateAddress(Address address, int addressId);
-	 
-	 boolean deleteAddress(int addressId);
-	
+	List<Address> index();
+
+	Address findAddressByUserId(int userId, int addyId, String username);
+
+	Address findAddressByDateNightId(int dateNightId);
+
+	Address createUserAddress(Address address, int userId);
+
+	Address createDateNightAddress(Address address, int dateId);
+
+	Address updateAddress(Address address, int addressId);
+
+	boolean deleteAddress(String username, int addressId);
+
+	Address findAddressById(String username, int addressId);
+
+	Address updateAddress(String username, Address address);
+
 }
