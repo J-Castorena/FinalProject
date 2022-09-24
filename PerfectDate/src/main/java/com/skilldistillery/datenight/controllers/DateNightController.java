@@ -56,17 +56,18 @@ public class DateNightController {
 
 	}
 
-	@PutMapping("datenights")
-	public DateNight editDateNight(@RequestBody DateNight dateNight, HttpServletResponse res, Principal principal) {
+	@PutMapping("datenights/{id}")
+	public DateNight editDateNight(@RequestBody DateNight dateNight, @PathVariable int id, HttpServletRequest req, HttpServletResponse res, Principal principal) {
+		DateNight updateDateNight = null;
 		try {
-			DateNight updateDateNight = dateNightService.updateDateNight(principal.getName(), dateNight);
+			updateDateNight = dateNightService.updateDateNight(dateNight, id, principal.getName());
 			if (updateDateNight == null) {
 				res.setStatus(404);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-			dateNight = null;
+			System.err.println("Error updating date night");
 		}
 		return dateNight;
 	}

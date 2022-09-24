@@ -1,5 +1,6 @@
 package com.skilldistillery.datenight.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -55,17 +56,18 @@ public class ReviewController {
 
 	}
 
-	@PutMapping("reviews")
-	public Review editReview(@RequestBody Review review, HttpServletResponse res) {
+	@PutMapping("reviews/{id}")
+	public Review editReview(@PathVariable int id, @RequestBody Review review, Principal principal, HttpServletRequest req, HttpServletResponse res) {
+		Review updateReview = null;
 		try {
-			Review updateReview = reviewService.updateReview(review);
+			updateReview = reviewService.updateReview(review, id, principal.getName());
 			if (updateReview == null) {
 				res.setStatus(404);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-			review = null;
+			System.err.println("Unable to update review.");
 		}
 		return review;
 	}
