@@ -22,7 +22,7 @@ import com.skilldistillery.datenight.services.DateNightService;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin({"*", "http://localhost:4202"})
+@CrossOrigin({"*", "http://localhost"})
 public class DateNightController {
 	
 	@Autowired
