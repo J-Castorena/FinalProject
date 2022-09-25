@@ -39,7 +39,6 @@ public class DateNightDiscussionBoardServiceImpl implements DateNightDiscussionB
 
 	@Override
 	public DateNightDiscussionBoard createDateNightDiscussionBoard(
-			String username, 
 			int id, 
 			DateNightDiscussionBoard discussion) {
 		Optional<User> userOp = userRepo.findById(id);
@@ -53,8 +52,8 @@ public class DateNightDiscussionBoardServiceImpl implements DateNightDiscussionB
 	}
 
 	@Override
-	public DateNightDiscussionBoard updateDateNightDiscussionBoard(int id, DateNightDiscussionBoard discussion, String username) {
-		DateNightDiscussionBoard existing = findById(discussion.getId(), username);
+	public DateNightDiscussionBoard updateDateNightDiscussionBoard(int id, DateNightDiscussionBoard discussion) {
+		DateNightDiscussionBoard existing = findById(discussion.getId());
 		if (existing == null ) {
 			return null;
 		}
@@ -65,18 +64,15 @@ public class DateNightDiscussionBoardServiceImpl implements DateNightDiscussionB
 		return discussionRepo.saveAndFlush(existing);
 	}
 
-	private DateNightDiscussionBoard findById(int id, String username) {
+	private DateNightDiscussionBoard findById(int id) {
 		DateNightDiscussionBoard d = null;
 		Optional<DateNightDiscussionBoard> discussionOp = discussionRepo.findById(id);
 		if (discussionOp.isPresent()) {
 			d = discussionOp.get();
 			}
-		if (d.getUser().getUsername().equals(username)) {
 		return d;
-	} else {
-		return null;
 	}
-	}
+	
 
 	@Override
 	public boolean deleteDateNightDiscussionBoard(int id) {

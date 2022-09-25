@@ -12,9 +12,9 @@ public interface DateNightDiscussionBoardService {
 	
 	List<DateNightDiscussionBoard> listDiscussionsByDateNightId(int dateNightId);
 	
-	DateNightDiscussionBoard createDateNightDiscussionBoard(String username, int id, DateNightDiscussionBoard discussion);
+	DateNightDiscussionBoard createDateNightDiscussionBoard( int id, DateNightDiscussionBoard discussion);
 
-	DateNightDiscussionBoard updateDateNightDiscussionBoard(int id, DateNightDiscussionBoard discussion, String username);
+	DateNightDiscussionBoard updateDateNightDiscussionBoard(int id, DateNightDiscussionBoard discussion);
 
 	boolean deleteDateNightDiscussionBoard(int id);
 	

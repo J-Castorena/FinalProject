@@ -33,15 +33,14 @@ public class DateNightDiscussionBoardController {
 		return discussionServ.listAllDiscussions();
 	}
 	
-	@PostMapping("/users/{id}/discussions")
+	@PostMapping("users/{id}/discussions")
 	public DateNightDiscussionBoard addDiscussionBoardByUser(
-			Principal principal,
 			@PathVariable int id, 
 			@RequestBody DateNightDiscussionBoard discussion,
 			HttpServletResponse resp,
 			HttpServletRequest req) {
+		discussion = discussionServ.createDateNightDiscussionBoard(id, discussion);
 		try {
-			discussionServ.createDateNightDiscussionBoard(principal.getName(), id, discussion);
 			resp.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			resp.setHeader("Location", url.toString());
@@ -56,12 +55,12 @@ public class DateNightDiscussionBoardController {
 	@PutMapping("discussions/{id}")
 	public DateNightDiscussionBoard updateDateNightDiscussionBoard(
 			@PathVariable int id, 
-			DateNightDiscussionBoard discussion,
-			Principal principal,
+			@RequestBody DateNightDiscussionBoard discussion,
 			HttpServletResponse resp) {
 		DateNightDiscussionBoard updateDiscussion = null;
+		discussion.setId(id);
 		try {
-			updateDiscussion = discussionServ.updateDateNightDiscussionBoard(id, discussion, principal.getName());
+			updateDiscussion = discussionServ.updateDateNightDiscussionBoard(id, discussion);
 			if (updateDiscussion == null) {
 				resp.setStatus(404);
 			}
@@ -70,7 +69,7 @@ public class DateNightDiscussionBoardController {
 			resp.setStatus(400);
 			System.err.println("Error updating discussion Board");
 		}
-		return discussion;
+		return updateDiscussion;
 	}
 	
 	@DeleteMapping("/discussions/{id}")
