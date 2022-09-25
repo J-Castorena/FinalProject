@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `address` ;
 CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `street` VARCHAR(45) NULL,
-  `city` VARCHAR(45) NOT NULL,
+  `city` VARCHAR(45) NULL,
   `state` VARCHAR(45) NULL,
   `zip` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `date_night` (
   `image_url` VARCHAR(2000) NULL,
   `description` TEXT NULL,
   `user_id` INT NOT NULL,
-  `address_id` INT NOT NULL,
+  `address_id` INT NULL,
   `created_date` DATETIME NULL,
   `last_updated_date` DATETIME NULL,
   `active` TINYINT NULL,
@@ -227,7 +227,7 @@ DROP TABLE IF EXISTS `datenight_discussion_board` ;
 
 CREATE TABLE IF NOT EXISTS `datenight_discussion_board` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `comment` TEXT NOT NULL,
+  `comment` TEXT NULL,
   `comment_date` DATETIME NULL,
   `user_id` INT NOT NULL,
   `date_night_id` INT NOT NULL,
