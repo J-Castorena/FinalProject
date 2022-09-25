@@ -37,10 +37,12 @@ public class DateNightDiscussionBoard {
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	
 	@ManyToOne
 	@JoinColumn(name = "date_night_id")
 	private DateNight dateNightId;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "datenight_discussion_board_id")
 	private DateNightDiscussionBoard parentDiscussion;

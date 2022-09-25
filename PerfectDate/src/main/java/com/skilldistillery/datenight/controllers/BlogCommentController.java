@@ -42,8 +42,11 @@ public class BlogCommentController {
 	}
 
 	@PostMapping("blogs/{id}/comments")
-	public BlogComment addBlogCommentByBlogId(@PathVariable int id, @RequestBody BlogComment comment,
-			HttpServletResponse resp, HttpServletRequest req) {
+	public BlogComment addBlogCommentByBlogId(
+			@PathVariable int id, 
+			@RequestBody BlogComment comment,
+			HttpServletResponse resp,
+			HttpServletRequest req) {
 		comment = commentServ.createBlogComment(id, comment);
 		try {
 			if (comment == null) {
