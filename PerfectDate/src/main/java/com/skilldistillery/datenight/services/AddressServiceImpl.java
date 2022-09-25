@@ -114,12 +114,9 @@ public class AddressServiceImpl implements AddressService {
 
 	@Override
 	public boolean deleteAddress(String username,int addressId) {
-		boolean deleteAddress= false;
-		if(addyRepo.existsById(addressId)) {
-			addyRepo.deleteById(addressId);
-			deleteAddress= true;
-		}
-		return deleteAddress;
+		addyRepo.deleteById(addressId);
+		return !addyRepo.existsById(addressId);
+		
 		
 		//DIFFERENT WAYS I TRIED TO MAKE IT WORK
 		///////////////////////////////////////////
