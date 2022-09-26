@@ -11,8 +11,19 @@ export class DateNightService {
   private baseUrl = 'http://localhost:8090/'
   private url = this.baseUrl + 'api/datenights';
 
+
   constructor(private http: HttpClient) { }
 
+  index(): Observable<DateNight[]> {
+    return this.http.get<DateNight[]>(this.url).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('DateNightComonent.index(): error retrieving datenight: ' + err)
+          );
+      })
+    );
+  }
 
   getAllDateNights(): Observable<DateNight[]> {
     return this.http.get<DateNight[]>(this.url).pipe(
@@ -39,6 +50,8 @@ export class DateNightService {
       })
     );
   }
+
+
 
   create(dateNight: DateNight): Observable<DateNight> {
     return this.http.post<DateNight>(this.url, dateNight).pipe(
