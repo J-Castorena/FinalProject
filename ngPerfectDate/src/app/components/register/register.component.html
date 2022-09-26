@@ -1,0 +1,17 @@
+
+<div class="" id="addUserForm">
+<form form-group>
+  Create a new Account: <br>
+  <div>First Name<span style="color: red">*</span>: <input class="form-control" type="text" name="firstName" required></div>
+  <div>Last Name<span style="color: red">*</span>: <input class="form-control" type="text" name="Lastname" required></div>
+  <div>Email<span style="color: red">*</span>: <input class="form-control" type="text" name="email" required></div><br>
+  <div>Username<span style="color: red">*</span>: <input class="form-control" type="text" name="username" required></div><br>
+  <div>Password<span style="color: red">*</span>: <input class="form-control" type="text" name="password"required></div><br>
+  Photo: <input class="form-control" type="text" placeholder="Optional" name="imgUrl" ><br>
+  Bio: <input class="form-control" type="text" placeholder="Optional" name="biography" ><br>
+  Date of Birth: <input class="form-control" type="date" name="dateOfBirth" ><br>
+  City: <input class="form-control" type="text" placeholder="Optional" name="city" ><br>
+  State: <input class="form-control" type="text" placeholder="Optional" name="state" ><br>
+<button (click)="register(newUser)" class="btn btn-success">Create Account</button>
+</form>
+</div>
