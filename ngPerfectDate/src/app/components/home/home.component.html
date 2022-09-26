@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4" >
+    <div class="col-md-4" *ngIf="!loggedInUser" >
      <button class="btn btn-default" [routerLink]="['/login']" >Sign In</button><br><br>
      <button class="btn btn-default" [routerLink]="['/register']">Sign Up!</button><br><br>
      <button class="btn btn-default" [routerLink]="['/category']">Continue as guest</button>
