@@ -18,7 +18,6 @@ public interface AddressService {
 
 	Address createDateNightAddress(Address address, int dateId);
 
-	Address updateAddress(Address address, int addressId);
 
 	boolean deleteAddress(String username, int addressId);
 

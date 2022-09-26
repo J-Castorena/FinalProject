@@ -1,11 +1,10 @@
-.navbar {
+#navColor {
   background-color: #7D0F07;
+  font-size: 25px;
 
 }
-.logo-image{
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-top: -6px;
+#homebtn{
+  width: 100px;
+  height: 45px;
 }
+
