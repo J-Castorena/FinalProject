@@ -90,16 +90,31 @@ public class AddressServiceImpl implements AddressService {
 
 	@Override
 	public Address updateAddress(String username, Address address) {
-		Address existing = findAddressById(username, address.getId());
-		if(existing == null) {
+		User user = userRepo.findByUsername(username);
+		
+		if (user != null) {
+			Address existing = user.getAddress();
+			System.out.println(user);
+			System.out.println(existing);
+			
+			if (existing != null) {
+				
+				existing.setStreet(address.getStreet());
+				existing.setCity(address.getCity());
+				existing.setState(address.getState());
+				existing.setZip(address.getZip());
+				return addyRepo.saveAndFlush(existing);
+			}else {
+				addyRepo.saveAndFlush(address);
+				user.setAddress(address);
+				userRepo.saveAndFlush(user);
+				return address;
+			}
+			
+		}
+		else {
 			return null;
 		}
-		existing.setStreet(address.getStreet());
-		existing.setCity(address.getCity());
-		existing.setState(address.getState());
-		existing.setZip(address.getZip());
-		return addyRepo.saveAndFlush(existing);
-		
 		
 //		User user = userRepo.findByUsername(username);
 //		Address userAddress = user.getAddress();
@@ -138,11 +153,7 @@ public class AddressServiceImpl implements AddressService {
 		//////////////////////////////////////////
 	}
 
-	//ORIGINAL
-	@Override
-	public Address updateAddress(Address address, int addressId) {
-		return null;
-	}
+
 
 
 
