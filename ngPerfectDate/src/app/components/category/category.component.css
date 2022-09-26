@@ -1,0 +1,26 @@
+  .card {
+    all: unset;
+    border-radius: 100px;
+    background-size: 135px 135px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 16px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .card.card-small {
+    height: 100px;
+    width: 100px;
+  }
+
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  #Adventure{
+    background-image: url("https://i.postimg.cc/tTgCtx56/app3.jpg");
+  }
+  #Extreme{
+    background-image: url("../../../assets/images/4wheeler.png");
+  }
