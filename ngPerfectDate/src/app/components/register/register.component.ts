@@ -4,37 +4,43 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
-  loggedInUser: User = new User();
+  newUser: User = new User();
+
   constructor(
 
     private auth: AuthService,
     private router: Router
+
   ) { }
 
   ngOnInit(): void {
   }
-
-  login(user: User): void {
-    console.log('Logged in user');
+  register(user: User): void {
+    console.log('Registering user:');
     console.log(user);
-    this.auth.login(user.username, user.password).subscribe({
+    this.auth.register(user).subscribe({
       next: (registeredUser) => {
         this.auth.login(user.username, user.password).subscribe({
           next: (loggedInUser) => {
             this.router.navigateByUrl('/home');
           },
           error: (problem) => {
-            console.error('LoginComponent.login(): Error logging in user:');
+            console.error('RegisterComponent.register(): Error logging in user:');
             console.error(problem);
           }
-          });
-          },
-      });
+        });
+      },
+      error: (fail) => {
+        console.error('RegisterComponent.register(): Error registering account');
+        console.error(fail);
+      }
+    });
   }
+
 }
