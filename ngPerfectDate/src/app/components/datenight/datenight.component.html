@@ -24,9 +24,9 @@
     <tbody>
     <tr *ngFor="let datenight of datenights" (click)="display(datenight)">
       <td>{{datenight.name}}</td>
-      <div  class="imagediv">
+      <td  class="imagediv">
         <img [src]="datenight.imageUrl"/>
-      </div>
+      </td>
     </tr>
   </tbody>
 </table>
