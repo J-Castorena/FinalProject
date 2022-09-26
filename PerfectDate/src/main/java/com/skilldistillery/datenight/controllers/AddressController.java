@@ -62,11 +62,10 @@ public class AddressController {
 	//NOT POSTING
 	@PutMapping("/addresses/{addressId}")
 	public Address editAddress(@RequestBody Address address, @PathVariable int addressId, HttpServletResponse res, Principal principal) {
-		Address updated = null;
-		address.setId(addressId);
+		
 			
-		updated= addressServ.updateAddress(address, addressId);
-		return updated;
+		address= addressServ.updateAddress(principal.getName(), address);
+		return address;
 	}
 	
 	
