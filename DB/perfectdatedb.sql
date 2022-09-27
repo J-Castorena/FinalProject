@@ -139,43 +139,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `category`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `category` ;
-
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `img_url` VARCHAR(5000) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `date_night_has_category`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `date_night_has_category` ;
-
-CREATE TABLE IF NOT EXISTS `date_night_has_category` (
-  `date_night_id` INT NOT NULL,
-  `category_id` INT NOT NULL,
-  PRIMARY KEY (`date_night_id`, `category_id`),
-  INDEX `fk_date_night_has_categories_categories1_idx` (`category_id` ASC),
-  INDEX `fk_date_night_has_categories_date_night1_idx` (`date_night_id` ASC),
-  CONSTRAINT `fk_date_night_has_categories_date_night1`
-    FOREIGN KEY (`date_night_id`)
-    REFERENCES `date_night` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_date_night_has_categories_categories1`
-    FOREIGN KEY (`category_id`)
-    REFERENCES `category` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `wishlist`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `wishlist` ;
@@ -289,6 +252,43 @@ CREATE TABLE IF NOT EXISTS `blog_comment` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `category`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `category` ;
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `img_url` VARCHAR(5000) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `date_night_has_category`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `date_night_has_category` ;
+
+CREATE TABLE IF NOT EXISTS `date_night_has_category` (
+  `date_night_id` INT NOT NULL,
+  `category_id` INT NOT NULL,
+  PRIMARY KEY (`date_night_id`, `category_id`),
+  INDEX `fk_date_night_has_category_category1_idx` (`category_id` ASC),
+  INDEX `fk_date_night_has_category_date_night1_idx` (`date_night_id` ASC),
+  CONSTRAINT `fk_date_night_has_category_date_night1`
+    FOREIGN KEY (`date_night_id`)
+    REFERENCES `date_night` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_date_night_has_category_category1`
+    FOREIGN KEY (`category_id`)
+    REFERENCES `category` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 SET SQL_MODE = '';
 DROP USER IF EXISTS perfectdate@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -367,37 +367,6 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `category`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `perfectdatedb`;
-INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (1, 'Romantic', 'https://i.postimg.cc/ryhr9ZQK/wine.jpg');
-INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (2, 'Relaxing', 'https://i.postimg.cc/q7j3Zm4b/spa.jpg');
-INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (3, 'First Date', 'https://i.postimg.cc/5tsMYzSQ/coffe.webp');
-INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (4, 'Second Date', 'https://i.postimg.cc/nr2VHLhn/balloon.webp');
-INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (5, 'Adventure', 'https://i.postimg.cc/7LB71WbV/zz.jpg');
-INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (6, 'Wilderness', 'https://i.postimg.cc/YSYpv0y1/cabin.jpg');
-INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (7, 'Extreme', 'https://i.postimg.cc/RhZ7xx82/x.webp');
-INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (8, 'Shows', 'https://i.postimg.cc/HnJvLc6m/shows.jpg');
-INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (9, '', NULL);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `date_night_has_category`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `perfectdatedb`;
-INSERT INTO `date_night_has_category` (`date_night_id`, `category_id`) VALUES (1, 1);
-INSERT INTO `date_night_has_category` (`date_night_id`, `category_id`) VALUES (2, 7);
-INSERT INTO `date_night_has_category` (`date_night_id`, `category_id`) VALUES (3, 1);
-INSERT INTO `date_night_has_category` (`date_night_id`, `category_id`) VALUES (4, 2);
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `wishlist`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -446,6 +415,36 @@ INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`
 INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (6, 'I think Atlanta is a nice city if you know where to go. ', NULL, 5, 2, NULL, NULL);
 INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (7, 'what are you talking about? Its so crowed and unsafe', NULL, 4, 2, 1, NULL);
 INSERT INTO `blog_comment` (`id`, `blog_comment`, `blog_comment_date`, `user_id`, `blog_id`, `blog_comment_id`, `image_url`) VALUES (8, '1. New Belgium, 2. BlueMoon, 3. Great Divide Brewing', NULL, 3, 3, 1, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `category`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `perfectdatedb`;
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (1, 'Romantic', 'https://i.postimg.cc/ryhr9ZQK/wine.jpg');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (2, 'First Date', 'https://i.postimg.cc/5tsMYzSQ/coffe.webp');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (3, 'Second Date', 'https://i.postimg.cc/nr2VHLhn/balloon.webp');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (4, 'Relaxing', 'https://i.postimg.cc/q7j3Zm4b/spa.jpg');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (5, 'Adventure', 'https://i.postimg.cc/7LB71WbV/zz.jpg');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (6, 'Extreme', 'https://i.postimg.cc/RhZ7xx82/x.webp');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (7, 'Wilderness', 'https://images.pexels.com/photos/4099305/pexels-photo-4099305.jpeg?auto=compress&cs=tinysrgb&w=300');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (8, 'Shows', 'https://i.postimg.cc/HnJvLc6m/shows.jpg');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `date_night_has_category`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `perfectdatedb`;
+INSERT INTO `date_night_has_category` (`date_night_id`, `category_id`) VALUES (1, 1);
+INSERT INTO `date_night_has_category` (`date_night_id`, `category_id`) VALUES (2, 7);
+INSERT INTO `date_night_has_category` (`date_night_id`, `category_id`) VALUES (3, 1);
+INSERT INTO `date_night_has_category` (`date_night_id`, `category_id`) VALUES (4, 2);
 
 COMMIT;
 
