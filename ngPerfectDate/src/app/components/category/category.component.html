@@ -1,11 +1,11 @@
-<br>
+<!-- <br>
 <div id="imageFeatured" class="row">
 <div class="column">
 <div class="card-container" id="titletag" >
   <button class="card card-small" id="Adventure">
     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
   </button>
-  <p>Wilderness</p>
+  <p></p>
 </div>
 </div>
 
@@ -15,7 +15,7 @@
     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
     <span></span>
   </button>
-  <p>Shows</p>
+  <p></p>
 </div>
 </div>
 
@@ -25,7 +25,7 @@
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
       <span></span>
     </button>
-    <p>Relaxing</p>
+    <p></p>
   </div>
   </div>
 
@@ -78,10 +78,21 @@
               <p>Fuss</p>
             </div>
             </div>
+</div> -->
+
+<!-- Dynamic Build Below Here -->
+
+<br>
+<div id="imageFeatured" class="row" *ngFor="let category of categories">
+  <div class="column">
+    <div class="card-container" id="titletag" >
+      <button class="card card-small" >
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
+      </button>
+      <img id="image" src="{{category.imageUrl}}">
+      <p>{{category.name}}</p>
+    </div>
+  </div>
 </div>
-
-
-
-
 
 

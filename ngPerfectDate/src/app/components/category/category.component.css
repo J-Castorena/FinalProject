@@ -19,6 +19,13 @@
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
   }
 
+  #image{
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
   .row {
     display: flex;
     flex-wrap: wrap;
@@ -35,7 +42,7 @@
     margin-left: 5%;
   } */
 
-  #Adventure{
+  /* #Adventure{
     background-image: url("https://i.postimg.cc/YSYpv0y1/cabin.jpg");
   }
   #Extreme{
@@ -58,7 +65,8 @@
   }
   #Frustrations{
     background-image: url("https://i.postimg.cc/QMz0ygg3/axe.jpg");
-  }
+  } */
+
  #titletag{
   text-align: center;
  }
