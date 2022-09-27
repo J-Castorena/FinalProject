@@ -1,7 +1,7 @@
   .card {
     all: unset;
     border-radius: 100px;
-    background-size: 135px 135px;
+    background-size: 230px 230px;
     background-repeat: no-repeat;
     background-position: center;
     padding: 16px;
@@ -9,8 +9,9 @@
   }
 
   .card.card-small {
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
   }
 
   .card-container .card:not(.highlight-card):hover {
@@ -18,9 +19,46 @@
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
   }
 
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+
+  /* Create two equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    padding: 0 4px;
+  }
+
+  /* #imageFeatured{
+    margin-left: 5%;
+  } */
+
   #Adventure{
-    background-image: url("https://i.postimg.cc/tTgCtx56/app3.jpg");
+    background-image: url("https://i.postimg.cc/YSYpv0y1/cabin.jpg");
   }
   #Extreme{
     background-image: url("../../../assets/images/4wheeler.png");
   }
+  #Romantic{
+    background-image: url("https://i.postimg.cc/ryhr9ZQK/wine.jpg");
+  }
+  #Relaxing{
+    background-image: url("https://i.postimg.cc/q7j3Zm4b/spa.jpg");
+  }
+  #Shows{
+    background-image: url("https://i.postimg.cc/HnJvLc6m/shows.jpg");
+  }
+  #FirstDate{
+    background-image: url("https://i.postimg.cc/5tsMYzSQ/coffe.webp");
+  }
+  #SecondDate{
+    background-image: url("https://i.postimg.cc/nr2VHLhn/balloon.webp");
+  }
+  #Frustrations{
+    background-image: url("https://i.postimg.cc/QMz0ygg3/axe.jpg");
+  }
+ #titletag{
+  text-align: center;
+ }
