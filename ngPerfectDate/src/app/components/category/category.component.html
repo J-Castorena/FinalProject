@@ -1,3 +1,109 @@
+<!-- <br>
+<div id="imageFeatured" class="row">
+<div class="column">
+<div class="card-container" id="titletag" >
+  <button class="card card-small" id="Adventure">
+    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
+  </button>
+  <p></p>
+</div>
+</div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<p>category works!</p>
+<div class="column">
+<div class="card-container" id="titletag">
+  <button class="card card-small" id="Shows">
+    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
+    <span></span>
+  </button>
+  <p></p>
+</div>
+</div>
+
+<div class="column">
+  <div class="card-container" id="titletag">
+    <button class="card card-small" id="Relaxing">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
+      <span></span>
+    </button>
+    <p></p>
+  </div>
+  </div>
+
+  <div class="column">
+    <div class="card-container" id="titletag">
+      <button class="card card-small" id="Romantic">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
+        <span></span>
+      </button>
+      <p>Romantic</p>
+    </div>
+    </div>
+
+    <div class="column">
+      <div class="card-container" id="titletag">
+        <button class="card card-small" id="FirstDate">
+          <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
+          <span></span>
+        </button>
+        <p>First Date</p>
+      </div>
+      </div>
+
+      <div class="column">
+        <div class="card-container" id="titletag">
+          <button class="card card-small" id="SecondDate">
+            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
+            <span></span>
+          </button>
+          <p>Second Date</p>
+        </div>
+        </div>
+
+        <div class="column">
+          <div class="card-container" id="titletag">
+            <button class="card card-small" id="Extreme">
+              <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
+              <span></span>
+            </button>
+            <p>Extreme Date</p>
+          </div>
+          </div>
+
+          <div class="column">
+            <div class="card-container" id="titletag">
+              <button class="card card-small" id="Frustrations">
+                <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
+                <span></span>
+              </button>
+              <p>Fuss</p>
+            </div>
+            </div>
+</div> -->
+
+<!-- Dynamic Build Below Here -->
+
+<br>
+<div *ngIf="!selected">
+<div id="imageFeatured" *ngFor="let category of categories" (click)="selected = category" >
+  <div class="row">
+    <div class="column">
+      <div class="card-container" id="titletag" >
+        <button class="card card-small" >
+        <img id="image" src="{{category.imageUrl}}">
+        </button>
+        <p>{{category.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div *ngIf="selected">
+  <ul>
+    <li *ngFor="let dateNight of dateNights | categoryType: selected.name">
+      {{dateNight.name}}
+    </li>
+  </ul>
+
+<button (click)="selected = null">Back</button>
+</div>

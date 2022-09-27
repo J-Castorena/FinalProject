@@ -3,13 +3,12 @@ package com.skilldistillery.datenight.entities;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Category {
@@ -23,7 +22,8 @@ public class Category {
 	@ManyToMany(mappedBy="categories")
 	private List<DateNight> dateNights;
 	
-	
+	@Column(name="img_url")
+	private String imageUrl;
 
 	public Category() {
 		super();
@@ -54,6 +54,15 @@ public class Category {
 		this.dateNights = dateNights;
 	}
 
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -73,7 +82,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + "]";
+		return "Category [id=" + id + ", name=" + name + ", imageUrl=" + imageUrl + "]";
 	}
 	
 	

@@ -20,6 +20,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="date_night")
@@ -55,7 +56,7 @@ public class DateNight {
 	@JoinColumn(name="address_id")
 	private Address address;
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"dateNights"})
 	@ManyToMany
 	@JoinTable(name="date_night_has_category", joinColumns = @JoinColumn(name="date_night_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private List<Category> categories;

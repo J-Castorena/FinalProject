@@ -18,6 +18,11 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<Category> index() {
 		return categoryRepo.findAll();
 	}
+	
+	@Override
+	public List<Category> getByName(String name) {
+		return categoryRepo.findByName(name);
+	}
 
 	@Override
 	public Category categoryById(Integer id) {
@@ -50,5 +55,6 @@ public class CategoryServiceImpl implements CategoryService {
 		}
 		return categoryDeleted;
 	}
+
 
 }

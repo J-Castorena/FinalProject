@@ -26,6 +26,8 @@ import { BlogComponent } from './components/blog/blog.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
+import { CategoryTypePipe } from './pipes/category-type.pipe';
+import { PipesPipe } from './pipes.pipe';
 import { LogoutComponent } from './components/logout/logout.component';
 
 
@@ -41,6 +43,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     BlogComponent,
     UserProfileComponent,
     RegisterComponent,
+    CategoryTypePipe,
+    PipesPipe,
     LogoutComponent
   ],
   imports: [
@@ -60,7 +64,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     ReviewService,
     UserService,
     AuthService,
-
+    CategoryTypePipe
 
   ],
   bootstrap: [AppComponent]
