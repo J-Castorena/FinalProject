@@ -26,6 +26,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { RegisterComponent } from './components/register/register.component';
     DatenightComponent,
     BlogComponent,
     UserProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

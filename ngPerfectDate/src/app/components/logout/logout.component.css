@@ -1,5 +1,3 @@
-
-
 .btn-default {
   font-family: Raleway-SemiBold;
   font-size: 13px;
@@ -16,27 +14,4 @@
   color: #FFF;
   background: rgba(108, 88, 179, 0.75);
   border: 2px solid rgba(108, 89, 179, 0.75);
-}
-
-.addUserForm{
-  background-color: #FFF;
-}
-
-#asterisk{
-  color: red;
-}
-
-.pictures{
-  height: 500px;
-  width: 700px;
-  border-radius: 10px;
-}
-
-#c-size{
-  height: 505px;
-  width: 705px;
-}
-
-.col-md-4{
-
 }
