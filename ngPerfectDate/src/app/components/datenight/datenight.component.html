@@ -58,8 +58,8 @@
 </tbody>
       </table><br>
       <button class=" btn btn-secondary" (click)="selected=null">Back</button>
-      <button class="btn btn-secondary" (click)="setEdit()" editTour = true>Edit this Date Night</button>
-      <button class="btn btn-danger"(click)="delete(selected.id)">Delete</button><br><br><br>
+      <button *ngIf="loggedIn.role === 'admin'"class="btn btn-secondary" (click)="setEdit()"  editDateNight = selected >Edit this Date Night</button>
+      <button *ngIf="loggedIn.role === 'admin'" class="btn btn-danger"(click)="delete(selected.id)">Delete</button><br><br><br>
       <div  class="imagediv">
         <img [src]="selected.imageUrl"/>
       </div>
