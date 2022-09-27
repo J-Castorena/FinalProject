@@ -1,5 +1,7 @@
+import { User } from './../../models/user';
+import { DateNight } from 'src/app/models/date-night';
+import { AuthService } from './../../services/auth.service';
 import { DateNightService } from './../../services/date-night.service';
-import { DateNight } from './../../models/date-night';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,14 +15,35 @@ export class DatenightComponent implements OnInit {
   selected: DateNight | null = null;
   newDateNight: DateNight = new DateNight();
   editDateNight: DateNight | null = null;
+  loggedIn: User = new User();
 
-  constructor(private DateNightService: DateNightService) { }
+
+
+
+
+  constructor(private DateNightService: DateNightService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.loadDateNights();
+    this.getLoggedInUser();
     console.log(this.datenights);
 
   }
+  getLoggedInUser(){
+
+    return this.auth.getLoggedInUser().subscribe(
+      {
+        next: (data) => {
+        this.loggedIn = data;
+        },
+        error: (err) => {
+          console.log('DatenightComponent.reload(): error loading datenights:');
+          console.log(err);
+      }
+    }
+    );
+  }
+
   loadDateNights(): void {
     this.DateNightService.index().subscribe(
       {
@@ -34,6 +57,7 @@ export class DatenightComponent implements OnInit {
       }
     );
   }
+
 
   reload(){
     this.DateNightService.index().subscribe(
@@ -51,7 +75,7 @@ export class DatenightComponent implements OnInit {
 
 
 
-  create(dateight: DateNight): void {
+  create(dateNight: DateNight): void {
     this.DateNightService.create(this.newDateNight).subscribe(
       {
         next: (result) => {
