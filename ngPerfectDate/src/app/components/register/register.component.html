@@ -12,6 +12,6 @@
   Date of Birth: <input class="form-control" type="date" name="dateOfBirth" ><br>
   City: <input class="form-control" type="text" placeholder="Optional" name="city" ><br>
   State: <input class="form-control" type="text" placeholder="Optional" name="state" ><br>
-<button (click)="register(newUser)" class="btn btn-success">Create Account</button>
+<button (click)="register(newUser)" [routerLink]="['/home']" class="btn btn-success">Create Account</button>
 </form>
 </div>
