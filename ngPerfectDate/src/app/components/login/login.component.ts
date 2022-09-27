@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
   login(user: User): void {
     console.log('Logged in user');
     console.log(user);
-    this.auth.login(user.username, user.password).subscribe({
-      next: (registeredUser) => {
         this.auth.login(user.username, user.password).subscribe({
           next: (loggedInUser) => {
+            console.log(loggedInUser);
+
             this.router.navigateByUrl('/home');
           },
           error: (problem) => {
@@ -34,7 +34,11 @@ export class LoginComponent implements OnInit {
             console.error(problem);
           }
           });
-          },
-      });
+  }
+
+  logout(){
+    console.log('logging out');
+  this.auth.logout();
+  this.router.navigateByUrl('/home')
   }
 }

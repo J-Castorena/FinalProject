@@ -5,7 +5,7 @@ body {
   background-image: url("assets/images/MarbleBackground.jpeg");
   background-position: center;
 	background-repeat: no-repeat;
-	height:100vh;
+  height: max-content;
 	background-size: cover;
 }
 
