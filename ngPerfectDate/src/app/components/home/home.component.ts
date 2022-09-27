@@ -11,20 +11,16 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 loggedInUser: User = new User();
-datenights: DateNight [] = [];
 images = true;
 
-  constructor(private AuthService: AuthService, private router: Router) { }
+  constructor(private auth: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
-  this.AuthService.getCredentials();
   }
 
-  logout(){
-    console.log('logging out');
-  this.AuthService.logout();
-  this.router.navigateByUrl('/home')
-  console.log('logout successful');
-
+  loggedIn(){
+    return this.auth.checkLogin();
   }
+
 }
