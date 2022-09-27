@@ -7,6 +7,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -15,6 +16,7 @@ const routes: Routes = [
 { path: 'category', component: CategoryComponent },
 { path: 'datenight', component: DatenightComponent },
 { path: 'login', component: LoginComponent},
+{ path: 'register', component: RegisterComponent},
 { path: 'user-profile', component: UserProfileComponent },
 { path: '**', component: NotfoundComponent }
 ];

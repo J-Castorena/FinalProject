@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { ReviewService } from './services/review.service';
 import { DateNightService } from './services/date-night.service';
@@ -24,6 +25,7 @@ import { DatenightComponent } from './components/datenight/datenight.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     DatenightComponent,
     BlogComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { FormsModule } from '@angular/forms';
     DateNightDiscussionBoardService,
     DateNightService,
     ReviewService,
-    UserService
+    UserService,
+    AuthService,
 
 
   ],

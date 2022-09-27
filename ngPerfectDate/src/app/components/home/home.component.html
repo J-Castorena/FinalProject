@@ -3,34 +3,17 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4" >
-     <p>dlkjafdlksjfkldsjflksdjflkdsjfalk;sdjflakdsjflkadsjf</p>
-     <button class="btn btn-default">Sign In</button><br><br>
-     <button class="btn btn-default">Sign Up!</button><br><br>
-     <button class="btn btn-default">Continue as guest</button>
+    <div class="col-md-4" *ngIf="!loggedInUser" >
+     <button class="btn btn-default" [routerLink]="['/login']" >Sign In</button><br><br>
+     <button class="btn btn-default" [routerLink]="['/register']">Sign Up!</button><br><br>
+     <button class="btn btn-default" [routerLink]="['/category']">Continue as guest</button>
     </div>
     <div class="col-md-8" >
-      <p>This will be a carousel ladkjfdlskjfdlksjflksdjflksjdflkjsdlkfjlsdkjfldksjflka</p>
+      <p>This will be a carousel </p>
     </div>
   </div>
 </div>
 
 
-<form>
-  <div class="addUserForm">
-  Create a new Account: <br>
-  <div>First Name<span style="color: red">*</span>: <input type="text" name="firstName" required></div>
-  <div>Last Name<span style="color: red">*</span>: <input type="text" name="Lastname" required></div>
-  <div>Email<span style="color: red">*</span>: <input type="text" name="email" required></div><br>
-  <div>Username<span style="color: red">*</span>: <input type="text" name="username" required></div><br>
-  <div>Password<span style="color: red">*</span>: <input type="text" name="password"required></div><br>
-  Photo: <input type="text" placeholder="Optional" name="imgUrl" ><br>
-  Bio: <input type="text" placeholder="Optional" name="biography" ><br>
-  Date of Birth: <input type="date" name="dateOfBirth" ><br>
-  City: <input type="text" placeholder="Optional" name="city" ><br>
-  State: <input type="text" placeholder="Optional" name="state" ><br>
-<button class="btn btn-success">Create Account</button>
-</div>
-</form>
 
 
