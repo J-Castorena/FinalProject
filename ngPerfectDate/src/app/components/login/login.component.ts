@@ -11,8 +11,8 @@ import { User } from 'src/app/models/user';
 export class LoginComponent implements OnInit {
 
   loggedInUser: User = new User();
-  constructor(
 
+  constructor(
     private auth: AuthService,
     private router: Router
   ) { }
@@ -36,9 +36,5 @@ export class LoginComponent implements OnInit {
           });
   }
 
-  logout(){
-    console.log('logging out');
-  this.auth.logout();
-  this.router.navigateByUrl('/home')
-  }
+
 }

@@ -13,14 +13,13 @@ export class RegisterComponent implements OnInit {
   newUser: User = new User();
 
   constructor(
-
     private auth: AuthService,
     private router: Router
-
   ) { }
 
   ngOnInit(): void {
   }
+
   register(user: User): void {
     console.log('Registering user:');
     console.log(user);

@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { CategoryTypePipe } from './pipes/category-type.pipe';
 import { PipesPipe } from './pipes.pipe';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { PipesPipe } from './pipes.pipe';
     UserProfileComponent,
     RegisterComponent,
     CategoryTypePipe,
-    PipesPipe
+    PipesPipe,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
