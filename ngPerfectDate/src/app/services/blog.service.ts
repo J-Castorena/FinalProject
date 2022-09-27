@@ -14,6 +14,9 @@ export class BlogService {
   constructor(private http: HttpClient) { }
 
 
+  index() {
+
+  }
   getAllBlogs(): Observable<Blog[]> {
     return this.http.get<Blog[]>(this.url).pipe(
       catchError((error: any) => {
