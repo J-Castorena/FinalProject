@@ -1,3 +1,5 @@
+import { DateNightService } from './../../services/date-night.service';
+import { DateNight } from './../../models/date-night';
 import { CategoryService } from './../../services/category.service';
 import { Category } from './../../models/category';
 import { Component, OnInit } from '@angular/core';
@@ -14,14 +16,33 @@ export class CategoryComponent implements OnInit {
   newCategory: Category = new Category;
   displayNewCategoryForm = false;
 
-  constructor(private CategoryService: CategoryService){}
+  dateNights: DateNight[] = [];
+
+
+  selected: Category | null = null;
+  selectedType = 'all';
+
+  types = [
+  'all',
+  'Romantic',
+  'Relaxing',
+  'First Date',
+  'Second Date',
+  'Adventure',
+  'Wilderness',
+  'Extreme',
+  'Shows'
+  ];
+
+  constructor(private categoryService: CategoryService, private dateNightService: DateNightService){}
 
   ngOnInit(): void {
     this.displayAllCategories();
+    this.getDates();
   }
 
   displayAllCategories()  {
-    this.CategoryService.getAllCategories().subscribe({
+    this.categoryService.getAllCategories().subscribe({
       next: (data) => {
         this.categories = data;
         console.log(this.categories);
@@ -34,7 +55,23 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  getDates(): void {
+    this.dateNightService.index().subscribe(
+      {
+      next: (dateNights) => {
+        this.dateNights = dateNights;
+      },
+      error: (err) => {
+        console.log('DatenightComponent.reload(): error loading datenights:');
+        console.log(err);
+      }
+      }
+    );
+  }
 
+  viewDetails(selectedCategory: Category){
+    this.selected = selectedCategory;
+  }
 }
 
 

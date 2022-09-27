@@ -26,6 +26,8 @@ import { BlogComponent } from './components/blog/blog.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
+import { CategoryTypePipe } from './pipes/category-type.pipe';
+import { PipesPipe } from './pipes.pipe';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { RegisterComponent } from './components/register/register.component';
     DatenightComponent,
     BlogComponent,
     UserProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    CategoryTypePipe,
+    PipesPipe
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,7 @@ import { RegisterComponent } from './components/register/register.component';
     ReviewService,
     UserService,
     AuthService,
-
+    CategoryTypePipe
 
   ],
   bootstrap: [AppComponent]

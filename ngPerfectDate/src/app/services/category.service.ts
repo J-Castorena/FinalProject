@@ -25,8 +25,8 @@ export class CategoryService {
     );
   }
 
-  getCategory(id: number): Observable<Category> {
-    return this.http.get<Category>(this.url + '/' + id).pipe(
+  getCategoryByName(name: string): Observable<Category> {
+    return this.http.get<Category>(this.url + '/' + name).pipe(
       catchError((error: any) => {
         console.log(error);
         return throwError(
@@ -36,6 +36,10 @@ export class CategoryService {
         )
       })
     );
+  }
+
+  getListOfDateNightsPerCategory(){
+    return this.http.get
   }
 
   create(category: Category): Observable<Category> {

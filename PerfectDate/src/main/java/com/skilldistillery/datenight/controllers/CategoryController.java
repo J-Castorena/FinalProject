@@ -31,8 +31,18 @@ public class CategoryController {
 	public List<Category> showAllCategories() {
 		return categoryService.index();
 	}
+	
+	@GetMapping("categories/{name}")
+	public List<Category> showByCategoryName(@PathVariable String name, HttpServletRequest req, HttpServletResponse res) {
+		List<Category> categoryList = categoryService.getByName(name);
+		if(categoryList == null) {
+			res.setStatus(404);
+		}
+		return categoryList;
+	}
 
-	@GetMapping("categories/{id}")
+	
+	@GetMapping("categories/cid/{id}")
 	public Category categoryById(@PathVariable Integer id) {
 		return categoryService.categoryById(id);
 	}

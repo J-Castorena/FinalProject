@@ -83,16 +83,27 @@
 <!-- Dynamic Build Below Here -->
 
 <br>
-<div id="imageFeatured" class="row" *ngFor="let category of categories">
-  <div class="column">
-    <div class="card-container" id="titletag" >
-      <button class="card card-small" >
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
-      </button>
-      <img id="image" src="{{category.imageUrl}}">
-      <p>{{category.name}}</p>
+<div *ngIf="!selected">
+<div id="imageFeatured" *ngFor="let category of categories" (click)="selected = category" >
+  <div class="row">
+    <div class="column">
+      <div class="card-container" id="titletag" >
+        <button class="card card-small" >
+        <img id="image" src="{{category.imageUrl}}">
+        </button>
+        <p>{{category.name}}</p>
+      </div>
     </div>
   </div>
 </div>
+</div>
 
+<div *ngIf="selected">
+  <ul>
+    <li *ngFor="let dateNight of dateNights | categoryType: selected.name">
+      {{dateNight.name}}
+    </li>
+  </ul>
 
+<button (click)="selected = null">Back</button>
+</div>
