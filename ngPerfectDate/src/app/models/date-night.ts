@@ -1,3 +1,4 @@
+import { Category } from './category';
 export class DateNight {
   id: number;
   name: string;
@@ -6,6 +7,7 @@ export class DateNight {
   createdDate: string;
   lastUpdatedDate: string;
   active: boolean;
+  categories: Category[];
 
   constructor(
   id: number = 0,
@@ -14,7 +16,8 @@ export class DateNight {
   description: string = '',
   createdDate: string = '',
   lastUpdatedDate: string = '',
-  active: boolean = false
+  active: boolean = false,
+  categories: Category[] = []
   ){
     this.id = id;
     this.name = name;
@@ -23,5 +26,6 @@ export class DateNight {
     this.createdDate = createdDate;
     this.lastUpdatedDate = lastUpdatedDate;
     this.active = active;
+    this.categories = categories;
   }
 }

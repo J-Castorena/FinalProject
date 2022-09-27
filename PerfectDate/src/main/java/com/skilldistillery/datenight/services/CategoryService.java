@@ -7,6 +7,8 @@ import com.skilldistillery.datenight.entities.Category;
 public interface CategoryService {
 
 	List<Category> index();
+	
+	List<Category> getByName(String name);
 
 	Category categoryById(Integer id);
 
