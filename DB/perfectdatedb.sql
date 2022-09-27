@@ -146,6 +146,7 @@ DROP TABLE IF EXISTS `category` ;
 CREATE TABLE IF NOT EXISTS `category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
+  `img_url` VARCHAR(5000) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -370,15 +371,15 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `perfectdatedb`;
-INSERT INTO `category` (`id`, `name`) VALUES (1, 'romantic');
-INSERT INTO `category` (`id`, `name`) VALUES (2, 'relaxing');
-INSERT INTO `category` (`id`, `name`) VALUES (3, 'first_date');
-INSERT INTO `category` (`id`, `name`) VALUES (4, 'second_date');
-INSERT INTO `category` (`id`, `name`) VALUES (5, 'adventure');
-INSERT INTO `category` (`id`, `name`) VALUES (6, 'wilderness');
-INSERT INTO `category` (`id`, `name`) VALUES (7, 'extreme');
-INSERT INTO `category` (`id`, `name`) VALUES (8, 'shows');
-INSERT INTO `category` (`id`, `name`) VALUES (9, 'get_out_frustrations');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (1, 'Romantic', 'https://i.postimg.cc/ryhr9ZQK/wine.jpg');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (2, 'Relaxing', 'https://i.postimg.cc/q7j3Zm4b/spa.jpg');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (3, 'First Date', 'https://i.postimg.cc/5tsMYzSQ/coffe.webp');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (4, 'Second Date', 'https://i.postimg.cc/nr2VHLhn/balloon.webp');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (5, 'Adventure', 'https://i.postimg.cc/7LB71WbV/zz.jpg');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (6, 'Wilderness', 'https://i.postimg.cc/YSYpv0y1/cabin.jpg');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (7, 'Extreme', 'https://i.postimg.cc/RhZ7xx82/x.webp');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (8, 'Shows', 'https://i.postimg.cc/HnJvLc6m/shows.jpg');
+INSERT INTO `category` (`id`, `name`, `img_url`) VALUES (9, '', NULL);
 
 COMMIT;
 
