@@ -30,6 +30,7 @@ import { CategoryTypePipe } from './pipes/category-type.pipe';
 import { PipesPipe } from './pipes.pipe';
 import { LogoutComponent } from './components/logout/logout.component';
 import { DatePipe } from '@angular/common';
+import { ReviewPipe } from './pipes/review.pipe';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { DatePipe } from '@angular/common';
     RegisterComponent,
     CategoryTypePipe,
     PipesPipe,
-    LogoutComponent
+    LogoutComponent,
+    ReviewPipe
   ],
   imports: [
     BrowserModule,

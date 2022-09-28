@@ -39,8 +39,8 @@ export class ReviewService {
     );
   }
 
-  create(review: Review): Observable<Review> {
-    return this.http.post<Review>(this.url, review).pipe(
+  create(review: Review, dateNightId: number): Observable<Review> {
+    return this.http.post<Review>(this.url + '/' + dateNightId, review).pipe(
      catchError((error: any) => {
        console.log(error);
        return throwError(
