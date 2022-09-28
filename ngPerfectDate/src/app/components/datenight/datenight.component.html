@@ -8,7 +8,7 @@
       <label>Description:</label><input type="text" name="name" [(ngModel)]="newDateNight.description"/><br>
       <label>Image:</label><input type="text" name="comment" [(ngModel)]="newDateNight.imageUrl"/><br>
 
-      <button (click)="create(newDateNight)" class="btn btn-secondary">Post date night</button>
+      <button (click)="create(newDateNight)" class="btn-default">Post date night</button>
 
     </form>
   </div>
@@ -20,15 +20,15 @@
   <div class="col" >
 
     <h1><span>List of Date Nights</span></h1>
-    <table class="table hover table-bordered"  class="imagediv">
+    <table class="table hover table-bordered"  >
       <thead>
         <tr>
           <td>Name</td>
           <td>Description</td>
         </tr>
       </thead>
-      <tbody  class="imagediv">
-        <tr *ngFor="let datenight of datenights" (click)="display(datenight)"  class="imagediv">
+      <tbody  >
+        <tr *ngFor="let datenight of datenights" (click)="display(datenight)"  >
           <td>{{datenight.name}}</td>
           <td >
             <img class="topImg img-thumbnail" [src]="datenight.imageUrl"/>
@@ -64,13 +64,15 @@
 </tr>
 </tbody>
       </table><br>
-      <button class=" btn btn-secondary" (click)="selected=null">Back</button>
-      <button *ngIf="loggedIn.role === 'admin'"class="btn btn-secondary" (click)="setEdit()"  editDateNight = selected >Edit this Date Night</button>
-      <button *ngIf="loggedIn.role === 'admin'" class="btn btn-danger"(click)="delete(selected.id)">Delete</button><br><br><br>
+      <button class="btn-default" (click)="selected=null">Back</button>
+      <button *ngIf="loggedIn" class="btn-default" (click)="showReviewForm()">Review this date night</button>
+
+      <button *ngIf="loggedIn.role === 'admin'" class="btn-default" (click)="setEdit()"  editDateNight = selected >Edit this Date Night</button>
+      <button *ngIf="loggedIn.role === 'admin'" class="btn-default"(click)="delete(selected.id)">Delete</button><br><br><br>
       <div  class="imagediv">
         <ul>
          <li>
-           <img [src]="selected.imageUrl"/>
+           <img class="topImg img-thumbnail" [src]="selected.imageUrl"/>
           </li>
         </ul>
       </div>
@@ -92,9 +94,11 @@
     <input type="text" name="city" [(ngModel)]="editDateNight.description"/><br>
     <input type="text" name="image" [(ngModel)]="editDateNight.imageUrl"/><br>
 
-    <button (click)="update(editDateNight)" class="btn btn-secondary">Save</button>
-    <button (click)="editDateNight = null" class="btn btn-danger">Cancel</button>
+    <button (click)="update(editDateNight)" class="btn-default">Save</button>
+    <button (click)="editDateNight = null" class="btn-default">Cancel</button>
 
 
   </form>
 </div>
+
+<div ngIf="selected"></div>
