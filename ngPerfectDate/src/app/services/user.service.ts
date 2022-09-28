@@ -40,6 +40,20 @@ export class UserService {
     );
   }
 
+  getUserByUsername(username: string): Observable<User> {
+    return this.http.get<User>(this.url + '/' + username).pipe(
+        catchError((error: any) => {
+          console.log(error);
+          return throwError(
+            () => new Error(
+              'UserService.getUser():error retrieving User: ' + error
+            )
+          )
+        })
+      );
+  }
+
+
   create(user: User): Observable<User> {
     return this.http.post<User>(this.url, user).pipe(
      catchError((error: any) => {

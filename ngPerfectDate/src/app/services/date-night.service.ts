@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
@@ -12,7 +13,7 @@ export class DateNightService {
   private url = this.baseUrl + 'api/datenights';
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   index(): Observable<DateNight[]> {
     return this.http.get<DateNight[]>(this.url).pipe(
@@ -54,7 +55,7 @@ export class DateNightService {
 
 
   create(dateNight: DateNight): Observable<DateNight> {
-    return this.http.post<DateNight>(this.url, dateNight).pipe(
+    return this.http.post<DateNight>(this.url, dateNight, this.getHttpOptions()).pipe(
      catchError((error: any) => {
        console.log(error);
        return throwError(
@@ -67,20 +68,29 @@ export class DateNightService {
    }
 
    delete(dateNightId: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}/${dateNightId}`).pipe(
+    return this.http.delete<void>(`${this.url}/${dateNightId}`, this.getHttpOptions()).pipe(
      catchError((error: any) => {
        console.log(error);
        return throwError(
          () => new Error(
-           'DateNightService.delete():error deleting DateNight: ' + error
+          'DateNightService.delete():error deleting DateNight: ' + error
          )
        );
      })
     );
    }
+   getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
 
    update(dateNight: DateNight): Observable<DateNight> {
-    return this.http.put<DateNight>(this.url, dateNight).pipe(
+    return this.http.put<DateNight>(this.url + '/' + dateNight.id, dateNight, this.getHttpOptions()).pipe(
      catchError((error: any) => {
        console.log(error);
        return throwError(

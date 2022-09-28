@@ -29,6 +29,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CategoryTypePipe } from './pipes/category-type.pipe';
 import { PipesPipe } from './pipes.pipe';
 import { LogoutComponent } from './components/logout/logout.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     ReviewService,
     UserService,
     AuthService,
-    CategoryTypePipe
+    CategoryTypePipe,
+    DatePipe
 
   ],
   bootstrap: [AppComponent]
