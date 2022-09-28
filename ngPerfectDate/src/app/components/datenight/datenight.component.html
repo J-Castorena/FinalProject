@@ -1,7 +1,7 @@
 <div *ngIf="!selected" class="datenight">
   <div class="form">
 
-    <h1><span>Add Date Night</span></h1>
+    <h1 class="header"><span>Add Date Night</span></h1>
 
     <form *ngIf="!selected" class="add">
       <label>Name:</label><input type="text" name="reviewId" [(ngModel)]="newDateNight.name"/><br>
@@ -12,63 +12,51 @@
 
     </form>
   </div>
-<!--
-  <a href="singleResult.do?id=${top.id}"> <img class="topImg img-thumbnail" alt="${top.name}"
-    src="${top.image}" ></a><br>
 
-</div> -->
   <div class="col" >
 
-    <h1><span>List of Date Nights</span></h1>
-    <table class="table hover table-bordered"  >
-      <thead>
-        <tr>
-          <td>Name</td>
-          <td>Description</td>
-        </tr>
-      </thead>
-      <tbody  >
-        <tr *ngFor="let datenight of datenights" (click)="display(datenight)"  >
-          <td>{{datenight.name}}</td>
-          <td >
-            <img class="topImg img-thumbnail" [src]="datenight.imageUrl"/>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <h1 class="header">List of Date Nights</h1><br><br>
+    <header *ngFor="let datenight of datenights" (click)="display(datenight)">
+      <h3>{{datenight.name}}</h3>
+      <img class="topImg img-thumbnail" [src]="datenight.imageUrl" />
+  </header>
+
   </div>
 
 </div>
 
 
   <div *ngIf="selected && !editDateNight" class="details">
-    <br>
-<br>
-<br>
-<br>
-<br>
 
+<h1 class="header">{{selected.name}}</h1>
 <br>
-<table class="table hover table-bordered">
-<thead>
-  <tr>
-    <td>Name</td>
-    <td>Description</td>
-  </tr>
-</thead>
-<tbody>
-<tr>
-  <td>{{selected.name}}</td>
-  <td>{{selected.description}}</td><br>
+<div><h3 class="header"> Overall rating: </h3></div>
 
-</tr>
-</tbody>
-      </table><br>
+<blockquote>{{selected.description}}</blockquote>
+
       <button class="btn-default" (click)="selected=null">Back</button>
-      <button *ngIf="loggedIn" class="btn-default" (click)="showReviewForm()">Review this date night</button>
-
+      <button *ngIf="userLoggedIn()" class="btn-default" (click)="showReviewForm()">Review this date night</button>
       <button *ngIf="loggedIn.role === 'admin'" class="btn-default" (click)="setEdit()"  editDateNight = selected >Edit this Date Night</button>
       <button *ngIf="loggedIn.role === 'admin'" class="btn-default"(click)="delete(selected.id)">Delete</button><br><br><br>
+
+      <div class="form">
+        <form *ngIf="selected && showAddReviewForm">
+          <label for="rating">Rating:</label>
+          <select id="rating" name="rating" [(ngModel)]="newReview.rating"><br>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br>
+      <label for="comment">Write a comment below:</label><br><textarea name="comment" rows="10" cols="30" [(ngModel)]="newReview.comment"></textarea><br>
+      <label for="image">Image:</label><br><input type="text" name="image" [(ngModel)]="newReview.images"/><br>
+
+      <button (click)="addReview(newReview, selected.id)" class="btn-default" (click)="showAddReviewForm = false">Post your review</button>
+
+        </form>
+      </div>
+
       <div  class="imagediv">
         <ul>
          <li>
@@ -93,12 +81,9 @@
     <input type="text" name="name" [(ngModel)]="editDateNight.name"/><br>
     <input type="text" name="city" [(ngModel)]="editDateNight.description"/><br>
     <input type="text" name="image" [(ngModel)]="editDateNight.imageUrl"/><br>
-
     <button (click)="update(editDateNight)" class="btn-default">Save</button>
     <button (click)="editDateNight = null" class="btn-default">Cancel</button>
-
-
   </form>
-</div>
 
-<div ngIf="selected"></div>
+
+</div>

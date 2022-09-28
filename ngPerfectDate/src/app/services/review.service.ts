@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
@@ -11,9 +12,21 @@ export class ReviewService {
   private baseUrl = 'http://localhost:8090/'
   private url = this.baseUrl + 'api/reviews';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   getAllReviews(): Observable<Review[]> {
+    return this.http.get<Review[]>(this.url).pipe(
+      catchError((error: any) => {
+        console.log(error);
+        return throwError(
+          () => new Error(
+            'ReviewService.getAllReviews():error retrieving Reviews: ' + error
+          )
+        )
+      })
+    );
+  }
+  getReviewsByDateNightId(): Observable<Review[]> {
     return this.http.get<Review[]>(this.url).pipe(
       catchError((error: any) => {
         console.log(error);
@@ -40,7 +53,7 @@ export class ReviewService {
   }
 
   create(review: Review, dateNightId: number): Observable<Review> {
-    return this.http.post<Review>(this.url + '/' + dateNightId, review).pipe(
+    return this.http.post<Review>(this.url + '/' + dateNightId, review, this.getHttpOptions()).pipe(
      catchError((error: any) => {
        console.log(error);
        return throwError(
@@ -78,4 +91,13 @@ export class ReviewService {
     );
    }
 
+   getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
 }

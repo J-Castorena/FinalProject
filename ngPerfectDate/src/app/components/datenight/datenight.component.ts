@@ -31,6 +31,7 @@ export class DatenightComponent implements OnInit {
   ngOnInit(): void {
     this.loadDateNights();
     this.getLoggedInUser();
+
     console.log(this.datenights);
 
   }
@@ -95,6 +96,9 @@ export class DatenightComponent implements OnInit {
       }
     );
   }
+  userLoggedIn(){
+    return this.auth.checkLogin();
+  }
   display(datenight: DateNight){
     this.selected = datenight;
     console.log(this.selected);
@@ -158,15 +162,15 @@ showReviewForm(){
     this.reviewServ.create(review, dateNightId).subscribe(
       {
         next: (data) => {
-          // this.selected = null;
           this.reload();
         },
         error: (err) => {
-          console.error('DateNightComponent.delete(): error adding review:');
+          console.error('DateNightComponent.addReview(): error adding review:');
           console.error(err);
         }
       }
     );
   }
+
 
 }

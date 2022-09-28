@@ -1,10 +1,17 @@
+header{
+  padding-left: 10px;
+  display: inline-block;
+  width: auto;
+}
+
 .form {
+  padding: 50px;
   text-align: center;
 }
 
 .topImg{
-	width: 60%;
-	height: 60%;
+	width: 300px;
+	height: 300px;
 }
 
 .btn-default {
@@ -23,4 +30,16 @@
   color: #FFF;
   background: rgba(108, 88, 179, 0.75);
   border: 2px solid rgba(108, 89, 179, 0.75);
+}
+
+.header {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+li {
+
+  font-size: 50px;
 }
