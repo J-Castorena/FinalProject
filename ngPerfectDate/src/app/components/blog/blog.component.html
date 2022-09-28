@@ -17,6 +17,22 @@
       {{blog.imageUrl}}
     </li>
   </div>
+  <div id="buttonDiv">
+    <button *ngIf="loggedIn.role === 'admin'"class="btn btn-secondary" (click)="setEdit()"  editBlog = selected >Edit</button>
+    <button *ngIf="loggedIn.role === 'admin'" class="btn btn-danger"(click)="delete(blog.id)">Delete</button>
+  </div>
   </ul>
-
 </div>
+
+
+<form *ngIf="selected">
+    <label>Title</label><input type="text" name="title" [(ngModel)]="newBlog.title">
+    <br>
+    <label>Blog Date</label><input type="date" name="title" [(ngModel)]="newBlog.blogDate">
+    <br>
+    <label>Comment</label><input type="text" name="title" [(ngModel)]="newBlog.comments">
+    <br>
+    <label>Image URL</label><input type="text" name="title" [(ngModel)]="newBlog.imageUrl">
+    <br>
+<button class="btn btn-success" (click)="create(newBlog)">Add Blog</button>
+</form>

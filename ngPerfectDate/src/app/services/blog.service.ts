@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Blog } from '../models/blog';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class BlogService {
   private baseUrl = 'http://localhost:8090/'
   private url = this.baseUrl + 'api/blogs';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
 
   index() {
@@ -58,7 +59,7 @@ export class BlogService {
    }
 
    delete(blogId: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}/${blogId}`).pipe(
+    return this.http.delete<void>(`${this.url}/${blogId}`,  this.getHttpOptions()).pipe(
      catchError((error: any) => {
        console.log(error);
        return throwError(
@@ -71,7 +72,7 @@ export class BlogService {
    }
 
    update(blog: Blog): Observable<Blog> {
-    return this.http.put<Blog>(this.url, blog).pipe(
+    return this.http.put<Blog>(this.url, blog,  this.getHttpOptions()).pipe(
      catchError((error: any) => {
        console.log(error);
        return throwError(
@@ -83,13 +84,13 @@ export class BlogService {
     );
    }
 
-  //  getHttpOptions() {
-  //   let options = {
-  //     headers: {
-  //       Authorization: 'Basic ' + this.auth.getCredentials(),
-  //       'X-Requested-With': 'XMLHttpRequest',
-  //     },
-  //   };
-  //   return options;
-  // }
+   getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
 }
