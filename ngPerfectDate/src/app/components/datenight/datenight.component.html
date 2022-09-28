@@ -12,24 +12,31 @@
 
     </form>
   </div>
+<!--
+  <a href="singleResult.do?id=${top.id}"> <img class="topImg img-thumbnail" alt="${top.name}"
+    src="${top.image}" ></a><br>
 
-  <h1><span>List of Date Nights</span></h1>
-  <table class="table hover table-bordered">
-    <thead>
-      <tr>
-        <td>Name</td>
-        <td>Description</td>
-      </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let datenight of datenights" (click)="display(datenight)">
-      <td>{{datenight.name}}</td>
-      <td  class="imagediv">
-        <img [src]="datenight.imageUrl"/>
-      </td>
-    </tr>
-  </tbody>
-</table>
+</div> -->
+  <div class="col" >
+
+    <h1><span>List of Date Nights</span></h1>
+    <table class="table hover table-bordered"  class="imagediv">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Description</td>
+        </tr>
+      </thead>
+      <tbody  class="imagediv">
+        <tr *ngFor="let datenight of datenights" (click)="display(datenight)"  class="imagediv">
+          <td>{{datenight.name}}</td>
+          <td >
+            <img class="topImg img-thumbnail" [src]="datenight.imageUrl"/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 </div>
 
@@ -61,7 +68,11 @@
       <button *ngIf="loggedIn.role === 'admin'"class="btn btn-secondary" (click)="setEdit()"  editDateNight = selected >Edit this Date Night</button>
       <button *ngIf="loggedIn.role === 'admin'" class="btn btn-danger"(click)="delete(selected.id)">Delete</button><br><br><br>
       <div  class="imagediv">
-        <img [src]="selected.imageUrl"/>
+        <ul>
+         <li>
+           <img [src]="selected.imageUrl"/>
+          </li>
+        </ul>
       </div>
   </div>
 
