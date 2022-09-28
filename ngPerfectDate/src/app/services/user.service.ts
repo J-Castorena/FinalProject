@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
@@ -12,7 +13,7 @@ export class UserService {
   private baseUrl = 'http://localhost:8090/'
   private url = this.baseUrl + 'api/users';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url).pipe(
@@ -28,7 +29,7 @@ export class UserService {
   }
 
   getUser(id: number): Observable<User> {
-    return this.http.get<User>(this.url + '/' + id).pipe(
+    return this.http.get<User>(this.url + '/uid/' + id).pipe(
       catchError((error: any) => {
         console.log(error);
         return throwError(
@@ -80,8 +81,21 @@ export class UserService {
     );
    }
 
+
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
+
    update(user: User): Observable<User> {
-    return this.http.put<User>(this.url, user).pipe(
+    console.log(user);
+
+    return this.http.put<User>(this.url + "/"+ user.id, user, this.getHttpOptions()).pipe(
      catchError((error: any) => {
        console.log(error);
        return throwError(

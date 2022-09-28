@@ -1,1 +1,35 @@
-<p>user-profile works!</p>
+<div class="mainDiv" >
+<div class="">
+<h3>Welcome {{loggedIn.firstName}}</h3>
+</div>
+
+<div class="">
+<h6>Today is {{today | date: 'fullDate'}}</h6> <br>
+</div>
+
+<div class="" id="userImg">
+  {{loggedIn.imageUrl}}
+</div>
+
+<div class="">
+  <h6>Your personal details:</h6>
+  <h6>First Name: {{loggedIn.firstName}}</h6>
+  <h6>Last Name: {{loggedIn.lastName}}</h6>
+  <h6>Email: {{loggedIn.email}}</h6>
+  <h6>Bio: {{loggedIn.biography}}</h6>
+  <button class="btn btn-default" (click)="editUser=loggedIn">Edit Info</button>
+</div>
+
+<div *ngIf="editUser" id="editUser">
+  <br>
+  <form  class="form-group" id="formSize">
+    First Name: <input class="form-control" type="text" name="firstName" [(ngModel)]="editUser.firstName"  >
+    Last Name: <input class="form-control" type="text" name="lastName" [(ngModel)]="editUser.lastName">
+    Email: <input class="form-control" type="text" name="email" [(ngModel)]="editUser.email">
+    Bio: <input class="form-control" type="text" name="biography" [(ngModel)]="editUser.biography"><br>
+    <button class="btn btn-danger" (click)="editUser= null">Cancel</button>
+    <button class="btn btn-success" (click)="update(editUser)">Update</button><br>
+    <br>
+  </form>
+</div>
+</div>
