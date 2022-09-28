@@ -82,4 +82,14 @@ export class BlogService {
      })
     );
    }
+
+  //  getHttpOptions() {
+  //   let options = {
+  //     headers: {
+  //       Authorization: 'Basic ' + this.auth.getCredentials(),
+  //       'X-Requested-With': 'XMLHttpRequest',
+  //     },
+  //   };
+  //   return options;
+  // }
 }

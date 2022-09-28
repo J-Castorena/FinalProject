@@ -84,8 +84,7 @@
 
 <br>
 <div *ngIf="!selected">
-<div id="imageFeatured" *ngFor="let category of categories" (click)="selected = category" >
-  <div class="row">
+<div id="imageFeatured" class="row" *ngFor="let category of categories" (click)="selected = category" >
     <div class="column">
       <div class="card-container" id="titletag" >
         <button class="card card-small" >
@@ -96,7 +95,6 @@
     </div>
   </div>
 </div>
-</div>
 
 <div *ngIf="selected">
   <ul>
@@ -105,5 +103,5 @@
     </li>
   </ul>
 
-<button (click)="selected = null">Back</button>
+<button class=" btn btn-secondary" (click)="selected = null">Back</button>
 </div>

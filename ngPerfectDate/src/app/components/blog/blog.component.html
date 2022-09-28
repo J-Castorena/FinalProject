@@ -1,7 +1,22 @@
+<div *ngIf="selected">
+  <ul *ngFor="let blog of blogs">
+    <div *ngIf="blog.active == true">
+    <li>
+      {{blog.id}}
+    </li>
+    <li>
+      {{blog.title}}
+    </li>
+    <li>
+      {{blog.blogDate}}
+    </li>
+    <li >
+      {{blog.comments}}
+    </li>
+    <li>
+      {{blog.imageUrl}}
+    </li>
+  </div>
+  </ul>
 
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-
-<h1>blog works!</h1>
+</div>

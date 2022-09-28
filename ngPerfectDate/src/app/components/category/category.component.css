@@ -36,6 +36,11 @@
     padding: 0 4px;
   }
 
+
  #titletag{
   text-align: center;
+ }
+
+ li{
+  font-family:'Times New Roman', Times, serif;
  }
