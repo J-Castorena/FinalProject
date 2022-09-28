@@ -1,3 +1,5 @@
+import { Review } from './../../models/review';
+import { ReviewService } from './../../services/review.service';
 import { User } from './../../models/user';
 import { DateNight } from 'src/app/models/date-night';
 import { AuthService } from './../../services/auth.service';
@@ -16,12 +18,15 @@ export class DatenightComponent implements OnInit {
   newDateNight: DateNight = new DateNight();
   editDateNight: DateNight | null = null;
   loggedIn: User = new User();
+  newReview: Review = new Review();
+  showAddReviewForm: boolean = false;
 
 
 
 
 
-  constructor(private DateNightService: DateNightService, private auth: AuthService) { }
+
+  constructor(private DateNightService: DateNightService, private auth: AuthService, private reviewServ: ReviewService) { }
 
   ngOnInit(): void {
     this.loadDateNights();
@@ -145,4 +150,24 @@ export class DatenightComponent implements OnInit {
       }
     )
   }
+
+showReviewForm(){
+    this.showAddReviewForm = true;
+}
+
+  addReview(review: Review, dateNightId: number) {
+    this.reviewServ.create(review, dateNightId).subscribe(
+      {
+        next: (data) => {
+          // this.selected = null;
+          this.reload();
+        },
+        error: (err) => {
+          console.error('DateNightComponent.delete(): error adding review:');
+          console.error(err);
+        }
+      }
+    );
+  }
+
 }

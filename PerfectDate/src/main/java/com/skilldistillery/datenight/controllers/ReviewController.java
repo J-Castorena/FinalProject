@@ -38,11 +38,14 @@ public class ReviewController {
 		return reviewService.reviewById(id);
 	}
 
-	@PostMapping("reviews")
-	public Review addReview(@RequestBody Review review, HttpServletRequest req, HttpServletResponse res) {
+	@PostMapping("/reviews/{dateNightId}")
+	public Review addReview(@RequestBody Review review, 
+			@PathVariable int dateNightId,
+			HttpServletRequest req, 
+			HttpServletResponse res) {
 
 		try {
-			reviewService.createReview(review);
+			reviewService.createReview(review, dateNightId);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL(); 
 			url.append("/").append(review.getId()); 

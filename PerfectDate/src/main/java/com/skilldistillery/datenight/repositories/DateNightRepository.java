@@ -8,7 +8,6 @@ import com.skilldistillery.datenight.entities.DateNight;
 
 public interface DateNightRepository extends JpaRepository<DateNight, Integer>{
 	
-	@Query(value="SELECT * FROM date_night WHERE id = :dateNightId", nativeQuery = true)
-	DateNight findDateNightById(@Param("dateNightId") Integer dateNightId);
 
+	DateNight findDateNightById(int id);
 }

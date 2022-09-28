@@ -1,6 +1,7 @@
 package com.skilldistillery.datenight.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -172,6 +173,17 @@ public class DateNight {
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
 	}
+	
+	public void addReview(Review review) {
+		if(reviews == null) {
+			reviews = new ArrayList<>();
+		}
+		if(!reviews.contains(review)) {
+			reviews.add(review);
+			review.setDateNight(this);
+		}
+	}
+
 
 	@Override
 	public String toString() {

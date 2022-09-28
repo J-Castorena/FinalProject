@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.datenight.entities.DateNight;
 import com.skilldistillery.datenight.entities.Review;
 import com.skilldistillery.datenight.entities.User;
 import com.skilldistillery.datenight.repositories.AddressRepository;
+import com.skilldistillery.datenight.repositories.DateNightRepository;
 import com.skilldistillery.datenight.repositories.ReviewRepository;
 import com.skilldistillery.datenight.repositories.UserRepository;
 
@@ -24,6 +26,9 @@ public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	private AddressRepository addressRepo;
 	
+	@Autowired
+	private DateNightRepository dateRepo;
+	
 	@Override
 	public List<Review> index() {
 		return reviewRepo.findAll();
@@ -35,7 +40,11 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public Review createReview(Review review) {
+	public Review createReview(Review review, int dateNightId) {
+		DateNight managedDateNight = dateRepo.findDateNightById(dateNightId);
+		User user = managedDateNight.getUser();
+		review.setUser(user);
+		managedDateNight.addReview(review);
 		return reviewRepo.saveAndFlush(review);
 	}
 
