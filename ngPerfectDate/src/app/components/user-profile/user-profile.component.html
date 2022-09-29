@@ -1,4 +1,4 @@
-<div class="mainDiv" >
+<div class="container-fluid mainDiv" >
   <div class="container">
 <div class="">
 <h3>Welcome {{loggedIn.firstName}}</h3>
@@ -8,8 +8,8 @@
 <h6>Today is {{today | date: 'fullDate'}}</h6> <br>
 </div>
 
-<div class="" id="userImg">
-  {{loggedIn.imageUrl}}
+<div class="" >
+  <img id="userImg" src="assets/images/profileAvatarF.png" alt="">
 </div>
 
 <div class="">
@@ -17,7 +17,7 @@
   <h6>First Name: {{loggedIn.firstName}}</h6>
   <h6>Last Name: {{loggedIn.lastName}}</h6>
   <h6>Email: {{loggedIn.email}}</h6>
-  <h6>Bio: {{loggedIn.biography}}</h6>
+  <h6>Bio: {{loggedIn.biography}}</h6><br>
   <button class="btn btn-default" (click)="editUser=loggedIn">Edit Info</button>
 </div>
 
