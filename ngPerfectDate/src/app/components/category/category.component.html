@@ -27,10 +27,6 @@
     <tr *ngFor="let dateNight of dateNights | categoryType: selected.name" (click)="display(dateNight)" (click)="detailsOnly = true">
       <td>{{dateNight.name}}</td>
       <td>{{dateNight.description}}</td><br>
-
-<<<<<<< HEAD
-<button class=" btn btn-secondary" (click)="selected = null">Back</button>
-=======
     </tr>
     </tbody>
           </table><br>
@@ -57,5 +53,4 @@
 <div  class="imagediv">
   <img class="topImg img-thumbnail" [src]="viewMoreDetails.imageUrl"/>
 </div>
->>>>>>> 8aba65c6a17869e20ba3e82db9c31972e6e04ae5
 </div>
