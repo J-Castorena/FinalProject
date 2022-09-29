@@ -31,12 +31,15 @@
 .mainDiv{
   padding-left: 20%;
   padding-right: 20%;
+  padding-bottom: 4%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  background:  rgba(255, 255, 255, 0.7);
+
 }
 
-#container {
-  width: 30%; /* Can be in percentage also. */
-  height: auto;
-  margin: 0 auto;
-  padding: 10px;
-  position: relative;
+#userImg{
+  width: 200px;
+  height: 200px;
 }
+
