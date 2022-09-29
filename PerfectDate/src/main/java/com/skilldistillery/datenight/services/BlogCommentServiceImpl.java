@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.datenight.entities.Blog;
 import com.skilldistillery.datenight.entities.BlogComment;
+import com.skilldistillery.datenight.entities.User;
 import com.skilldistillery.datenight.repositories.BlogCommentRepository;
 import com.skilldistillery.datenight.repositories.BlogRepository;
+import com.skilldistillery.datenight.repositories.UserRepository;
 
 @Service
 public class BlogCommentServiceImpl implements BlogCommentService {
@@ -19,6 +21,9 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 	
 	@Autowired
 	private BlogRepository blogRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
 
 	@Override
 	public List<BlogComment> listAllComments() {
@@ -31,10 +36,12 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 	}
 	
 	@Override
-	public BlogComment createBlogComment(int id, BlogComment comment) {
+	public BlogComment createBlogComment(int id, BlogComment comment, String username) {
 		Optional<Blog> blogOp = blogRepo.findById(id);
-		if (blogOp.isPresent()) {
+		User user = userRepo.findByUsername(username);
+		if (blogOp.isPresent() && user != null) {
 			Blog blog = blogOp.get();
+			comment.setUser(user);
 			comment.setBlog(blog);
 			commentRepo.saveAndFlush(comment);
 			return comment;
@@ -55,6 +62,11 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 		existing.setImageUrl(comment.getImageUrl());
 		return commentRepo.saveAndFlush(existing);
 	}
+	
+	@Override
+	public List<BlogComment> findReplies(int id) {
+		return commentRepo.findByParentBlogCommentId(id);
+	}
 
 	private BlogComment findById(int id) {
 		BlogComment c = null;
@@ -70,6 +82,7 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 		commentRepo.deleteById(id);
 		return !commentRepo.existsById(id);
 	}
+
 
 	
 	

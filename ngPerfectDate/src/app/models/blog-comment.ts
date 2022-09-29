@@ -1,3 +1,4 @@
+import { Blog } from "./blog";
 import { User } from "./user";
 
 export class BlogComment {
@@ -6,8 +7,7 @@ export class BlogComment {
   blogCommentDate: string;
   imageUrl: string;
   user: User;
-  parentBlogComment: BlogComment;
-  blogComments: BlogComment[];
+  blog: Blog;
 
   constructor(
   id: number = 0,
@@ -15,15 +15,14 @@ export class BlogComment {
   blogCommentDate: string = '',
   imageUrl: string = '',
   user: User = new User(),
-  parentBlogComment: BlogComment = new BlogComment(),
-  blogComments: [] = []
+  blog: Blog = new Blog()
+
   ){
     this.id = id;
     this.message = message;
     this.blogCommentDate = blogCommentDate;
     this.imageUrl = imageUrl;
     this.user = user;
-    this.parentBlogComment = parentBlogComment;
-    this.blogComments = blogComments;
+    this.blog = blog;
   }
 }
