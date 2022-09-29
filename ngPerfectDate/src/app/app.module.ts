@@ -30,7 +30,12 @@ import { CategoryTypePipe } from './pipes/category-type.pipe';
 import { PipesPipe } from './pipes.pipe';
 import { LogoutComponent } from './components/logout/logout.component';
 import { DatePipe } from '@angular/common';
+<<<<<<< HEAD
+import { UserTypePipe } from './pipes/user-type.pipe';
+import { FooterComponent } from './components/footer/footer.component';
+=======
 import { ReviewPipe } from './pipes/review.pipe';
+>>>>>>> 8aba65c6a17869e20ba3e82db9c31972e6e04ae5
 
 
 @NgModule({
@@ -48,7 +53,12 @@ import { ReviewPipe } from './pipes/review.pipe';
     CategoryTypePipe,
     PipesPipe,
     LogoutComponent,
+<<<<<<< HEAD
+    UserTypePipe,
+    FooterComponent
+=======
     ReviewPipe
+>>>>>>> 8aba65c6a17869e20ba3e82db9c31972e6e04ae5
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-  .card {
+.card {
     all: unset;
     border-radius: 200px;
     background-size: 230px 230px;
@@ -14,8 +14,8 @@
     border-radius: 100%;
   }
   #image{
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
     border-radius: 100%;
   }
   .card-container .card:not(.highlight-card):hover {
@@ -23,23 +23,15 @@
     box-shadow: 0 4px 17px rgba(1, 17, 5, 0.35);
   }
 
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 4px;
-
-  }
-
-  /* Create two equal columns that sits next to each other */
-  .column {
-    flex: 50%;
-    padding: 0 4px;
-  }
-
  #titletag{
   text-align: center;
  }
 
+<<<<<<< HEAD
+ li{
+  font-family:'Times New Roman', Times, serif;
+ }
+=======
  .btn-default {
   font-family: Raleway-SemiBold;
   font-size: 13px;
@@ -62,3 +54,4 @@
 	width: 40%;
 	height: 40%;
 }
+>>>>>>> 8aba65c6a17869e20ba3e82db9c31972e6e04ae5

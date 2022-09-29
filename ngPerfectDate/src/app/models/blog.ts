@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export class Blog {
   id: number;
   comments: string;
@@ -5,6 +7,7 @@ export class Blog {
   title: string;
   active: boolean;
   imageUrl: string;
+  user: User;
 
   constructor(
     id: number = 0,
@@ -12,7 +15,8 @@ export class Blog {
     blogDate: string = '',
     title: string = '',
     active: boolean = false,
-    imageUrl: string= ''
+    imageUrl: string= '',
+    user: User = new User()
   ){
       this.id = id;
       this.comments = comments;
@@ -20,5 +24,6 @@ export class Blog {
       this.title = title;
       this.active = active;
       this.imageUrl = imageUrl;
+      this.user = user;
   }
 }

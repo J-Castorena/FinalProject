@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { BlogComment } from '../models/blog-comment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,23 @@ export class BlogCommentService {
   private baseUrl = 'http://localhost:8090/'
   private url = this.baseUrl + 'api/blogcomments';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private auth: AuthService) { }
 
   getAllBlogComments(): Observable<BlogComment[]> {
     return this.http.get<BlogComment[]>(this.url).pipe(
+      catchError((error: any) => {
+        console.log(error);
+        return throwError(
+          () => new Error(
+            'BlogCommentService.getAllBlogComments():error retrieving list from BlogComment: ' + error
+          )
+        )
+      })
+    );
+  }
+
+  getAllBlogCommentsById(id: number): Observable<BlogComment[]> {
+    return this.http.get<BlogComment[]>(this.baseUrl + 'api/blogs/' + id + '/comments', this.getHttpOptions()).pipe(
       catchError((error: any) => {
         console.log(error);
         return throwError(
@@ -76,4 +90,14 @@ export class BlogCommentService {
      })
     );
    }
+
+   getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
 }

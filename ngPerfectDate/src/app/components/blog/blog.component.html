@@ -1,7 +1,59 @@
+<body>
+<div id="masterCard" class="card text-center" *ngFor="let blog of blogs; let i = index">
+  <div class="card-header">
+    Author: {{blog.user.username}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{blog.title}}</h5>
+    <p class="card-text">{{blog.comments}}</p>
+    <a class="btn btn-primary" (click)="showAllBlogComments(blog.id, i)">View Thread</a>
+    <div *ngIf="showThread[i]">
+    <div *ngFor="let blogcomment of blogComments">
+      <div class="comment-thread">
+        <!-- Comment 1 start -->
+        <div id="reply" class="comment" id="comment-1">
+            <div class="comment-heading">
+                <div class="comment-voting">
+                    <button type="button">
+                        <span aria-hidden="true">&#9650;</span>
+                        <span class="sr-only">Vote up</span>
+                    </button>
+                    <button type="button">
+                        <span aria-hidden="true">&#9660;</span>
+                        <span class="sr-only">Vote down</span>
+                    </button>
+                </div>
+                <div class="comment-info">
+                    <a href="#" class="comment-author">{{blogcomment.user.username}}</a>
+                    <p class="m-0">
+                        {{blogcomment.blogCommentDate}}
+                    </p>
+                </div>
+            </div>
+
+            <div class="comment-body">
+                <p>
+                    {{blogcomment.message}}
+                </p>
+            </div>
+
+        </div>
+        <!-- Comment 1 end -->
+    </div>
+    </div>
+    <button type="button">Reply</button>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    {{blog.blogDate}}
+  </div>
+</div>
+</body>
 
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-
-<h1>blog works!</h1>
+<!-- //waiting to develope -->
+<div *ngIf="!selected">
+  <form>
+    <input type="text"><label>Comment:</label>
+  </form>
+</div>
