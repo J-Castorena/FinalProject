@@ -20,7 +20,7 @@ export class BlogComponent implements OnInit {
   editBlog: Blog[] | null = null;
   newBlog: Blog = new Blog();
   editBlogUser: Blog | null = null;
-  showThread: boolean = false;
+  showThread: boolean[] = [];
 
 
 
@@ -62,7 +62,7 @@ export class BlogComponent implements OnInit {
         this.selected = this.blogs;
         console.log(this.blogs);
         for(let blog of this.blogs){
-          console.log(blog.user);
+          this.showThread.push(false);
         }
       },
       error: (err) => {
@@ -135,12 +135,12 @@ export class BlogComponent implements OnInit {
      );
      }
 
-    showAllBlogComments(id: number){
+    showAllBlogComments(id: number, index: number){
       this.blogCommentService.getAllBlogCommentsById(id).subscribe(
             {
             next: (blogComments) => {
               this.blogComments = blogComments;
-              this.showSelected();
+              this.showThread[index] = !this.showThread[index];
               console.log(this.blogComments);
             },
             error: (err) => {
@@ -151,8 +151,6 @@ export class BlogComponent implements OnInit {
           );
     }
 
-      showSelected(){
-       this.showThread = !this.showThread;
-      }
+
 
 }

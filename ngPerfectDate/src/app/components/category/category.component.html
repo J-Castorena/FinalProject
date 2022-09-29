@@ -1,15 +1,17 @@
 <br>
-<div *ngIf="!selected">
-<div id="imageFeatured" class="row" *ngFor="let category of categories" (click)="selected = category" >
-    <div class="column">
-      <div class="card-container" id="titletag" >
+<div *ngIf="!selected" class="container">
+<div id="imageFeatured" *ngFor="let x of categories; let i = index" >
+  <div class="row" *ngIf="i %4 === 0">
+    <div class="col" *ngFor="let category of categoryChunks[floor(i/4)]">
+      <div class="card-container" id="titletag" (click)="selected = category">
         <button class="card card-small" >
         <img id="image" src="{{category.imageUrl}}">
         </button>
         <p>{{category.name}}</p>
       </div>
     </div>
-  </div>
+    </div>
+</div>
 </div>
 
 <div *ngIf="selected">

@@ -1,13 +1,13 @@
 <body>
-<div id="masterCard" class="card text-center" *ngFor="let blog of blogs">
+<div id="masterCard" class="card text-center" *ngFor="let blog of blogs; let i = index">
   <div class="card-header">
     Author: {{blog.user.username}}
   </div>
   <div class="card-body">
     <h5 class="card-title">{{blog.title}}</h5>
     <p class="card-text">{{blog.comments}}</p>
-    <a class="btn btn-primary" (click)="showAllBlogComments(blog.id)">View Thread</a>
-    <div *ngIf="showThread">
+    <a class="btn btn-primary" (click)="showAllBlogComments(blog.id, i)">View Thread</a>
+    <div *ngIf="showThread[i]">
     <div *ngFor="let blogcomment of blogComments">
       <div class="comment-thread">
         <!-- Comment 1 start -->

@@ -21,6 +21,7 @@ export class CategoryComponent implements OnInit {
 
   selected: Category | null = null;
   selectedType = 'all';
+  categoryChunks: any;
 
   types = [
   'all',
@@ -45,6 +46,7 @@ export class CategoryComponent implements OnInit {
     this.categoryService.getAllCategories().subscribe({
       next: (data) => {
         this.categories = data;
+        this.categoryChunks = this.sliceIntoChunks(this.categories, 4)
         console.log(this.categories);
       },
       error: (err) => {
@@ -72,6 +74,21 @@ export class CategoryComponent implements OnInit {
   viewDetails(selectedCategory: Category){
     this.selected = selectedCategory;
   }
+
+   sliceIntoChunks(arr: any, chunkSize: number) {
+    const res = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+        const chunk = arr.slice(i, i + chunkSize);
+        res.push(chunk);
+    }
+    return res;
+}
+
+floor(num: number){
+return Math.floor(num);
+}
+
+
 }
 
 
