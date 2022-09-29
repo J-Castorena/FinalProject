@@ -30,14 +30,26 @@
 
 <h1 class="header">{{selected.name}}</h1>
 <br>
- Overall rating: {{selected.avgRating | number:'1.1-1'}}
+<h3 class="header">Overall rating: {{selected.avgRating | number:'1.1-1'}}</h3>
 
 <blockquote>{{selected.description}}</blockquote>
 
       <button class="btn-default" (click)="selected=null">Back</button>
       <button *ngIf="userLoggedIn()" class="btn-default" (click)="showReviewForm()">Review this date night</button>
-      <button *ngIf="loggedIn.role === 'admin'" class="btn-default" (click)="setEdit()"  editDateNight = selected >Edit this Date Night</button>
+      <button *ngIf="loggedIn.role === 'admin'" class="btn-default" (click)="setEdit()" >Edit this Date Night</button>
       <button *ngIf="loggedIn.role === 'admin'" class="btn-default"(click)="delete(selected.id)">Delete</button><br><br><br>
+
+
+<div>
+  <form *ngIf="selected && editDateNight">
+    <input type="text" name="name" [(ngModel)]="selected.name"/><br>
+    <input type="text" name="city" [(ngModel)]="selected.description"/><br>
+    <input type="text" name="image" [(ngModel)]="selected.imageUrl"/><br>
+    <button (click)="update(selected)" class="btn-default">Save</button>
+    <button (click)="editDateNight = null" class="btn-default">Cancel</button>
+  </form>
+</div>
+
 
 
       <div class="form">
@@ -58,38 +70,27 @@
         </form>
       </div>
 
-      <div  class="imagediv">
-        <ul>
-         <li>
-           <img class="topImg img-thumbnail" [src]="selected.imageUrl"/>
-          </li>
+      <div  class="container-fluid">
+        <div class="row">
+          <div class="col-md-4 my-top mx-auto"  >
+            <img class="topImg img-thumbnail" [src]="selected.imageUrl"/>
+          </div>
 
-            <li  *ngFor="let review of selected.reviews" >
-              <h4>Rating: {{review.rating}}</h4>
-             <h3>{{review.comment}}</h3>
-              </li>
-        </ul>
+          <div class="col-md-8 my-auto" >
+
+            <div id="masterCard" class="card text-center"  *ngFor="let review of selected.reviews">
+              <div class="card-header">
+                Rating: {{review.rating}}
+              </div>
+              <div class="card-body">
+                <p class="card-text">{{review.comment}}</p>
+                <p class="card-text">{{review.reviewDate | date}}</p>
+                <div class="comment-thread">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
-
-
-<div >
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-  <form *ngIf="selected && editDateNight">
-    <input type="text" name="name" [(ngModel)]="editDateNight.name"/><br>
-    <input type="text" name="city" [(ngModel)]="editDateNight.description"/><br>
-    <input type="text" name="image" [(ngModel)]="editDateNight.imageUrl"/><br>
-    <button (click)="update(editDateNight)" class="btn-default">Save</button>
-    <button (click)="editDateNight = null" class="btn-default">Cancel</button>
-  </form>
-
 
 </div>
