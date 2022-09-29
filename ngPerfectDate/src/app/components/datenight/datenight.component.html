@@ -1,14 +1,14 @@
 <div *ngIf="!selected" class="datenight">
-  <div class="form">
 
-    <h1 class="header"><span>Add Date Night</span></h1>
+ <br><br>
+  <div id="addDatenight">
+     <form *ngIf="!selected" class="form-group" id="formSize">
+      <h3 class="header"><span>Add Date Night</span></h3>
+      <label>Name:</label><input class="form-control" type="text" name="reviewId" [(ngModel)]="newDateNight.name"/><br>
+      <label>Description:</label><input class="form-control" type="text" name="name" [(ngModel)]="newDateNight.description"/><br>
+      <label>Image:</label><input class="form-control" type="text" name="comment" [(ngModel)]="newDateNight.imageUrl"/><br>
 
-    <form *ngIf="!selected" class="add">
-      <label>Name:</label><input type="text" name="reviewId" [(ngModel)]="newDateNight.name"/><br>
-      <label>Description:</label><input type="text" name="name" [(ngModel)]="newDateNight.description"/><br>
-      <label>Image:</label><input type="text" name="comment" [(ngModel)]="newDateNight.imageUrl"/><br>
-
-      <button (click)="create(newDateNight)" class="btn-default">Post date night</button>
+      <button (click)="create(newDateNight)" class="btn btn-success form-control" >Post date night</button><br><br>
 
     </form>
   </div>
@@ -52,21 +52,21 @@
 
 
 
-      <div class="form">
-        <form *ngIf="selected && showAddReviewForm">
+      <div id="addReview">
+        <form *ngIf="selected && showAddReviewForm" class="form-group" id="formSize">
           <label for="rating">Rating:</label>
-          <select id="rating" name="rating" [(ngModel)]="newReview.rating"><br>
+          <select id="rating" name="rating" [(ngModel)]="newReview.rating" class="form-control" ><br>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
         </select><br>
-      <label for="comment">Write a comment below:</label><br><textarea name="comment" rows="10" cols="30" [(ngModel)]="newReview.comment"></textarea><br>
-      <label for="image">Image:</label><br><input type="text" name="image" [(ngModel)]="newReview.images"/><br>
+      <label for="comment">Write a comment below:</label><br><textarea class="form-control"  name="comment"  rows="10" cols="30" [(ngModel)]="newReview.comment"></textarea><br>
+      <label for="image">Image:</label><br><input class="form-control"  type="text" name="image" [(ngModel)]="newReview.images"/><br>
 
-      <button (click)="addReview(newReview, selected.id)" class="btn-default" (click)="showAddReviewForm = false">Post your review</button>
-
+      <button (click)="addReview(newReview, selected.id)" class="btn btn-success" (click)="showAddReviewForm = false">Post your review</button>
+        <br>
         </form>
       </div>
 
