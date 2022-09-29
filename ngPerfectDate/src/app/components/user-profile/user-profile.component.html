@@ -26,10 +26,38 @@
     First Name: <input class="form-control" type="text" name="firstName" [(ngModel)]="editUser.firstName"  >
     Last Name: <input class="form-control" type="text" name="lastName" [(ngModel)]="editUser.lastName">
     Email: <input class="form-control" type="text" name="email" [(ngModel)]="editUser.email">
-    Bio: <input class="form-control" type="text" name="biography" [(ngModel)]="editUser.biography"><br>
-    <button class="btn btn-danger" (click)="editUser= null">Cancel</button>
+    Bio: <input class="form-control" type="text" name="biography" [(ngModel)]="editUser.biography">
+    Profile Picture: <input class="form-control" type="text" name="imgUrl" [(ngModel)]="editUser.imageUrl"><br>
+    <button class="btn btn-warning" (click)="editUser= null">Cancel</button> &nbsp;
     <button class="btn btn-success" (click)="update(editUser)">Update</button><br>
     <br>
   </form>
 </div>
+</div>
+<br><br>
+<button (click)="showBlogs=!showBlogs" class="btn btn-default">List of Posts</button>
+
+<div class="col" *ngIf="showBlogs">
+  <h4><span>List of Blogs</span></h4>
+  <table class="table hover table-bordered"  >
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody  >
+      <tr (click)="displayBlog(blog)"  *ngFor="let blog of blogs">
+        <td>{{blog.blogDate}}</td>
+        <td >{{blog.title}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="selectedBlog && displayDetails" class="details">
+  <p>Title {{selectedBlog.title}}</p>
+  <p>Date: {{selectedBlog.blogDate}}</p>
+  <p>Post: {{selectedBlog.comments}}</p>
+  <button (click)="displayDetails=false" >Hide Details</button>
 </div>

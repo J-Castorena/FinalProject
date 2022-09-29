@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
@@ -11,12 +12,11 @@ export class BlogService {
   private baseUrl = 'http://localhost:8090/'
   private url = this.baseUrl + 'api/blogs';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private auth: AuthService) { }
 
 
-  index() {
 
-  }
   getAllBlogs(): Observable<Blog[]> {
     return this.http.get<Blog[]>(this.url).pipe(
       catchError((error: any) => {
@@ -28,6 +28,28 @@ export class BlogService {
         )
       })
     );
+  }
+
+  getBlogsByUser(uId: number): Observable<Blog[]> {
+  return this.http.get<Blog[]>(this.url+'/users/'+uId, this.getHttpOptions()).pipe(
+    catchError((error: any) => {
+      console.log(error);
+      return throwError(
+        () => new Error(
+          'BlogService.getAllBlogs():error retrieving list from Blog: ' + error
+        )
+      )
+    })
+    );
+  }
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
   }
 
   getBlog(id: number): Observable<Blog> {

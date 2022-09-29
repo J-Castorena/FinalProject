@@ -22,6 +22,8 @@ export class UserProfileComponent implements OnInit {
   loggedIn: User = new User();
   blogs: Blog [] = [];
   selectedBlog: Blog | null = null;
+  showBlogs: boolean = false;
+  displayDetails: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -42,6 +44,8 @@ export class UserProfileComponent implements OnInit {
     this.selected = user;
   }
 
+
+
   getUserByUsername(username: string) {
     this.userServ.getUserByUsername(username).subscribe({
       next: (data) => {
@@ -59,6 +63,7 @@ export class UserProfileComponent implements OnInit {
     return this.auth.getLoggedInUser().subscribe({
       next: (data) => {
         this.loggedIn = data;
+        this.loadBlogs();
       },
       error: (err) => {
         console.log('DatenightComponent.reload(): error loading datenights:');
@@ -100,4 +105,25 @@ export class UserProfileComponent implements OnInit {
       },
     });
   }
+
+  loadBlogs(): void{
+    this.blogServ.getBlogsByUser(this.loggedIn.id).subscribe(
+      {
+      next: (blogs) => {
+        this.blogs = blogs;
+      },
+      error: (err) => {
+        console.log('BlogComponent.reload(): error loading blogs:');
+        console.log(err);
+      }
+      }
+    );
+  }
+
+  displayBlog(blog: Blog){
+    this.selectedBlog = blog;
+    this.displayDetails = true;
+    console.log(this.selectedBlog);
+  }
+
 }
