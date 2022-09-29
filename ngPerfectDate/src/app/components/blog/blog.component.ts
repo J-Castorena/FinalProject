@@ -1,3 +1,4 @@
+import { BlogCommentService } from './../../services/blog-comment.service';
 import { BlogComment } from './../../models/blog-comment';
 import { BlogService } from './../../services/blog.service';
 import { Component, OnInit } from '@angular/core';
@@ -18,8 +19,15 @@ export class BlogComponent implements OnInit {
   loggedIn: User = new User();
   editBlog: Blog[] | null = null;
   newBlog: Blog = new Blog();
+  editBlogUser: Blog | null = null;
+  showThread: boolean = false;
 
-  constructor(private blogService: BlogService, private auth: AuthService) { }
+
+
+
+
+
+  constructor(private blogService: BlogService, private auth: AuthService, private blogCommentService: BlogCommentService ) { }
 
   ngOnInit(): void {
     this.displayAllBlogs();
@@ -53,6 +61,9 @@ export class BlogComponent implements OnInit {
         this.blogs = data;
         this.selected = this.blogs;
         console.log(this.blogs);
+        for(let blog of this.blogs){
+          console.log(blog.user);
+        }
       },
       error: (err) => {
         console.error(
@@ -93,18 +104,55 @@ export class BlogComponent implements OnInit {
     )
   }
 
-  // getComments(): void {
-  //   this.blogCommentService.index().subscribe(
-  //     {
-  //     next: (blogComments) => {
-  //       this.blogComments = blogComments;
-  //     },
-  //     error: (err) => {
-  //       console.log('DatenightComponent.reload(): error loading datenights:');
-  //       console.log(err);
-  //     }
-  //     }
-  //   );
-  // }
+  update(updatedBlog: Blog) {
+    this.blogService.update(updatedBlog).subscribe(
+      {
+        next: (data) => {
+          this.selected = null;
+          this.editBlogUser = null;
+          this.displayAllBlogs();
+        },
+        error: (err) => {
+          console.error('BlogComponent.updateBlog(): error updating blog:');
+          console.error(err);
+        }
+
+      }
+    )
+    }
+
+    updateCompleted(updatedBlog: Blog) {
+      this.blogService.update(updatedBlog).subscribe(
+       {
+         next: (data) => {
+           this.displayAllBlogs();
+         },
+         error: (err) => {
+           console.error('BlogComponent.updateBlog(): error updating blog:');
+           console.error(err);
+         }
+       }
+     );
+     }
+
+    showAllBlogComments(id: number){
+      this.blogCommentService.getAllBlogCommentsById(id).subscribe(
+            {
+            next: (blogComments) => {
+              this.blogComments = blogComments;
+              this.showSelected();
+              console.log(this.blogComments);
+            },
+            error: (err) => {
+              console.log('BlogCommentComponent.getAllBlogComments(): error loading blog comments:');
+              console.log(err);
+            }
+            }
+          );
+    }
+
+      showSelected(){
+       this.showThread = !this.showThread;
+      }
 
 }

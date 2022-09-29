@@ -1,38 +1,53 @@
-<div *ngIf="selected">
-  <ul *ngFor="let blog of blogs">
-    <div *ngIf="blog.active == true">
-    <li>
-      {{blog.id}}
-    </li>
-    <li>
-      {{blog.title}}
-    </li>
-    <li>
-      {{blog.blogDate}}
-    </li>
-    <li >
-      {{blog.comments}}
-    </li>
-    <li>
-      {{blog.imageUrl}}
-    </li>
+<body>
+<div id="masterCard" class="card text-center" *ngFor="let blog of blogs">
+  <div class="card-header">
+    Author: {{blog.user.username}}
   </div>
-  <div id="buttonDiv">
-    <button *ngIf="loggedIn.role === 'admin'"class="btn btn-secondary" (click)="setEdit()"  editBlog = selected >Edit</button>
-    <button *ngIf="loggedIn.role === 'admin'" class="btn btn-danger"(click)="delete(blog.id)">Delete</button>
+  <div class="card-body">
+    <h5 class="card-title">{{blog.title}}</h5>
+    <p class="card-text">{{blog.comments}}</p>
+    <a class="btn btn-primary" (click)="showAllBlogComments(blog.id)">View Thread</a>
+    <div *ngIf="showThread">
+    <div *ngFor="let blogcomment of blogComments">
+      <div class="comment-thread">
+        <!-- Comment 1 start -->
+        <div class="comment" id="comment-1">
+            <div class="comment-heading">
+                <div class="comment-voting">
+                    <button type="button">
+                        <span aria-hidden="true">&#9650;</span>
+                        <span class="sr-only">Vote up</span>
+                    </button>
+                    <button type="button">
+                        <span aria-hidden="true">&#9660;</span>
+                        <span class="sr-only">Vote down</span>
+                    </button>
+                </div>
+                <div class="comment-info">
+                    <a href="#" class="comment-author">{{blogcomment.user.username}}</a>
+                    <p class="m-0">
+                        {{blogcomment.blogCommentDate}}
+                    </p>
+                </div>
+            </div>
+
+            <div class="comment-body">
+                <p>
+                    {{blogcomment.message}}
+                </p>
+                <button type="button">Reply</button>
+                <button type="button">Flag</button>
+            </div>
+
+        </div>
+        <!-- Comment 1 end -->
+    </div>
+    </div>
+    </div>
   </div>
-  </ul>
+  <div class="card-footer text-muted">
+    {{blog.blogDate}}
+  </div>
 </div>
+</body>
 
-
-<form *ngIf="selected">
-    <label>Title</label><input type="text" name="title" [(ngModel)]="newBlog.title">
-    <br>
-    <label>Blog Date</label><input type="date" name="title" [(ngModel)]="newBlog.blogDate">
-    <br>
-    <label>Comment</label><input type="text" name="title" [(ngModel)]="newBlog.comments">
-    <br>
-    <label>Image URL</label><input type="text" name="title" [(ngModel)]="newBlog.imageUrl">
-    <br>
-<button class="btn btn-success" (click)="create(newBlog)">Add Blog</button>
-</form>

@@ -29,7 +29,7 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 	public List<BlogComment> listCommentsByBlogId(int id) {
 		return commentRepo.findByBlogId(id);
 	}
-
+	
 	@Override
 	public BlogComment createBlogComment(int id, BlogComment comment) {
 		Optional<Blog> blogOp = blogRepo.findById(id);
