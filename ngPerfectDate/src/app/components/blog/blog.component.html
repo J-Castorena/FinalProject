@@ -5,7 +5,7 @@
   <div class="card-body">
     <h5 class="card-title">{{blog.title}}</h5>
     <p class="card-text">{{blog.comments}}</p>
-    <a *ngIf="loggedIn" class="btn btn-primary" (click)="showAllBlogComments(blog.id, i)">View Thread</a>
+    <a *ngIf="loggedIn" class="btn btn-primary" id="Button" (click)="showAllBlogComments(blog.id, i)">View Thread</a>
     <div *ngIf="showThread[i]">
     <div *ngFor="let blogcomment of blog.blogComments">
       <div class="comment-thread">
