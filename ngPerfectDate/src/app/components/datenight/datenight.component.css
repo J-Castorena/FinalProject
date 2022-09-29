@@ -64,3 +64,11 @@ li {
   background-color: #B51004;
   border-radius: 15px;
 }
+
+#Layout{
+  margin-bottom: 10px;
+  padding-top: 2%;
+  padding-left: 15%;
+  padding-right: 10%;
+  padding-bottom: 2%;
+}

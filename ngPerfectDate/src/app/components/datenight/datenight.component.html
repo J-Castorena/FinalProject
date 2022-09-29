@@ -13,7 +13,7 @@
     </form>
   </div>
 
-  <div class="col" >
+  <div id="Layout" class="col" >
 
     <h1 class="header">List of Date Nights</h1><br><br>
     <header *ngFor="let datenight of datenights" (click)="display(datenight); loadReviews(datenight); loadAverageRating(datenight)">
