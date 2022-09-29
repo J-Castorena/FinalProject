@@ -11,7 +11,7 @@
     <div *ngFor="let blogcomment of blogComments">
       <div class="comment-thread">
         <!-- Comment 1 start -->
-        <div class="comment" id="comment-1">
+        <div id="reply" class="comment" id="comment-1">
             <div class="comment-heading">
                 <div class="comment-voting">
                     <button type="button">
@@ -35,14 +35,13 @@
                 <p>
                     {{blogcomment.message}}
                 </p>
-                <button type="button">Reply</button>
-                <button type="button">Flag</button>
             </div>
 
         </div>
         <!-- Comment 1 end -->
     </div>
     </div>
+    <button type="button">Reply</button>
     </div>
   </div>
   <div class="card-footer text-muted">
@@ -51,3 +50,10 @@
 </div>
 </body>
 
+
+<!-- //waiting to develope -->
+<div *ngIf="!selected">
+  <form>
+    <input type="text"><label>Comment:</label>
+  </form>
+</div>
