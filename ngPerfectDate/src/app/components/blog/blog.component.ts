@@ -16,14 +16,16 @@ export class BlogComponent implements OnInit {
   blogs: Blog[] = [];
   blogComments: BlogComment[] = [];
   selected: Blog[] | null = null;
-  loggedIn: User = new User();
+  loggedIn: User | null = null;
   editBlog: Blog[] | null = null;
   newBlog: Blog = new Blog();
   editBlogUser: Blog | null = null;
   showThread: boolean[] = [];
-
-
-
+  // newComment: BlogComment | null = null;
+  newComment: BlogComment = new BlogComment();
+  doReplyFlag: boolean = false;
+  blogCommentReplies: any = [];
+  replyButtonText: string = "Reply";
 
 
 
@@ -139,8 +141,32 @@ export class BlogComponent implements OnInit {
       this.blogCommentService.getAllBlogCommentsById(id).subscribe(
             {
             next: (blogComments) => {
-              this.blogComments = blogComments;
+              // this.blogComments = blogComments;
+              if(blogComments.length > 0){
+                let blogId = blogComments[0].blog.id;
+                for(let i =0; i < this.blogs.length; i++){
+                  if(this.blogs[i].id === blogId){
+                    this.blogs[i].blogComments = blogComments;
+                    break;
+                  }
+                }
+              }
+              if(index >= 0){
               this.showThread[index] = !this.showThread[index];
+            }
+              // for(let i = 0; i < blogComments.length; i++){
+              // this.blogCommentService.getAllBlogRepliesById(blogComments[i].id).subscribe(
+              //   {
+              //   next: (blogComments) => {
+              //     this.blogCommentReplies.push(blogComments);
+              //   },
+              //   error: (err) => {
+              //     console.log('BlogCommentComponent.getAllBlogComments(): error loading blog comments:');
+              //     console.log(err);
+              //   }
+              //   }
+              // );
+            // }
               console.log(this.blogComments);
             },
             error: (err) => {
@@ -151,6 +177,27 @@ export class BlogComponent implements OnInit {
           );
     }
 
+    reply(blogId: number, newComment: BlogComment){
+      this.blogCommentService.addCommentToBlog(newComment, blogId).subscribe(
+        {
+        next: (data) => {
+          this.blogComments.push(data);
+          this.showAllBlogComments(blogId, -1);
+        },
+        error: (err) => {
+          console.log('BlogCommentComponent.getAllBlogComments(): error loading blog comments:');
+          console.log(err);
+        }
+        }
+      );
+    }
 
+    toggleReplyButtonText(){
+    if(this.doReplyFlag){
+      this.replyButtonText = "Cancel";
+    } else{
+      this.replyButtonText = "Reply";
+    }
+    }
 
 }

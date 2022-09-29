@@ -53,13 +53,13 @@ export class BlogCommentService {
     );
   }
 
-  create(blogComment: BlogComment): Observable<BlogComment> {
-    return this.http.post<BlogComment>(this.url, blogComment).pipe(
+  addCommentToBlog(blogComment: BlogComment, id: number): Observable<BlogComment> {
+    return this.http.post<BlogComment>(this.baseUrl + 'api/blogs/' + id + '/comments', blogComment ,this.getHttpOptions()).pipe(
      catchError((error: any) => {
        console.log(error);
        return throwError(
          () => new Error(
-           'BlogCommentService.create():error creating BlogComment: ' + error
+           'BlogCommentService.addCommentToBlog():error creating BlogComment: ' + error
          )
        );
      })
@@ -100,5 +100,18 @@ export class BlogCommentService {
       },
     };
     return options;
+  }
+
+  getAllBlogRepliesById(id: number): Observable<BlogComment[]> {
+    return this.http.get<BlogComment[]>(this.baseUrl + 'api/blogs/' + id + '/replies', this.getHttpOptions()).pipe(
+      catchError((error: any) => {
+        console.log(error);
+        return throwError(
+          () => new Error(
+            'BlogCommentService.getAllBlogComments():error retrieving list from BlogComment: ' + error
+          )
+        )
+      })
+    );
   }
 }

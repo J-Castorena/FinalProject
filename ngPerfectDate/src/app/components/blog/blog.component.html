@@ -1,4 +1,3 @@
-<body>
 <div id="masterCard" class="card text-center" *ngFor="let blog of blogs; let i = index">
   <div class="card-header">
     Author: {{blog.user.username}}
@@ -6,9 +5,9 @@
   <div class="card-body">
     <h5 class="card-title">{{blog.title}}</h5>
     <p class="card-text">{{blog.comments}}</p>
-    <a class="btn btn-primary" (click)="showAllBlogComments(blog.id, i)">View Thread</a>
+    <a *ngIf="loggedIn" class="btn btn-primary" (click)="showAllBlogComments(blog.id, i)">View Thread</a>
     <div *ngIf="showThread[i]">
-    <div *ngFor="let blogcomment of blogComments">
+    <div *ngFor="let blogcomment of blog.blogComments">
       <div class="comment-thread">
         <!-- Comment 1 start -->
         <div id="reply" class="comment" id="comment-1">
@@ -39,21 +38,27 @@
 
         </div>
         <!-- Comment 1 end -->
+        <div *ngFor="let reply of blogCommentReplies[i]">
+          {{reply.message}}
+        </div>
     </div>
     </div>
-    <button type="button">Reply</button>
+    <button type="button" (click)="doReplyFlag = !doReplyFlag; toggleReplyButtonText()">{{replyButtonText}}</button>
+
+    <div *ngIf="doReplyFlag">
+      <form>
+        <input type="text" name="message" value="message" [(ngModel)]="newComment.message"><label>Comment: </label>
+        <input type="datetime" name="blogCommentDate" value="blogCommentDate" [(ngModel)]="newComment.blogCommentDate" hidden>
+        <input type="text" name="imageUrl" value="imageUrl" [(ngModel)]="newComment.imageUrl"><label>Image Url: </label>
+        <button type="submit" (click)="reply(blog.id, newComment)">Submit</button>
+      </form>
+    </div>
     </div>
   </div>
+
   <div class="card-footer text-muted">
     {{blog.blogDate}}
   </div>
 </div>
-</body>
 
 
-<!-- //waiting to develope -->
-<div *ngIf="!selected">
-  <form>
-    <input type="text"><label>Comment:</label>
-  </form>
-</div>
