@@ -1,0 +1,38 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border: 1px solid black;
+  background-color: #7D0F07;
+  margin: 1rem;
+  text-align: center;
+  display: inline-block;
+
+}
+
+.inline {
+  display: inline-block;
+  padding: 1rem 1rem;
+  color: whitesmoke;
+
+}
+
+.linkButton {
+  background-color: #8419C5;
+  color: white;
+}
+
+#homebtn {
+  width: 100px;
+  height: 50px;
+}
+
+#link1 {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+
+
+
