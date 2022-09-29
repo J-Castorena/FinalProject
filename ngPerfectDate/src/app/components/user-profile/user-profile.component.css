@@ -1,0 +1,30 @@
+.btn-default {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: whitesmoke;
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(108, 89, 179, 0.75);
+  border-radius: 40px;
+  background: #B51004;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-default:hover {
+  color: #FFF;
+  background: rgba(108, 88, 179, 0.75);
+  border: 2px solid rgba(108, 89, 179, 0.75);
+}
+
+#editUser{
+  width:500px;
+  margin: 0 auto;
+  background-color: #B51004;
+  border-radius: 15px;
+}
+
+#formSize{
+  width: 450px;
+  margin: auto;
+}
+
