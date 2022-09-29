@@ -43,7 +43,8 @@ public class BlogController {
 		}
 		return blogs;
 	}
-
+	
+	
 	@PostMapping("users/{id}/blogs")
 	public Blog addBlogByUserId(
 			@PathVariable int id,
