@@ -5,7 +5,7 @@
   <div class="card-body">
     <h5 class="card-title">{{blog.title}}</h5>
     <p class="card-text">{{blog.comments}}</p>
-    <a *ngIf="loggedIn" class="btn btn-primary" (click)="showAllBlogComments(blog.id, i)">View Thread</a>
+    <a *ngIf="loggedIn" class="btn btn-primary" id="Button" (click)="showAllBlogComments(blog.id, i)">View Thread</a>
     <div *ngIf="showThread[i]">
     <div *ngFor="let blogcomment of blog.blogComments">
       <div class="comment-thread">
@@ -25,7 +25,7 @@
                 <div class="comment-info">
                     <a href="#" class="comment-author">{{blogcomment.user.username}}</a>
                     <p class="m-0">
-                        {{blogcomment.blogCommentDate}}
+                        {{blogcomment.blogCommentDate | date}}
                     </p>
                 </div>
             </div>
@@ -47,10 +47,11 @@
 
     <div *ngIf="doReplyFlag">
       <form>
-        <input type="text" name="message" value="message" [(ngModel)]="newComment.message"><label>Comment: </label>
-        <input type="datetime" name="blogCommentDate" value="blogCommentDate" [(ngModel)]="newComment.blogCommentDate" hidden>
-        <input type="text" name="imageUrl" value="imageUrl" [(ngModel)]="newComment.imageUrl"><label>Image Url: </label>
-        <button type="submit" (click)="reply(blog.id, newComment)">Submit</button>
+        <br>
+        <label >Comment: </label><input id="CommentBox" type="text" class="form-control" name="message" value="message" [(ngModel)]="newComment.message"><br>
+        <input type="datetime" name="blogCommentDate" value="blogCommentDate" [(ngModel)]="newComment.blogCommentDate" hidden><br>
+        <input type="text" name="imageUrl" value="imageUrl" [(ngModel)]="newComment.imageUrl" hidden><br>
+        <button type="submit" class="btn btn-primary" (click)="reply(blog.id, newComment)">Submit</button>
       </form>
     </div>
     </div>

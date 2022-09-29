@@ -45,3 +45,30 @@ li {
 
   font-size: 50px;
 }
+
+#addDatenight {
+  width:500px;
+  margin: 0 auto;
+  background-color: #B51004;
+  border-radius: 15px;
+}
+
+#formSize{
+  width: 450px;
+  margin: auto;
+}
+
+#addReview {
+  width:500px;
+  margin: 0 auto;
+  background-color: #B51004;
+  border-radius: 15px;
+}
+
+#Layout{
+  margin-bottom: 10px;
+  padding-top: 2%;
+  padding-left: 15%;
+  padding-right: 10%;
+  padding-bottom: 2%;
+}
