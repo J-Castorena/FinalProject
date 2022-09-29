@@ -33,17 +33,18 @@ public class BlogController {
 		return blogServ.listAllBlogs();
 	}
 
-	@GetMapping("users/{id}/blogs")
+	@GetMapping("blogs/users/{userId}")
 	public List<Blog> listBlogByUser(
-			@PathVariable int id, 
+			@PathVariable int userId, 
 			HttpServletResponse resp) {
-		List<Blog> blogs = blogServ.listBlogByUserId(id);
+		List<Blog> blogs = blogServ.listBlogByUserId(userId);
 		if (blogs == null) {
 			resp.setStatus(404);
 		}
 		return blogs;
 	}
-
+	
+	
 	@PostMapping("users/{id}/blogs")
 	public Blog addBlogByUserId(
 			@PathVariable int id,

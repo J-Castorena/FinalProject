@@ -30,6 +30,8 @@ import { CategoryTypePipe } from './pipes/category-type.pipe';
 import { PipesPipe } from './pipes.pipe';
 import { LogoutComponent } from './components/logout/logout.component';
 import { DatePipe } from '@angular/common';
+import { UserTypePipe } from './pipes/user-type.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 import { ReviewPipe } from './pipes/review.pipe';
 
 
@@ -48,6 +50,8 @@ import { ReviewPipe } from './pipes/review.pipe';
     CategoryTypePipe,
     PipesPipe,
     LogoutComponent,
+    UserTypePipe,
+    FooterComponent,
     ReviewPipe
   ],
   imports: [

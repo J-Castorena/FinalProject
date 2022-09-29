@@ -167,6 +167,7 @@ export class DatenightComponent implements OnInit {
   setEdit() {
     this.editDateNight = Object.assign({}, this.selected);
   }
+
   update(updatedDateNight: DateNight) {
   this.DateNightService.update(updatedDateNight).subscribe(
     {

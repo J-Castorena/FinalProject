@@ -1,6 +1,10 @@
+import { BlogCommentService } from './../../services/blog-comment.service';
+import { BlogComment } from './../../models/blog-comment';
 import { BlogService } from './../../services/blog.service';
 import { Component, OnInit } from '@angular/core';
 import { Blog } from 'src/app/models/blog';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-blog',
@@ -9,114 +13,144 @@ import { Blog } from 'src/app/models/blog';
 })
 export class BlogComponent implements OnInit {
 
+  blogs: Blog[] = [];
+  blogComments: BlogComment[] = [];
+  selected: Blog[] | null = null;
+  loggedIn: User = new User();
+  editBlog: Blog[] | null = null;
+  newBlog: Blog = new Blog();
+  editBlogUser: Blog | null = null;
+  showThread: boolean[] = [];
 
-  blogs: Blog [] = [];
-  constructor(private BlogService: BlogService) { }
 
+
+
+
+
+  constructor(private blogService: BlogService, private auth: AuthService, private blogCommentService: BlogCommentService ) { }
 
   ngOnInit(): void {
-    // this.loadBlogs();
+    this.displayAllBlogs();
+    this.getLoggedInUser();
     console.log(this.blogs);
 
   }
-  // loadBlogs(): void {
-  //   this.BlogService.index().subscribe(
-  //     {
-  //     next: (blogs) => {
-  //       this.blogs = blogs;
-  //     },
-  //     error: (err) => {
-  //       console.log('DatenightComponent.reload(): error loading datenights:');
-  //       console.log(err);
-  //     }
-  //     }
-  //   );
-  // }
-
-  // reload(){
-  //   this.DateNightService.index().subscribe(
-  //     {
-  //       next: (data) => {
-  //         this.datenights = data
-  //       },
-  //       error: (err) => {
-  //         console.log('DatenightComponent.reload(): error loading datenights:');
-  //         console.log(err);
-  //       }
-  //     }
-  //   )
-  // }
 
 
+  getLoggedInUser(){
+    return this.auth.getLoggedInUser().subscribe(
+      {
+        next: (data) => {
+        this.loggedIn = data;
+        },
+        error: (err) => {
+          console.log('BlogComponent.getLoggedInUser(): error loading logged in user:');
+          console.log(err);
+      }
+    }
+    );
+  }
 
-  // create(dateight: DateNight): void {
-  //   this.DateNightService.create(this.newDateNight).subscribe(
-  //     {
-  //       next: (result) => {
-  //         this.newDateNight = new DateNight();
-  //         this.reload();
+  setEdit() {
+    this.editBlog = Object.assign({}, this.selected);
+  }
 
-  //       },
-  //       error: (problem) => {
-  //         console.error('DateNightHttpComponent.createDateNight(): error adding datenight:');
-  //         console.error(problem);
-  //       }
-  //     }
-  //   );
-  // }
-  // display(datenight: DateNight){
-  //   this.selected = datenight;
-  //   console.log(this.selected);
-  // }
+  displayAllBlogs()  {
+    this.blogService.getAllBlogs().subscribe({
+      next: (data) => {
+        this.blogs = data;
+        this.selected = this.blogs;
+        console.log(this.blogs);
+        for(let blog of this.blogs){
+          this.showThread.push(false);
+        }
+      },
+      error: (err) => {
+        console.error(
+          'Blog.component.ts displayAllBlogs(): error retrieving blogs ' + err
+        );
+      },
+    });
+  }
 
-  // setEdit() {
-  //   this.editDateNight = Object.assign({}, this.selected);
-  // }
-  // update(updatedDateNight: DateNight) {
-  // this.DateNightService.update(updatedDateNight).subscribe(
-  //   {
-  //     next: (data) => {
-  //       this.selected = data;
-  //       this.editDateNight = null;
-  //       this.reload();
-  //     },
-  //     error: (err) => {
-  //       console.error('DateNightListComponent.updateDateNight(): error updating datenight:');
-  //       console.error(err);
-  //     }
+  create(blog: Blog): void {
+    this.blogService.create(this.newBlog).subscribe(
+      {
+        next: (result) => {
+          this.newBlog = new Blog();
+          this.displayAllBlogs();
 
-  //   }
-  // )
-  // }
+        },
+        error: (problem) => {
+          console.error('BlogHttpComponent.createBlog(): error adding blog:');
+          console.error(problem);
+        }
+      }
+    );
+  }
 
-  // updateCompleted(updatedDateNight: DateNight) {
-  //   this.DateNightService.update(updatedDateNight).subscribe(
-  //    {
-  //      next: (data) => {
-  //        this.reload();
-  //      },
-  //      error: (err) => {
-  //        console.error('DateNightListComponent.updateDateNight(): error updating datenight:');
-  //        console.error(err);
-  //      }
-  //    }
-  //  );
+  delete(id: number) {
+    this.blogService.delete(id).subscribe(
+      {
+        next: (data) => {
+          this.selected = null;
+          this.displayAllBlogs();
+        },
+        error: (err) => {
+          console.error('BlogComponent.delete(): error deleting blog:');
+          console.error(err);
+        }
+      }
+    )
+  }
 
-  //  }
+  update(updatedBlog: Blog) {
+    this.blogService.update(updatedBlog).subscribe(
+      {
+        next: (data) => {
+          this.selected = null;
+          this.editBlogUser = null;
+          this.displayAllBlogs();
+        },
+        error: (err) => {
+          console.error('BlogComponent.updateBlog(): error updating blog:');
+          console.error(err);
+        }
 
-  // delete(id: number) {
-  //   this.DateNightService.delete(id).subscribe(
-  //     {
-  //       next: (data) => {
-  //         this.selected = null;
-  //         this.reload();
-  //       },
-  //       error: (err) => {
-  //         console.error('DateNightComponent.delete(): error deleting datenight:');
-  //         console.error(err);
-  //       }
-  //     }
-  //   )
-  // }
+      }
+    )
+    }
+
+    updateCompleted(updatedBlog: Blog) {
+      this.blogService.update(updatedBlog).subscribe(
+       {
+         next: (data) => {
+           this.displayAllBlogs();
+         },
+         error: (err) => {
+           console.error('BlogComponent.updateBlog(): error updating blog:');
+           console.error(err);
+         }
+       }
+     );
+     }
+
+    showAllBlogComments(id: number, index: number){
+      this.blogCommentService.getAllBlogCommentsById(id).subscribe(
+            {
+            next: (blogComments) => {
+              this.blogComments = blogComments;
+              this.showThread[index] = !this.showThread[index];
+              console.log(this.blogComments);
+            },
+            error: (err) => {
+              console.log('BlogCommentComponent.getAllBlogComments(): error loading blog comments:');
+              console.log(err);
+            }
+            }
+          );
+    }
+
+
 
 }

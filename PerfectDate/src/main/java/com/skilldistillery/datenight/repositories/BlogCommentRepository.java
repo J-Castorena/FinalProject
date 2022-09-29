@@ -10,6 +10,5 @@ import com.skilldistillery.datenight.entities.BlogComment;
 public interface BlogCommentRepository extends JpaRepository<BlogComment, Integer> {
 	
 	List<BlogComment> findByBlogId(int id);
-	
 
 }

@@ -29,6 +29,7 @@ public class BlogServiceImpl implements BlogService {
 	public List<Blog> listBlogByUserId(int id) {
 		return blogRepo.findByUserId(id);
 	}
+	
 
 	@Override
 	public Blog createBlog(int id, Blog blog) {
@@ -67,8 +68,14 @@ public class BlogServiceImpl implements BlogService {
 
 	@Override
 	public boolean deleteBlog(int id) {
-		blogRepo.deleteById(id);
-		return !blogRepo.existsById(id);
+		Optional<Blog> blogToDeactivate = blogRepo.findById(id);
+		if(blogToDeactivate.isPresent()) {
+			Blog blog = blogToDeactivate.get();
+			blog.setActive(false);
+			blogRepo.saveAndFlush(blog);
+			return true;
+		}
+		return false;
 	}
 
 }
