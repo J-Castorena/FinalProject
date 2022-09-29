@@ -28,3 +28,15 @@
   margin: auto;
 }
 
+.mainDiv{
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+#container {
+  width: 30%; /* Can be in percentage also. */
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}
