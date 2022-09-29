@@ -71,4 +71,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDeleted;
 	}
 
+	@Override
+	public List<Review> reviewByDateNightId(Integer id) {
+		return reviewRepo.findReviewByDateNightId(id);
+	}
+
 }

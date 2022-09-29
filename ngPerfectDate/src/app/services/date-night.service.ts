@@ -4,13 +4,15 @@ import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { DateNight } from '../models/date-night';
+import { environment } from 'src/environments/environment';
+import { Review } from '../models/review';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DateNightService {
   private baseUrl = 'http://localhost:8090/'
-  private url = this.baseUrl + 'api/datenights';
+  private url = environment.baseUrl + 'api/datenights';
 
 
   constructor(private http: HttpClient, private auth: AuthService) { }
@@ -25,6 +27,8 @@ export class DateNightService {
       })
     );
   }
+
+
 
   getAllDateNights(): Observable<DateNight[]> {
     return this.http.get<DateNight[]>(this.url).pipe(

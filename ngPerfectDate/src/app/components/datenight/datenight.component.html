@@ -16,7 +16,7 @@
   <div class="col" >
 
     <h1 class="header">List of Date Nights</h1><br><br>
-    <header *ngFor="let datenight of datenights" (click)="display(datenight)">
+    <header *ngFor="let datenight of datenights" (click)="display(datenight); loadReviews(datenight); loadAverageRating(datenight)">
       <h3>{{datenight.name}}</h3>
       <img class="topImg img-thumbnail" [src]="datenight.imageUrl" />
   </header>
@@ -30,7 +30,7 @@
 
 <h1 class="header">{{selected.name}}</h1>
 <br>
-<div><h3 class="header"> Overall rating: </h3></div>
+ Overall rating: {{selected.avgRating | number:'1.1-1'}}
 
 <blockquote>{{selected.description}}</blockquote>
 
@@ -38,6 +38,7 @@
       <button *ngIf="userLoggedIn()" class="btn-default" (click)="showReviewForm()">Review this date night</button>
       <button *ngIf="loggedIn.role === 'admin'" class="btn-default" (click)="setEdit()"  editDateNight = selected >Edit this Date Night</button>
       <button *ngIf="loggedIn.role === 'admin'" class="btn-default"(click)="delete(selected.id)">Delete</button><br><br><br>
+
 
       <div class="form">
         <form *ngIf="selected && showAddReviewForm">
@@ -62,6 +63,11 @@
          <li>
            <img class="topImg img-thumbnail" [src]="selected.imageUrl"/>
           </li>
+
+            <li  *ngFor="let review of selected.reviews" >
+              <h4>Rating: {{review.rating}}</h4>
+             <h3>{{review.comment}}</h3>
+              </li>
         </ul>
       </div>
   </div>

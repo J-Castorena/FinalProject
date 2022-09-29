@@ -1,16 +1,18 @@
-import { AuthService } from './auth.service';
+import { DateNight } from 'src/app/models/date-night';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
+import { environment } from 'src/environments/environment';
 import { Review } from '../models/review';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewService {
   private baseUrl = 'http://localhost:8090/'
-  private url = this.baseUrl + 'api/reviews';
+  private url = environment.baseUrl + 'api/reviews';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -26,8 +28,9 @@ export class ReviewService {
       })
     );
   }
-  getReviewsByDateNightId(): Observable<Review[]> {
-    return this.http.get<Review[]>(this.url).pipe(
+
+  getReviewsByDateNightId(datenight: DateNight): Observable<Review[]> {
+    return this.http.get<Review[]>(this.url + "/datenights/" + datenight.id, this.getHttpOptions()).pipe(
       catchError((error: any) => {
         console.log(error);
         return throwError(
