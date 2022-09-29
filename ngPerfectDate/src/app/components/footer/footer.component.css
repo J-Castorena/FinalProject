@@ -1,11 +1,10 @@
 .footer {
   width: 100%;
-  border: 1px solid black;
+  border: none;
   background-color: #7D0F07;
   text-align: center;
   display: inline-block;
 }
-
 
 .inline {
   display: inline-block;
