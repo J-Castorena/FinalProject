@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { BlogComment } from '../models/blog-comment';
 import { AuthService } from './auth.service';
 
@@ -9,7 +10,7 @@ import { AuthService } from './auth.service';
 })
 export class BlogCommentService {
   private baseUrl = 'http://localhost:8090/'
-  private url = this.baseUrl + 'api/blogcomments';
+  private url = environment.baseUrl + 'api/blogcomments';
 
   constructor(private http: HttpClient,private auth: AuthService) { }
 

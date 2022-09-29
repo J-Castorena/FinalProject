@@ -8,6 +8,8 @@ public interface ReviewService {
 	List<Review> index();
 
 	Review reviewById(Integer id);
+	
+	List<Review> reviewByDateNightId(Integer id);
 
 	Review createReview(Review review, int dateNightId);
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Category } from '../models/category';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Category } from '../models/category';
 })
 export class CategoryService {
   private baseUrl = 'http://localhost:8090/'
-  private url = this.baseUrl + 'api/categories';
+  private url = environment.baseUrl + 'api/categories';
 
   constructor(private http: HttpClient) { }
 

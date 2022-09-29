@@ -1,10 +1,10 @@
-import { Review } from './../../models/review';
-import { ReviewService } from './../../services/review.service';
-import { User } from './../../models/user';
+import { Component, OnInit } from '@angular/core';
 import { DateNight } from 'src/app/models/date-night';
+import { Review } from './../../models/review';
+import { User } from './../../models/user';
 import { AuthService } from './../../services/auth.service';
 import { DateNightService } from './../../services/date-night.service';
-import { Component, OnInit } from '@angular/core';
+import { ReviewService } from './../../services/review.service';
 
 @Component({
   selector: 'app-datenight',
@@ -26,11 +26,25 @@ export class DatenightComponent implements OnInit {
 
 
 
+
+
   constructor(private DateNightService: DateNightService, private auth: AuthService, private reviewServ: ReviewService) { }
 
   ngOnInit(): void {
     this.loadDateNights();
     this.getLoggedInUser();
+
+
+    console.log(this.datenights);
+
+    // for(let datenight of this.datenights) {
+    //   console.log(datenight);
+
+    //  this.loadAverageRating(datenight);
+
+    // }
+
+
     console.log(this.datenights);
 
   }
@@ -42,18 +56,46 @@ export class DatenightComponent implements OnInit {
         this.loggedIn = data;
         },
         error: (err) => {
-          console.log('DatenightComponent.reload(): error loading datenights:');
+          console.log('DatenightComponent.getLoggedInUser(): error loading loggedInUser:');
           console.log(err);
       }
     }
     );
   }
 
+  loadAverageRating(datenight: DateNight){
+    let average: number = 0;
+    let counter: number = 0;
+    if(datenight.reviews) {
+
+      for(let review of datenight.reviews) {
+        console.log(review);
+
+        average += review.rating;
+        counter++;
+      }
+    }
+    if(counter > 0 && this.selected){
+      this.selected.avgRating = average/counter;
+      return average/counter;
+
+    }
+    return 0;
+  }
+
   loadDateNights(): void {
+
     this.DateNightService.index().subscribe(
+
       {
       next: (datenights) => {
         this.datenights = datenights;
+        for(let datenight of this.datenights) {
+          console.log(this.datenights);
+
+          this.loadReviews(datenight);
+          datenight.avgRating = this.loadAverageRating(datenight);
+        }
       },
       error: (err) => {
         console.log('DatenightComponent.reload(): error loading datenights:');
@@ -63,6 +105,23 @@ export class DatenightComponent implements OnInit {
     );
   }
 
+  loadReviews(datenight: DateNight) {
+    this.reviewServ.getReviewsByDateNightId(datenight).subscribe(
+      {
+        next: (reviews) => {
+
+          datenight.reviews = reviews;
+          reviews = datenight.reviews;
+          console.log(datenight.reviews);
+
+        },
+        error: (err) => {
+          console.log(err);
+
+        }
+      }
+    )
+  }
 
   reload(){
     this.DateNightService.index().subscribe(
@@ -95,9 +154,14 @@ export class DatenightComponent implements OnInit {
       }
     );
   }
+  userLoggedIn(){
+    return this.auth.checkLogin();
+  }
   display(datenight: DateNight){
+    // datenight.avgRating = this.loadAverageRating(datenight);
     this.selected = datenight;
     console.log(this.selected);
+    console.log(this.selected.avgRating);
   }
 
   setEdit() {
@@ -159,15 +223,15 @@ showReviewForm(){
     this.reviewServ.create(review, dateNightId).subscribe(
       {
         next: (data) => {
-          // this.selected = null;
           this.reload();
         },
         error: (err) => {
-          console.error('DateNightComponent.delete(): error adding review:');
+          console.error('DateNightComponent.addReview(): error adding review:');
           console.error(err);
         }
       }
     );
   }
+
 
 }

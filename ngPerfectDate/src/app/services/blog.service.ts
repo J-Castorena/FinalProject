@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
+import { environment } from 'src/environments/environment';
 import { Blog } from '../models/blog';
 
 @Injectable({
@@ -10,7 +11,7 @@ import { Blog } from '../models/blog';
 })
 export class BlogService {
   private baseUrl = 'http://localhost:8090/'
-  private url = this.baseUrl + 'api/blogs';
+  private url = environment.baseUrl + 'api/blogs';
 
   constructor(private http: HttpClient,
     private auth: AuthService) { }

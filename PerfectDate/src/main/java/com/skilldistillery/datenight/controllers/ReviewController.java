@@ -37,8 +37,12 @@ public class ReviewController {
 	public Review reviewById(@PathVariable Integer id) {
 		return reviewService.reviewById(id);
 	}
+	@GetMapping("reviews/datenights/{id}")
+	public List<Review> reviewByDateNightId(@PathVariable Integer id) {
+		return reviewService.reviewByDateNightId(id);
+	}
 
-	@PostMapping("/reviews/{dateNightId}")
+	@PostMapping("reviews/{dateNightId}")
 	public Review addReview(@RequestBody Review review, 
 			@PathVariable int dateNightId,
 			HttpServletRequest req, 

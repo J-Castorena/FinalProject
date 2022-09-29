@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
+import { environment } from 'src/environments/environment';
 import { DateNightDiscussionBoard } from '../models/date-night-discussion-board';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { DateNightDiscussionBoard } from '../models/date-night-discussion-board'
 })
 export class DateNightDiscussionBoardService {
   private baseUrl = 'http://localhost:8090/'
-  private url = this.baseUrl + 'api/datenightdiscussionboards';
+  private url = environment.baseUrl + 'api/datenightdiscussionboards';
 
   constructor(private http: HttpClient) { }
 

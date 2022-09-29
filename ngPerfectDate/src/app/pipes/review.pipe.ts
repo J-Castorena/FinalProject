@@ -8,12 +8,12 @@ export class ReviewPipe implements PipeTransform {
 
   transform(reviews: Review[], comment: string): Review[] {
     let result: Review[] = [];
-  //   for(let review of reviews) {
-  //     for(let dateNight of review.comment)
-  //       if(review.comment === comment) {
-  //         result.push(review);
-  //       }
-  //   }
+    for(let review of reviews) {
+      for(let dateNight of review.comment)
+        if(review.comment === comment) {
+          result.push(review);
+        }
+    }
     return result;
   }
 
