@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Category {
 	
@@ -19,6 +21,7 @@ public class Category {
 	
 	private String name;
 	
+	@JsonIgnoreProperties({"categories"})
 	@ManyToMany(mappedBy="categories")
 	private List<DateNight> dateNights;
 	

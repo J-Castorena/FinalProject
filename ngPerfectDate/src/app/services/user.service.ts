@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError } from 'rxjs/internal/operators/catchError';
+import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
 
 @Injectable({
@@ -11,7 +12,7 @@ import { User } from '../models/user';
 })
 export class UserService {
   private baseUrl = 'http://localhost:8090/'
-  private url = this.baseUrl + 'api/users';
+  private url = environment.baseUrl + 'api/users';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 

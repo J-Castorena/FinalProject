@@ -2,13 +2,14 @@ import { AdditionalImage } from './../models/additional-image';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdditionalImageService {
   private baseUrl = 'http://localhost:8090/'
-  private url = this.baseUrl + 'api/additionalimages';
+  private url = environment.baseUrl + 'api/additionalimages';
 
   constructor(private http: HttpClient) { }
 

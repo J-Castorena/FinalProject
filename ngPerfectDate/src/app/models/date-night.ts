@@ -1,4 +1,5 @@
 import { Category } from "./category";
+import { Review } from "./review";
 import { User } from "./user";
 
 export class DateNight {
@@ -11,6 +12,8 @@ export class DateNight {
   lastUpdatedDate: string;
   active: boolean;
   categories: Category[];
+  reviews: Review[];
+  avgRating: number;
 
   constructor(
   id: number = 0,
@@ -21,7 +24,10 @@ export class DateNight {
   createdDate: string = '',
   lastUpdatedDate: string = '',
   active: boolean = false,
-  categories: Category[] = []
+  categories: Category[] = [],
+  reviews: Review[] = [],
+  avgRating: number = 0
+
   ){
     this.id = id;
     this.name = name;
@@ -32,5 +38,8 @@ export class DateNight {
     this.lastUpdatedDate = lastUpdatedDate;
     this.active = active;
     this.categories = categories;
+    this.reviews = reviews;
+    this.avgRating = avgRating;
+
   }
 }
