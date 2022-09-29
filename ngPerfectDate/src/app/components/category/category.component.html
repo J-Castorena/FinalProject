@@ -1,5 +1,5 @@
 <br>
-<div *ngIf="!selected" class="container">
+<div *ngIf="!selected" id="CardContainer" class="container">
 <div id="imageFeatured" *ngFor="let x of categories; let i = index" >
   <div class="row" *ngIf="i %4 === 0">
     <div class="col" *ngFor="let category of categoryChunks[floor(i/4)]">
