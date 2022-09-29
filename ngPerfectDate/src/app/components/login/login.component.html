@@ -6,7 +6,7 @@
   <div class="row justify-content-center align-items-center">
 <form form-group>
   Username: <input class="form-control" type="text" name="username" [(ngModel)]="loggedInUser.username">
-  Password: <input class="form-control" type="text" name="password" [(ngModel)]="loggedInUser.password"> <br>
+  Password: <input class="form-control" type="password" name="password" [(ngModel)]="loggedInUser.password" > <br>
   <button (click)="login(loggedInUser)" [routerLink]="['/home']" class="btn btn-default">Log In</button>
   </form>
 </div>
