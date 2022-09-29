@@ -30,7 +30,7 @@ export class ReviewService {
   }
 
   getReviewsByDateNightId(datenight: DateNight): Observable<Review[]> {
-    return this.http.get<Review[]>(this.url + "/datenights/" + datenight.id, this.getHttpOptions()).pipe(
+    return this.http.get<Review[]>(this.url + "/datenights/" + datenight.id).pipe(
       catchError((error: any) => {
         console.log(error);
         return throwError(

@@ -27,7 +27,6 @@
     <tr *ngFor="let dateNight of dateNights | categoryType: selected.name" (click)="display(dateNight)" (click)="detailsOnly = true">
       <td>{{dateNight.name}}</td>
       <td>{{dateNight.description}}</td><br>
-
     </tr>
     </tbody>
           </table><br>

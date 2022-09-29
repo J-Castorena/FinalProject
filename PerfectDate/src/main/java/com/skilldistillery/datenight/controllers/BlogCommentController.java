@@ -1,5 +1,6 @@
 package com.skilldistillery.datenight.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,15 +42,19 @@ public class BlogCommentController {
 		return comments;
 	}
 
+	@GetMapping("blogs/{id}/replies")
+	public List<BlogComment> findReplies(@PathVariable int id){
+		return commentServ.findReplies(id);
+	}
 	
 	@PostMapping("blogs/{id}/comments")
 	public BlogComment addBlogCommentByBlogId(
 			@PathVariable int id, 
 			@RequestBody BlogComment comment,
 			HttpServletResponse resp,
-			HttpServletRequest req) {
-		comment = commentServ.createBlogComment(id, comment);
+			HttpServletRequest req, Principal principal) {
 		try {
+			comment = commentServ.createBlogComment(id, comment, principal.getName());
 			if (comment == null) {
 				resp.setStatus(404);
 			} else {
