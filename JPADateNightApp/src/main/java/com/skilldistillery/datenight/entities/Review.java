@@ -93,6 +93,10 @@ public class Review {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+//	public void setUserId(User user) {
+//		this.user = user.getId();
+//	}
 
 	public DateNight getDateNight() {
 		return dateNight;
@@ -111,8 +115,7 @@ public class Review {
 	public void setImages(List<AdditionalImage> images) {
 		this.images = images;
 	}
-
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

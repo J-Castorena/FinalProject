@@ -1,5 +1,5 @@
+import { DateNight } from 'src/app/models/date-night';
 import { DateNightService } from './../../services/date-night.service';
-import { DateNight } from './../../models/date-night';
 import { CategoryService } from './../../services/category.service';
 import { Category } from './../../models/category';
 import { Component, OnInit } from '@angular/core';
@@ -17,8 +17,10 @@ export class CategoryComponent implements OnInit {
   displayNewCategoryForm = false;
 
   dateNights: DateNight[] = [];
-
-
+  dateNight: DateNight = new DateNight();
+  editDateNight: DateNight | null = null;
+  viewMoreDetails: DateNight =new DateNight();
+  detailsOnly: boolean = false;
   selected: Category | null = null;
   selectedType = 'all';
   categoryChunks: any;
@@ -57,6 +59,10 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  display(dateNight: DateNight) {
+    this.viewMoreDetails = dateNight;
+    console.log(this.dateNight);
+  }
   getDates(): void {
     this.dateNightService.index().subscribe(
       {

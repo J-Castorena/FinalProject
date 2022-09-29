@@ -14,12 +14,48 @@
 </div>
 </div>
 
-<div *ngIf="selected">
-  <ul>
-    <li *ngFor="let dateNight of dateNights | categoryType: selected.name">
-      {{dateNight.name}}
-    </li>
-  </ul>
+<div *ngIf="selected && !detailsOnly">
+  <h1>{{selected.name}}</h1>
+  <table class="table hover table-bordered">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Description</td>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let dateNight of dateNights | categoryType: selected.name" (click)="display(dateNight)" (click)="detailsOnly = true">
+      <td>{{dateNight.name}}</td>
+      <td>{{dateNight.description}}</td><br>
 
+<<<<<<< HEAD
 <button class=" btn btn-secondary" (click)="selected = null">Back</button>
+=======
+    </tr>
+    </tbody>
+          </table><br>
+<button (click)="selected = null" class="btn-default">Back</button>
+</div>
+<div *ngIf="selected && viewMoreDetails && detailsOnly">
+  <h1>{{selected.name}}</h1>
+  <table class="table hover table-bordered">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Description</td>
+      </tr>
+    </thead>
+    <tbody>
+    <tr >
+      <td>{{viewMoreDetails.name}}</td>
+      <td>{{viewMoreDetails.description}}</td><br>
+
+    </tr>
+    </tbody>
+          </table><br>
+<button (click)="detailsOnly = false" class="btn-default">Back</button>
+<div  class="imagediv">
+  <img class="topImg img-thumbnail" [src]="viewMoreDetails.imageUrl"/>
+</div>
+>>>>>>> 8aba65c6a17869e20ba3e82db9c31972e6e04ae5
 </div>

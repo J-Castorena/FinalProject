@@ -9,7 +9,7 @@ public interface ReviewService {
 
 	Review reviewById(Integer id);
 
-	Review createReview(Review review);
+	Review createReview(Review review, int dateNightId);
 
 	Review updateReview(Review review, int id, String username);
 
