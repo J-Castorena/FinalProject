@@ -13,7 +13,7 @@
     </form>
   </div>
 
-  <div id="Layout" class="col" >
+  <div id="Layout" class="col">
 
     <h1 class="header">List of Date Nights</h1><br><br>
     <header *ngFor="let datenight of datenights" (click)="display(datenight); loadReviews(datenight); loadAverageRating(datenight)">
@@ -32,7 +32,7 @@
 <br>
 <h3 class="header">Overall rating: {{selected.avgRating | number:'1.1-1'}}</h3>
 
-<blockquote>{{selected.description}}</blockquote>
+<blockquote id="textBackground">{{selected.description}}</blockquote>
 
       <button class="btn-default" (click)="selected=null">Back</button>
       <button *ngIf="userLoggedIn()" class="btn-default" (click)="showReviewForm()">Review this date night</button>
@@ -92,5 +92,6 @@
           </div>
         </div>
       </div>
+      <br><br><br>
 
 </div>

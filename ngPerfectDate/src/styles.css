@@ -9,5 +9,33 @@ body {
 	background-size: cover;
 }
 
+.footer {
+  width: 100%;
+  border: none;
+  background-color: #7D0F07;
+  text-align: center;
+  display: inline-block;
+}
 
 
+.inline {
+  display: inline-block;
+  padding: 2rem 2rem;
+  color: whitesmoke;
+
+}
+#logo-instellar {
+  width: 80px;
+  height: 80px;
+}
+
+
+#homebtn {
+  width: 125px;
+  height: 75px;
+}
+
+#link1 {
+  color: whitesmoke;
+  text-decoration: none;
+}
