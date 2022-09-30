@@ -11,7 +11,7 @@ import { Review } from '../models/review';
   providedIn: 'root'
 })
 export class DateNightService {
-  private baseUrl = 'http://localhost:8090/'
+
   private url = environment.baseUrl + 'api/datenights';
 
 

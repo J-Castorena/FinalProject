@@ -11,7 +11,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = 'http://localhost:8090/'
+
   private url = environment.baseUrl + 'api/users';
 
   constructor(private http: HttpClient, private auth: AuthService) { }

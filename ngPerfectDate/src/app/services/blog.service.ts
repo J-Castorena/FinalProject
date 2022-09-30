@@ -10,7 +10,7 @@ import { Blog } from '../models/blog';
   providedIn: 'root'
 })
 export class BlogService {
-  private baseUrl = 'http://localhost:8090/'
+
   private url = environment.baseUrl + 'api/blogs';
 
   constructor(private http: HttpClient,

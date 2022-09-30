@@ -11,7 +11,7 @@ import { Buffer } from 'buffer';
 })
 export class AuthService {
   // Set port number to server's port
-  private baseUrl = 'http://localhost:8090/';
+
   private url = environment.baseUrl;
 
   constructor(private http: HttpClient) {}
