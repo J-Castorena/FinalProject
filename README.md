@@ -113,7 +113,7 @@ Postman routes:
 
 ## Challenges and Lessons We Learned
 
-Jordy - 
+Jordy - This project was the culmination of our efforts during this BootCamp. There were various challenges throughout the sprint. My own personal challenge was populating a thread with replies to a Blog and persisting new replies. Combining JavaScript with HTML required me to do a great amount of research to make it all work. When working with others, you always have to learn to be open to diverse ideas and suggestions.
 
 Diego - 
 
