@@ -1,3 +1,11 @@
+.table{
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-bottom: 4%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  background:  rgba(255, 255, 255, 0.7);
+}
 .card {
     all: unset;
     border-radius: 200px;
@@ -55,4 +63,16 @@
 
 #CardContainer{
   padding-top: 10%;
+}
+
+#textBackground {
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-bottom: 4%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  background:  rgba(255, 255, 255, 0.7);
+}
+.header {
+  text-align: center;
 }
