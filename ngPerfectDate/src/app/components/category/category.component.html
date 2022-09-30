@@ -30,20 +30,22 @@
     </tr>
     </tbody>
           </table><br>
-<button (click)="selected = null" class="btn-default">Back</button>
+<button (click)="selected = null" class="btn-default">Back to Categories</button>
+<br><br><br><br><br><br><br><br>
 </div>
 
 <div *ngIf="selected && viewMoreDetails && detailsOnly" >
   <h1 class="header">{{viewMoreDetails.name}}</h1>
   <h3 class="header">Category: {{selected.name}}</h3>
     <div class="textBackground">
-<br>
+
 
 <blockquote id="textBackground">{{viewMoreDetails.description}}</blockquote>
   </div>
-    <button (click)="detailsOnly = false" class="btn-default">Back</button>
+    <button (click)="detailsOnly = false" class="btn-default">Back to List</button><br><br><br>
 
     <div  class="imagediv">
       <img class="topImg img-thumbnail" [src]="viewMoreDetails.imageUrl"/>
+      <br><br><br><br>
     </div>
 </div>

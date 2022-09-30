@@ -1,14 +1,11 @@
 
-body {
-  background-color: #95c2de;
-}
-
 .mainbox {
-  background-color: #95c2de;
+  background:  rgba(125, 15, 7 , 0.7);
   margin: auto;
   height: 600px;
   width: 600px;
   position: relative;
+  border-radius: 50%;
 }
 
   .err {
@@ -22,7 +19,7 @@ body {
 
 .far {
   position: absolute;
-  font-size: 8.5rem;
+  font-size: 10rem;
   left: 42%;
   top: 15%;
   color: #ffffff;
@@ -54,12 +51,4 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-* {
-  box-sizing: 0;
-  margin: 0;
-  padding: 0;
-  cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4424790/cursors-edge.png"),
-    auto;
 }

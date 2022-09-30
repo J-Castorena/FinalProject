@@ -9,11 +9,22 @@ body {
 	background-size: cover;
 }
 
-.footer {
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  border: none;
+  height: auto;
   background-color: #7D0F07;
-  text-align: center;
+  border: none;
   display: inline-block;
 }
 
