@@ -2,9 +2,9 @@
 <br><br><br>
 <!--  -->
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4 my-auto mx-auto"  >
-        <div *ngIf="! loggedIn()">
+  <div class="row align-items-start">
+    <div class="col-lg-5"  >
+        <div id="buttons" *ngIf="! loggedIn()">
         <button class="btn btn-default" [routerLink]="['/login']" >Sign In</button><br><br>
         <button class="btn btn-default" [routerLink]="['/register']">Sign Up!</button><br><br>
         <button class="btn btn-default" [routerLink]="['/category']">Continue as guest</button>
@@ -17,7 +17,7 @@
 
 
     </div>
-    <div class="col-md-8 my-auto" >
+    <div id="carosule" class="col-lg-7" >
       <section  id="c-size" class="hero carousel-hero">
       <ngb-carousel *ngIf="images">
         <ng-template ngbSlide>

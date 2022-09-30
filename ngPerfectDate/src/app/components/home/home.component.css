@@ -1,15 +1,21 @@
 
-
+#buttons{
+  padding-top: 20%;
+  padding-left: 25%;
+}
 .btn-default {
   font-family: Raleway-SemiBold;
-  font-size: 13px;
+  font-size: 20px;
   color: whitesmoke;
   letter-spacing: 1px;
-  line-height: 15px;
+  line-height: 30px;
   border: 2px solid rgba(108, 89, 179, 0.75);
-  border-radius: 40px;
+  border-radius: 60px;
   background: #B51004;
   transition: all 0.3s ease 0s;
+  width: 150%;
+  height: 100%;
+  margin-top: 40px;
 }
 
 .btn-default:hover {
@@ -32,11 +38,28 @@
   border-radius: 10px;
 }
 
+#carosule{
+  padding-top: 5%;
+  padding-right: 15%;
+}
+
 #c-size{
   height: 505px;
   width: 705px;
 }
 
 #welcomeMessage{
+  padding-top: 40%;
   font-family: Jazz LET, fantasy;
+}
+
+.col-lg-7{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.col-lg-5{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
