@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AdditionalImageService {
-  private baseUrl = 'http://localhost:8090/'
+
   private url = environment.baseUrl + 'api/additionalimages';
 
   constructor(private http: HttpClient) { }

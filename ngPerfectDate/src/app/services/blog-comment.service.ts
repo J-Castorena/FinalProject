@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class BlogCommentService {
-  private baseUrl = 'http://localhost:8090/'
+
   private url = environment.baseUrl + 'api/blogcomments';
 
   constructor(private http: HttpClient,private auth: AuthService) { }
@@ -28,7 +28,7 @@ export class BlogCommentService {
   }
 
   getAllBlogCommentsById(id: number): Observable<BlogComment[]> {
-    return this.http.get<BlogComment[]>(this.baseUrl + 'api/blogs/' + id + '/comments', this.getHttpOptions()).pipe(
+    return this.http.get<BlogComment[]>(environment.baseUrl + 'api/blogs/' + id + '/comments', this.getHttpOptions()).pipe(
       catchError((error: any) => {
         console.log(error);
         return throwError(
@@ -54,7 +54,7 @@ export class BlogCommentService {
   }
 
   addCommentToBlog(blogComment: BlogComment, id: number): Observable<BlogComment> {
-    return this.http.post<BlogComment>(this.baseUrl + 'api/blogs/' + id + '/comments', blogComment ,this.getHttpOptions()).pipe(
+    return this.http.post<BlogComment>(environment.baseUrl + 'api/blogs/' + id + '/comments', blogComment ,this.getHttpOptions()).pipe(
      catchError((error: any) => {
        console.log(error);
        return throwError(
@@ -103,7 +103,7 @@ export class BlogCommentService {
   }
 
   getAllBlogRepliesById(id: number): Observable<BlogComment[]> {
-    return this.http.get<BlogComment[]>(this.baseUrl + 'api/blogs/' + id + '/replies', this.getHttpOptions()).pipe(
+    return this.http.get<BlogComment[]>(environment.baseUrl + 'api/blogs/' + id + '/replies', this.getHttpOptions()).pipe(
       catchError((error: any) => {
         console.log(error);
         return throwError(

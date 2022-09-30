@@ -11,7 +11,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ReviewService {
-  private baseUrl = 'http://localhost:8090/'
+
   private url = environment.baseUrl + 'api/reviews';
 
   constructor(private http: HttpClient, private auth: AuthService) { }

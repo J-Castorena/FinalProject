@@ -9,7 +9,7 @@ import { DateNightDiscussionBoard } from '../models/date-night-discussion-board'
   providedIn: 'root'
 })
 export class DateNightDiscussionBoardService {
-  private baseUrl = 'http://localhost:8090/'
+
   private url = environment.baseUrl + 'api/datenightdiscussionboards';
 
   constructor(private http: HttpClient) { }

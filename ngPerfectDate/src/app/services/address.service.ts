@@ -8,7 +8,7 @@ import { Address } from '../models/address';
   providedIn: 'root'
 })
 export class AddressService {
-  private baseUrl = 'http://localhost:8090/'
+
   private url = environment.baseUrl + 'api/address';
 
   constructor(private http: HttpClient) { }

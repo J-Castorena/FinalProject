@@ -1,8 +1,7 @@
 # FinalProject
 
+
 - [Perfect Date](#finalproject)
-  - [Description](#description)
-  - [Meet the Team] (#meet-the-team)
   - [Topics](#topics)
   - [How to Run](#how-to-run)
   - [Technologies](#technologies)
@@ -14,41 +13,40 @@
 
 ## Description
 
-This is the completed full-stack project that tracks ghost tours and reviews. With full CRUD functionality  tours can be posted by users and then reviewed. Reviews can have comments added. Currently functionality for reviews and comments are on the backend only. Will update with new front-end updates. 
+This is a full-stack group project that allows users to search for date night inspiration. Unregistered users have limited navigation but can browse all the date nights or search by category. Logged in users have the ability to review date night ideas, blog about their experiences and respond to others blogs. Blogs can have comments added.
 
 
 ## Meet The Team
 
-- Jordy
-- Diego
-- Steph
+- Jordy Castorena
+- Diego Escutia
+- Steph Karlsen
 
 
 ## Topics
 -   Creating a SQL database and subsequent tables
 -   Configuring a JPA project
--   Configuring REST Api's
-- Using Postman to test backend projects
+-   Configuring REST API's
+-   Using Postman to test back-end functionality
 -   Mapping Entities to SQL tables
 -   Creating JUnit tests to ensure JPA mappings are correct
 -   Integrating a Spring MVC project with a JPA project
 -   Performing basic CRUD operations
 -   Gradle dependency management
-
+-   Angular front-end funcionality
 
 
 - [Back to Top](#finalproject)
 
 ##  How to Run
 
-- [Ghost Tour URL](http://54.176.46.29:8080/GhostTour)
-
-- [Back to Top](#finalproject)
+- [Perfect Date URL](http://54.176.46.29:8080/PerfectDate/#/home)
 
 # Technologies
 
 -   Angular
 -   JavaScript
+-   Typescript
 -   REST API
 -   JSON
 -   Postman
@@ -61,6 +59,7 @@ This is the completed full-stack project that tracks ghost tours and reviews. Wi
 -   Hibernate
 -   Bootstrap 5.2
 -   CSS
+-   HTML 5
 -   JSP
 -   MySQL Workbench
 -   Gradle
@@ -74,7 +73,7 @@ This is the completed full-stack project that tracks ghost tours and reviews. Wi
 
 # Concepts
 
--   Request Mapping
+-   Http Request Mapping
 -   Get, Post, Delete, Put
 -   Database extraction with Repository
 -   Style Pages - Object Oriented Programming
@@ -91,23 +90,24 @@ This is the completed full-stack project that tracks ghost tours and reviews. Wi
 
 ## REST Endpoints
 
-Postman routes:
+Examples of our Postman routes:
 
-|   HTTP Verb Purpose |URI                                                             |Request Body              |Response Body                 | Operation
-|---------------------|----------------------------------------------------------------|--------------------------|------------------------------|-----------
-|POST                 |`/api/datenight`                                                  |JSON for new datenight    |Create datenight              |Create
-|POST                 |`/api/datenight/{datenightId}/reviews`                              |JSON for new review       |Create review by datenight id |Create
-|POST                 |`/api/datenightDiscussionBoard/{datenightDiscussionBoardId}/comments`  |JSON for new comment     |Create comment for review      |Create
-|GET                  |`/api/datenights`                                                 |                          |List of datenights             |Read
-|GET                  |`/api/reviews`                                                    |                          |List of reviews               |Read
-|GET                  |`/api/datenightDiscussionBoard`                                    |                          |List of comments              |Read
-|GET                  |`/api/review/{id}`                                                |                          |View review by id             |Read
-|PUT                  |`/api/datenights/{datenightId}`                                    |JSON to update datenight  |Update datenight              |Update      
-|PUT                  |`/api/reviews/{reviewId}`                                          |JSON to update review     |Update review                |Update
-|PUT                  |`/api/comments/{commentId}`                                        |JSON to update comments   |Update comment               |Update
-|DELETE               |`/api/datenights/{id}`                                            |                           |Delete datenight              |Delete
-|DELETE               |`/api/reviews/{id}`                                               |                           |Delete review                |Delete
-|DELETE               |`/api/comments/{id}`                                              |                           |Delete comment               |Delete
+|   HTTP Verb Purpose |URI                                              |Request Body              |Response Body                 | Operation
+|---------------------|-------------------------------------------------|--------------------------|------------------------------|-----------
+|POST                 |`/api/datenights`                                   |JSON for new datenight    |Create datenight              |Create
+|POST                 |`/api//reviews/{datenightId}`                       |JSON for new review       |Create review by datenight id |Create
+|POST                 |`/api/users/{userId}/blogs`                          |JSON for new blog       |Create blog                      |Create
+|POST                 |`/api/users`                                       |JSON for user              |Create user                   |Create
+|GET                  |`/api/datenights`                                  |                          |List of datenights             |Read
+|GET                  |`/api/reviews/datenights/{dateNightId}`              |                          |List of reviews by Datenight   |Read
+|GET                  |`/api/users/{userId}/blogs`                         |                          |List of blogs by user          |Read
+|GET                  |`/api/review/datenights/{datenightId}`               |                          |View review by datenight id     |Read
+|PUT                  |`/api/datenights/{datenightId}`                     |JSON to update datenight  |Update datenight              |Update      
+|PUT                  |`/api/reviews/{reviewId}`                           |JSON to update review     |Update review                |Update
+|PUT                  |`/api blog/{userId}`                               |JSON to update blog         |Update cblog by user id    |Update
+|DELETE               |`/api/datenights/{id}`                             |                           |Delete datenight              |Delete
+|DELETE               |`/api/reviews/{id}`                                |                           |Delete review                |Delete
+|DELETE               |`/api/blog/{id}`                                   |                           |Delete comment               |Delete
 
 
 
@@ -115,12 +115,10 @@ Postman routes:
 
 Jordy - This project was the culmination of our efforts during this BootCamp. There were various challenges throughout the sprint. My own personal challenge was populating a thread with replies to a Blog and persisting new replies. Combining JavaScript with HTML required me to do a great amount of research to make it all work. When working with others, you always have to learn to be open to diverse ideas and suggestions.
 
-Diego - 
+Diego - In this project,  the foundations of REST really cemented, while also improving my familiarity with MySQL Workbench. One of the requirements for the project is to have encrypted login capabilities. I developed a better understanding on how to give users authorized access to the website. Once we started the Angular side of the project, I further understood the relationship between Models, Services, and Components.
 
-Steph - 
+Steph - Our final group project for me was a great experience to get more practice working in a group. Relying on a group is something I have struggled with in the past but my team members made that very easy and we all worked very well together.  
 
-
-- [Back to Top](#finalproject)
 
 ## UML diagram
 
