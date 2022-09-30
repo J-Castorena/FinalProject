@@ -104,6 +104,8 @@ body{
 
 #masterCard{
   margin-bottom: 15px;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(1, 14, 4, 0.647);
 }
 
 .card-header{
