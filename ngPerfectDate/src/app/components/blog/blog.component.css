@@ -84,7 +84,7 @@ button:active {
   margin-left: 10px;
 }
 .comment-author {
-  color: rgba(2, 129, 28, 0.85);
+  color: rgba(183, 7, 7, 0.85);
   font-weight: bold;
   text-decoration: none;
 }
@@ -109,7 +109,7 @@ body{
 }
 
 .card-header{
-  background-color: rgba(41, 41, 41, 0.591);
+  background-color: rgba(42, 37, 37, 0.759);
   color:#f2f6f7;
 }
 
